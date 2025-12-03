@@ -39,7 +39,7 @@ const About = () => {
                 About Me
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white leading-tight">
-                Spesialis dalam{" "}
+                Kemampuan Dalam{" "}
                 <span className="text-indigo-600">
                   Manajemen Data & Sistem Digital Modern
                 </span>

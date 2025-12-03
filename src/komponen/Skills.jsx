@@ -2,7 +2,7 @@ import React from "react";
 
 const skillsData = [
   {
-    category: "Frontend Development",
+    category: "Web Development",
     icon: (
       <svg
         className="w-8 h-8 text-indigo-500"
@@ -18,18 +18,21 @@ const skillsData = [
         />
       </svg>
     ),
-    description: "Membangun antarmuka yang responsif dan interaktif.",
+    description:
+      "Membangun website interaktif dan sistem berbasis web untuk kebutuhan personal, bisnis, dan instansi.",
     items: [
-      "React.js",
+      "HTML",
+      "CSS",
       "Tailwind CSS",
-      "TypeScript",
-      "Next.js",
-      "Redux",
-      "Framer Motion",
+      "JavaScript",
+      "React.js",
+      "Vite",
+      "Firebase",
     ],
   },
+
   {
-    category: "Backend Integration",
+    category: "Office & Administration",
     icon: (
       <svg
         className="w-8 h-8 text-purple-500"
@@ -41,22 +44,24 @@ const skillsData = [
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
-          d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+          d="M9 12h6M9 16h6M7 8h10M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
         />
       </svg>
     ),
-    description: "Mengelola logika server, database, dan API.",
+    description:
+      "Mendukung pekerjaan administrasi dan pengolahan data secara rapi dan terstruktur.",
     items: [
-      "Node.js",
-      "Express",
-      "PostgreSQL",
-      "MongoDB",
-      "REST API",
-      "Firebase",
+      "Microsoft Excel",
+      "Microsoft Word",
+      "PowerPoint",
+      "Data Entry",
+      "Dokumentasi Arsip",
+      "Pengelolaan Surat",
     ],
   },
+
   {
-    category: "Tools & Workflow",
+    category: "Design & Multimedia",
     icon: (
       <svg
         className="w-8 h-8 text-pink-500"
@@ -68,18 +73,47 @@ const skillsData = [
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
-          d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+          d="M12 4v16m8-8H4"
         />
+      </svg>
+    ),
+    description:
+      "Membuat desain visual sederhana untuk konten, poster, dan kebutuhan digital.",
+    items: [
+      "Canva",
+      "Photoshop (Basic)",
+      "Desain Poster",
+      "Desain Sosial Media",
+      "Digital Printing",
+    ],
+  },
+
+  {
+    category: "System & Project Experience",
+    icon: (
+      <svg
+        className="w-8 h-8 text-cyan-500"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
-          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+          d="M13 16h-1v-4h-1m1-4h.01M12 18h.01M21 12A9 9 0 113 12a9 9 0 0118 0z"
         />
       </svg>
     ),
-    description: "Alat bantu untuk mempercepat pengembangan.",
-    items: ["Git & GitHub", "Docker", "Figma", "Postman", "Vite", "VS Code"],
+    description:
+      "Pengalaman dalam pengembangan sistem sederhana dan proyek digital mandiri.",
+    items: [
+      "Sistem Absensi Online",
+      "Realtime Comment System",
+      "Website Undangan",
+      "Toko Online (Firebase + WA)",
+      "Portfolio Website",
+    ],
   },
 ];
 

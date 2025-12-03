@@ -1,34 +1,51 @@
 const experienceData = [
   {
-    title: "Senior Fullstack Developer",
-    company: "Tech Innovator Solutions",
+    title: "Tenaga Teknis / Administrasi",
+    company: "Dinas Perumahan & Kawasan Permukiman Kab. Lombok Timur",
     description: [
-      "Memimpin tim yang terdiri dari 5 developer untuk merancang dan meluncurkan produk SaaS baru.",
-      "Mengoptimalkan performa aplikasi, menghasilkan peningkatan kecepatan loading sebesar 40%.",
-      "Mengimplementasikan alur kerja CI/CD menggunakan GitHub Actions dan AWS.",
+      "Mengelola dokumen dan arsip surat masuk dan keluar secara terstruktur.",
+      "Menyusun dan mendistribusikan surat menyurat internal dan eksternal.",
+      "Membantu pencatatan transaksi keuangan sederhana dan laporan administrasi.",
+      "Menyiapkan jadwal rapat serta mendukung kelancaran kegiatan kantor.",
+      "Terlibat dalam pengelolaan konten website dinas dan sistem e-government.",
     ],
-    tech: ["React", "Node.js", "AWS", "PostgreSQL", "Tailwind CSS"],
+    tech: [
+      "Microsoft Word",
+      "Microsoft Excel",
+      "Google Workspace",
+      "Website CMS",
+    ],
   },
   {
-    title: "Junior Frontend Engineer",
-    company: "Creative Digital Agency",
+    title: "Web Developer (Freelance & Personal Project)",
+    company: "Self-Employed",
     description: [
-      "Bertanggung jawab atas pengembangan UI/UX dari 15+ website klien menggunakan framework modern.",
-      "Melakukan testing dan debugging untuk memastikan kompatibilitas browser penuh.",
-      "Berpartisipasi aktif dalam sesi brainstorming desain dan wireframing.",
+      "Membangun website pemesanan bukber dan toko online sederhana.",
+      "Membuat sistem absensi berbasis web menggunakan Firebase.",
+      "Mengembangkan sistem komentar realtime dengan fitur hapus, reply, dan ekspor data.",
+      "Mengintegrasikan form & keranjang belanja dengan WhatsApp.",
     ],
-    tech: ["Vue.js", "SASS", "Firebase", "Git"],
+    tech: [
+      "HTML",
+      "Tailwind CSS",
+      "JavaScript",
+      "Firebase",
+      "Vite",
+      "Supabase",
+    ],
   },
   {
-    title: "Web Developer Intern",
-    company: "Startup Lokal XYZ",
+    title: "Praktik Kerja Lapangan (Multimedia)",
+    company: "Digital Printing Cahaya Mandiri",
     description: [
-      "Membantu dalam maintenance dan update konten website utama perusahaan.",
-      "Belajar dan mengimplementasikan dasar-dasar PHP dan MySQL.",
+      "Mengoperasikan mesin digital printing, cetak foto, dan cetak stiker.",
+      "Melakukan desain sederhana menggunakan Canva dan Photoshop.",
+      "Membantu dalam produksi sablon dan bordir pesanan pelanggan.",
     ],
-    tech: ["HTML", "CSS", "JavaScript", "PHP"],
+    tech: ["Canva", "Photoshop", "CorelDraw", "Digital Printing Tools"],
   },
 ];
+
 const Experience = () => {
   return (
     <section id="experience" className="py-24 bg-slate-50 dark:bg-slate-900">
@@ -82,7 +99,7 @@ const Experience = () => {
                     </p>
 
                     {/* Deskripsi */}
-                    <ul className="list-disc md:list-none ml-5 pl-3 space-y-2 text-slate-600 dark:text-slate-400 text-sm text-justify">
+                    <ul className="list-disc md:list-none space-y-2 text-slate-600 dark:text-slate-400 text-sm text-justify">
                       {exp.description.map((desc, idx) => (
                         <li key={idx}>{desc}</li>
                       ))}

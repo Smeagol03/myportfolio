@@ -1,149 +1,137 @@
+import { useState, useEffect } from "react";
 import Bg from "/my.webp";
 
 const Hero = () => {
-  const handleScrollDown = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: "smooth",
-    });
+  const nama = "Alpian Tabrani";
+  const role = "Administrative & Web Support";
+  const deskrisi =
+    "I support organizations in managing data, documents, and digital systems while also building responsive websites using modern tools like React, Firebase, and Microsoft Office. I am detail-oriented, organized, and ready to contribute to an efficient work environment.";
+  const [isVisible, setIsVisible] = useState(false);
+  const handleCTAclick = () => {
+    // Scroll to Projects section
+    const projectsSection = document.getElementById("about");
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: "smooth" });
+    }
   };
+  useEffect(() => {
+    // Trigger animation on mount
+    setIsVisible(true);
+  }, []);
 
   return (
-    <section className="min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden relative">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+    <section className="relative w-full min-h-screen bg-linear-to-br from-slate-950 via-blue-950 to-slate-950 overflow-hidden">
+      {/* Subtle background elements - lightweight */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-20 right-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
+        <div
+          className="absolute bottom-20 left-10 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"
+          style={{ animationDelay: "2s" }}
+        ></div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center py-20 lg:py-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* LEFT CONTENT */}
-          <div className="space-y-6 sm:space-y-8 animate-fade-in text-center lg:text-left">
-            {/* Badge */}
-            <div className="inline-block mx-auto lg:mx-0">
-              <span className="px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300 text-sm font-medium">
-                Welcome to my portfolio
+      {/* Main content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 sm:py-32 flex flex-col justify-center min-h-screen">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left side - Text content */}
+          <div
+            className={`transform transition-all duration-1000 ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
+          >
+            {/* Name */}
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">
+              Hi, I'm{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-cyan-300">
+                {nama}
               </span>
-            </div>
+            </h1>
 
-            {/* Main heading */}
-            <div className="space-y-4">
-              <h1 className="text-3xl sm:text-4xl md:text-6xl xl:text-7xl font-bold leading-tight">
-                Hi, I'm{" "}
-                <span className="bg-linear-to-r from-blue-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-                  Alpian
-                </span>
-              </h1>
+            {/* Job Title */}
+            <p className="text-xl sm:text-2xl text-cyan-300 font-semibold mb-6">
+              {role}
+            </p>
 
-              <p className="text-base sm:text-lg md:text-xl xl:text-2xl text-gray-300 font-light">
-                Administrative & Web Support
-              </p>
-            </div>
-
-            {/* Description */}
-            <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              I support organizations in managing data, documents, and digital
-              systems while also building responsive websites using modern tools
-              like React, Firebase, and Microsoft Office. I am detail-oriented,
-              organized, and ready to contribute to an efficient work
-              environment.
+            {/* Tagline */}
+            <p className="text-base sm:text-lg text-slate-300 mb-8 max-w-lg leading-relaxed">
+              {deskrisi}
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
+            <div className="flex flex-wrap gap-4">
               <button
-                onClick={handleScrollDown}
-                className="px-6 sm:px-8 py-3 bg-linear-to-r from-blue-500 to-blue-600 rounded-lg font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/50"
+                onClick={handleCTAclick}
+                className="px-8 py-3 bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/50 transform hover:scale-105 transition-all duration-200"
               >
-                View Portfolio
+                View My Work
               </button>
-
-              <button className="px-6 sm:px-8 py-3 border-2 border-blue-500/50 rounded-lg font-semibold text-blue-300 hover:border-blue-400 hover:bg-blue-500/10 transition-all duration-300">
-                Contact Me
+              <button className="px-8 py-3 border border-cyan-400 text-cyan-300 font-semibold rounded-lg hover:bg-cyan-400 hover:bg-opacity-10 transition-all duration-200">
+                Get In Touch
               </button>
             </div>
 
             {/* Social Links */}
-            <div className="flex justify-center lg:justify-start gap-6 pt-4 text-xl md:text-2xl">
-              <a
-                href="#"
-                className="text-gray-400 hover:text-blue-400 transition-colors"
-              >
-                𝕏
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-blue-400 transition-colors"
-              >
-                💼
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-blue-400 transition-colors"
-              >
-                🐙
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-blue-400 transition-colors"
-              >
-                ✉️
-              </a>
+            <div className="flex gap-6 mt-10">
+              {["GitHub", "LinkedIn", "Twitter"].map((social, index) => (
+                <a
+                  key={index}
+                  href="#"
+                  className="text-slate-400 hover:text-cyan-300 transition-colors duration-200 text-sm font-medium"
+                >
+                  {social}
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* RIGHT CONTENT */}
-          <div className="hidden md:flex justify-center items-center animate-slide-up">
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 xl:w-96 xl:h-96">
-              {/* Glowing border */}
-              <div className="absolute inset-0 bg-linear-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl opacity-70 blur-xl animate-pulse"></div>
+          {/* Right side - Visual element */}
+          <div
+            className={`transform transition-all duration-1000 delay-200 ${
+              isVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 translate-x-10"
+            }`}
+          >
+            <div className="relative w-full aspect-square">
+              {/* Avatar circle with linear border */}
+              <div className="w-full h-full rounded-2xl bg-linear-to-br from-blue-500 to-cyan-500 p-1">
+                <img
+                  src={Bg}
+                  alt="Profile"
+                  className="w-full h-full rounded-2xl object-top object-cover"
+                />
+              </div>
 
-              {/* Content box */}
-              <div className="absolute inset-0 bg-slate-800 rounded-2xl border border-blue-500/30 flex items-center justify-center text-center p-6">
-                <div>
-                  <div className="text-5xl sm:text-6xl mb-4">💻</div>
-                  <p className="text-gray-300 font-semibold text-sm sm:text-base">
-                    Let's build something amazing
-                  </p>
-                </div>
+              {/* Floating badge */}
+              <div className="absolute -bottom-4 -right-4 bg-blue-600 text-white px-6 py-3 rounded-full shadow-xl flex items-center gap-2 animate-bounce">
+                <div className="w-3 h-3 bg-cyan-300 rounded-full"></div>
+                <span className="text-sm font-semibold">
+                  Available for Work
+                </span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <button
-            onClick={handleScrollDown}
-            className="flex flex-col items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors"
-            aria-label="Scroll down"
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <svg
+            className="w-6 h-6 text-cyan-300 opacity-70"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
           >
-            <span className="text-xs sm:text-sm font-medium">
-              Scroll to explore
-            </span>
-
-            <svg
-              className="w-5 h-5 sm:w-6 sm:h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-              />
-            </svg>
-          </button>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
         </div>
       </div>
-
-      {/* Decorative line */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-blue-500 to-transparent opacity-50"></div>
     </section>
   );
 };

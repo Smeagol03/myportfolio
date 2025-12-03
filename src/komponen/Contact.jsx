@@ -5,68 +5,80 @@ const contactInfo = [
   {
     icon: (
       <svg
-        className="w-6 h-6"
+        className="w-6 h-6 text-white"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
+        strokeWidth={1.8}
       >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={2}
-          d="M3 8l7.89 5.26c.72.48 1.63.48 2.35 0L21 8M3 8V19a2 2 0 002 2h14a2 2 0 002-2V8M3 8l-.75-1.5M21 8l.75-1.5"
+          d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15A2.25 2.25 0 012.25 17.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0l-7.5 6L2.25 6.75"
         />
       </svg>
     ),
-    label: "Email Utama",
-    value: "halo@namasaya.com",
-    link: "mailto:halo@namasaya.com",
+    label: "Email",
+    value: "alpiantabrani@gmail.com",
+    link: "mailto:alpiantabrani@gmail.com",
   },
+
   {
     icon: (
       <svg
-        className="w-6 h-6"
+        className="w-6 h-6 text-rose-600"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
+        strokeWidth={1.8}
       >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={2}
-          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"
+          d="M12 2.25c-4.28 0-7.75 3.47-7.75 7.75 0 5.25 7.75 11.75 7.75 11.75s7.75-6.5 7.75-11.75c0-4.28-3.47-7.75-7.75-7.75z"
         />
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-        />
+        <circle cx="12" cy="10" r="3" />
       </svg>
     ),
     label: "Lokasi",
-    value: "Jakarta, Indonesia",
-    link: "https://maps.app.goo.gl/...",
+    value: "Lombok Timur, NTB, Indonesia",
+    link: "https://maps.app.goo.gl/8N4pYh9wrzA2KhxQ6",
   },
+
   {
     icon: (
       <svg
-        className="w-6 h-6"
+        className="w-6 h-6 text-green-600"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
+        strokeWidth={1.8}
       >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={2}
-          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.128a11.033 11.033 0 005.17 5.17l1.128-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-11a2 2 0 01-2-2v-14z"
+          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.69l1.5 4.49a1 1 0 01-.5 1.21L8.97 10.53a11.03 11.03 0 004.5 4.5l1.14-2.25a1 1 0 011.21-.5l4.49 1.5a1 1 0 01.69.95V19a2 2 0 01-2 2h-1C9.82 21 3 14.18 3 6V5z"
         />
       </svg>
     ),
     label: "WhatsApp",
-    value: "+62 812 XXX XXX",
-    link: "https://wa.me/62812xxxxxx",
+    value: "+62 81xx-xxxx-xxx",
+    link: "https://wa.me/62XXXXXXXXXXX",
+  },
+
+  {
+    icon: (
+      <svg
+        className="w-6 h-6 text-slate-700 dark:text-slate-300"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path d="M12 .5C5.66.5.5 5.78.5 12.32c0 5.25 3.44 9.69 8.21 11.27.6.12.82-.26.82-.58v-2.05c-3.34.74-4.04-1.66-4.04-1.66-.54-1.43-1.33-1.81-1.33-1.81-1.09-.77.08-.76.08-.76 1.2.09 1.83 1.28 1.83 1.28 1.07 1.9 2.8 1.35 3.49 1.03.11-.8.42-1.35.76-1.66-2.67-.32-5.47-1.4-5.47-6.2 0-1.37.47-2.5 1.24-3.38-.12-.32-.54-1.62.12-3.38 0 0 1.01-.33 3.3 1.29a11.1 11.1 0 016 0c2.3-1.62 3.3-1.29 3.3-1.29.66 1.76.24 3.06.12 3.38.77.88 1.24 2.01 1.24 3.38 0 4.81-2.8 5.88-5.48 6.19.43.38.81 1.12.81 2.26v3.35c0 .32.21.7.82.58A11.85 11.85 0 0023.5 12.32C23.5 5.78 18.34.5 12 .5z" />
+      </svg>
+    ),
+    label: "GitHub",
+    value: "github.com/alpiantabrani",
+    link: "https://github.com/",
   },
 ];
 
