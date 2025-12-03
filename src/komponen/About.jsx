@@ -1,4 +1,4 @@
-import React from "react";
+import Bg from "/my.webp";
 
 const About = () => {
   return (
@@ -17,7 +17,7 @@ const About = () => {
             {/* Container Gambar */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl w-full max-w-md">
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                src={Bg}
                 alt="Profile"
                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-500"
               />
@@ -39,22 +39,28 @@ const About = () => {
                 About Me
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white leading-tight">
-                Menciptakan Solusi Digital yang{" "}
-                <span className="text-indigo-600">Elegan & Efisien.</span>
+                Spesialis dalam{" "}
+                <span className="text-indigo-600">
+                  Manajemen Data & Sistem Digital Modern
+                </span>
               </h2>
             </div>
 
-            <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
-              Halo! Saya seorang Fullstack Developer yang berfokus pada
-              pengalaman pengguna. Saya menggabungkan desain minimalis dengan
-              kode yang bersih untuk membangun aplikasi yang tidak hanya
-              berfungsi dengan baik, tetapi juga terlihat indah.
+            <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+              Halo! Saya adalah tenaga administrasi dan web support dengan
+              pengalaman dalam pengelolaan data, dokumen, serta pengembangan
+              website sederhana untuk mendukung sistem kerja yang lebih efisien.
+              Saya terbiasa menggunakan Microsoft Office, React, Firebase, dan
+              berbagai tools digital untuk membantu organisasi bekerja lebih
+              cepat, rapi, dan terstruktur.
             </p>
 
             <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-              Saat ini saya sedang mendalami teknologi cloud dan optimasi
-              performa web untuk skala besar. Saya percaya bahwa detail kecil
-              memberikan dampak besar.
+              Saat ini saya terus mengembangkan keterampilan dalam pengelolaan
+              sistem digital, pengolahan data, dan pengembangan website yang
+              sederhana namun fungsional. Saya percaya bahwa ketelitian pada
+              detail kecil dapat memberikan dampak besar terhadap efisiensi dan
+              kualitas kerja.
             </p>
 
             {/* List Statistik / Skill Singkat */}
@@ -79,10 +85,10 @@ const About = () => {
 
                 <div>
                   <h4 className="font-bold text-slate-800 dark:text-white text-sm sm:text-base">
-                    Clean Code
+                    Administrasi Digital
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-                    Modular & Scalable
+                    Dokumen • Arsip • Persuratan
                   </p>
                 </div>
               </div>

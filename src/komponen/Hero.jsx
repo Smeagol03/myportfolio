@@ -1,3 +1,5 @@
+import Bg from "/my.webp";
+
 const Hero = () => {
   const handleScrollDown = () => {
     window.scrollTo({
@@ -37,25 +39,30 @@ const Hero = () => {
               </h1>
 
               <p className="text-base sm:text-lg md:text-xl xl:text-2xl text-gray-300 font-light">
-                Full-stack Developer & UI/UX Enthusiast
+                Administrative & Web Support
               </p>
             </div>
 
             {/* Description */}
             <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              I craft beautiful, responsive web experiences using modern
-              technologies. With expertise in React, Node.js, and design
-              systems, I transform ideas into digital solutions.
+              I support organizations in managing data, documents, and digital
+              systems while also building responsive websites using modern tools
+              like React, Firebase, and Microsoft Office. I am detail-oriented,
+              organized, and ready to contribute to an efficient work
+              environment.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
-              <button className="px-6 sm:px-8 py-3 bg-linear-to-r from-blue-500 to-blue-600 rounded-lg font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/50">
-                View My Work
+              <button
+                onClick={handleScrollDown}
+                className="px-6 sm:px-8 py-3 bg-linear-to-r from-blue-500 to-blue-600 rounded-lg font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/50"
+              >
+                View Portfolio
               </button>
 
               <button className="px-6 sm:px-8 py-3 border-2 border-blue-500/50 rounded-lg font-semibold text-blue-300 hover:border-blue-400 hover:bg-blue-500/10 transition-all duration-300">
-                Get in Touch
+                Contact Me
               </button>
             </div>
 
