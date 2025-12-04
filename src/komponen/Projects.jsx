@@ -77,8 +77,11 @@ const Projects = () => {
         {/* --- Projects Grid --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {projectData.map((project, index) => (
-            <div
+            <a
               key={index}
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-100 dark:border-slate-700 overflow-hidden transition-all duration-300 transform hover:shadow-2xl hover:scale-[1.02]"
             >
               {/* Image Preview and Hover Effect */}
@@ -135,7 +138,7 @@ const Projects = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
