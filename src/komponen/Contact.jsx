@@ -19,8 +19,8 @@ const contactInfo = [
       </svg>
     ),
     label: "Email",
-    value: "alpiantabrani@gmail.com",
-    link: "mailto:alpiantabrani@gmail.com",
+    value: "atabrani3@gmail.com",
+    link: "mailto:atabrani3@gmail.com",
   },
 
   {
@@ -42,7 +42,7 @@ const contactInfo = [
     ),
     label: "Lokasi",
     value: "Lombok Timur, NTB, Indonesia",
-    link: "https://maps.app.goo.gl/8N4pYh9wrzA2KhxQ6",
+    link: "https://maps.app.goo.gl/pQuotFgBWLKhZzzv9",
   },
 
   {
@@ -62,8 +62,8 @@ const contactInfo = [
       </svg>
     ),
     label: "WhatsApp",
-    value: "+62 81xx-xxxx-xxx",
-    link: "https://wa.me/62XXXXXXXXXXX",
+    value: "+62 815-4719-0395",
+    link: "https://wa.me/6281547190395",
   },
 
   {
@@ -77,8 +77,8 @@ const contactInfo = [
       </svg>
     ),
     label: "GitHub",
-    value: "github.com/alpiantabrani",
-    link: "https://github.com/",
+    value: "github.com/Smeagol03",
+    link: "https://github.com/Smeagol03",
   },
 ];
 
@@ -89,9 +89,28 @@ const Contact = () => {
   // Handler placeholder untuk form submission (Ganti dengan logika Anda)
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Pesan Terkirim! (Ini hanya demo)");
-    // Di sini Anda dapat menambahkan Fetch API atau Axios
-    // untuk mengirim data ke backend/Formspree/Netlify Forms.
+
+    // Ambil nilai dari input
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    // GANTI dengan nomor WhatsApp kamu (pakai kode negara, tanpa + dan tanpa spasi)
+    const phone = "6281547190395";
+
+    // Format pesan
+    const waMessage = `
+Nama: ${name}
+Email: ${email}
+
+${message}
+  `;
+
+    // Encode pesan agar aman di URL
+    const encodedMessage = encodeURIComponent(waMessage);
+
+    // Buka WhatsApp
+    window.open(`https://wa.me/${phone}?text=${encodedMessage}`, "_blank");
   };
 
   return (
