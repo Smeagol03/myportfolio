@@ -1,30 +1,58 @@
 const projectData = [
   {
-    title: "Sistem Manajemen Proyek (SAMP)",
+    title: "Pendaftaran Rusunawa Online",
     description:
-      "Aplikasi web full-stack untuk mengelola tugas, tim, dan melacak progress proyek secara real-time.",
-    tech: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
-    image: "https://placehold.co/800x600/1e293b/a5b4fc?text=Project+SAMP", // Ganti dengan URL gambar Anda
-    link: "#",
-    category: "Fullstack",
+      "Sistem pendaftaran online untuk rumah susun sewa yang memudahkan proses aplikasi bagi calon penghuni.",
+    tech: ["Firebase", "Tailwind CSS"],
+    image: "https://rusunawadaftar.vercel.app/src/asset/img/rusun.jpg", // Ganti dengan URL gambar Anda
+    link: "https://rusunawadaftar.vercel.app/",
+    category: "Web Development",
   },
   {
-    title: "E-Commerce Mobile App UI/UX",
+    title: "Wedding Invitation",
     description:
-      "Desain antarmuka pengguna untuk aplikasi belanja online dengan fokus pada pengalaman checkout yang mulus.",
-    tech: ["Figma", "Design System", "Prototyping"],
-    image: "https://placehold.co/800x600/334155/bae6fd?text=Mobile+UX+Design", // Ganti dengan URL gambar Anda
-    link: "#",
-    category: "Design",
+      "Desain undangan pernikahan digital yang elegan dan responsif.",
+    tech: ["Firebase", "Tailwind CSS"],
+    image:
+      "https://wedding-of-wijaya-rara.netlify.app/asset/img/mempelai/bg_open_2.jpg", // Ganti dengan URL gambar Anda
+    link: "https://wedding-of-wijaya-rara.netlify.app/",
+    category: "Web Development",
   },
   {
-    title: "Website Portofolio Versi 1",
+    title: "Wedding Invitation",
     description:
-      "Website statis berkecepatan tinggi yang dibangun menggunakan Next.js dan styling modular CSS.",
-    tech: ["Next.js", "CSS Modules", "Vercel"],
-    image: "https://placehold.co/800x600/475569/94a3b8?text=Portofolio+V1", // Ganti dengan URL gambar Anda
-    link: "#",
-    category: "Frontend",
+      "Undangan pernikahan digital dengan tampilan modern dan fitur interaktif.",
+    tech: ["Firebase", "Tailwind CSS"],
+    image: "https://pernikahan-zulfan-izza.netlify.app/asset/img/open2.jpeg", // Ganti dengan URL gambar Anda
+    link: "https://pernikahan-zulfan-izza.netlify.app/",
+    category: "Web Development",
+  },
+  {
+    title: "Warung Makan Online",
+    description:
+      "Platform pemesanan makanan online yang memudahkan pelanggan untuk memesan dari warung favorit mereka.",
+    tech: ["Firebase", "Tailwind CSS"],
+    image: "https://warungsaya.netlify.app/image/product/chicken-dish.jpg", // Ganti dengan URL gambar Anda
+    link: "https://warungsaya.netlify.app/",
+    category: "Web Development",
+  },
+  {
+    title: "Absensi Karyawan",
+    description:
+      "Sistem absensi karyawan berbasis web yang memudahkan pencatatan kehadiran dan pengelolaan data karyawan.",
+    tech: ["Firebase", "Tailwind CSS"],
+    image:
+      "https://absensiperkim.vercel.app/images/Lambang_Kabupaten_Lombok_Timur.png", // Ganti dengan URL gambar Anda
+    link: "https://absensiperkim.vercel.app/",
+    category: "Web Development",
+  },
+  {
+    title: "Suara ke teks",
+    description: "Aplikasi website untuk merubah suara ke text.",
+    tech: ["Java Script", "Tailwind CSS"],
+    image: "https://placehold.co/800x600/1e293b/a5b4fc?text=Suara+Ke+Text", // Ganti dengan URL gambar Anda
+    link: "https://suara-ke-text.netlify.app/",
+    category: "Web Development",
   },
 ];
 
