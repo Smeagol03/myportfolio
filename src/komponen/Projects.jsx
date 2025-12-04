@@ -94,14 +94,9 @@ const Projects = () => {
 
                 {/* Overlay with CTA Button */}
                 <div className="absolute inset-0 bg-indigo-600 bg-opacity-80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-3 bg-white text-indigo-700 font-semibold rounded-full shadow-xl hover:bg-indigo-50 transition-colors transform translate-y-4 group-hover:translate-y-0"
-                  >
+                  <div className="px-6 py-3 bg-white text-indigo-700 font-semibold rounded-full shadow-xl hover:bg-indigo-50 transition-colors transform translate-y-4 group-hover:translate-y-0">
                     Lihat Proyek
-                  </a>
+                  </div>
                 </div>
               </div>
 

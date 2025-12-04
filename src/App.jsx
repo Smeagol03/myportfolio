@@ -1,3 +1,4 @@
+import Navbar from "./komponen/Navbar";
 import Hero from "./komponen/Hero";
 import About from "./komponen/About";
 import Pendidikan from "./komponen/Pendidikan";
@@ -10,6 +11,7 @@ import Footer from "./komponen/Footer";
 const App = () => {
   return (
     <div>
+      <Navbar />
       <Hero />
       <About />
       <Pendidikan />

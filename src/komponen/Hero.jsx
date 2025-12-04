@@ -14,6 +14,13 @@ const Hero = () => {
       projectsSection.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const handleInTouch = () => {
+    // Scroll to Projects section
+    const projectsSection = document.getElementById("contact");
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   useEffect(() => {
     // Trigger animation on mount
     setIsVisible(true);
@@ -67,7 +74,10 @@ const Hero = () => {
               >
                 View My Work
               </button>
-              <button className="px-8 py-3 border border-cyan-400 text-cyan-300 font-semibold rounded-lg hover:bg-cyan-400 hover:bg-opacity-10 transition-all duration-200">
+              <button
+                onClick={handleInTouch}
+                className="px-8 py-3 border border-cyan-400 text-cyan-300 font-semibold rounded-lg hover:bg-cyan-400 hover:bg-opacity-10 transition-all duration-200"
+              >
                 Get In Touch
               </button>
             </div>

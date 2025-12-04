@@ -210,39 +210,6 @@ const Contact = () => {
             </form>
           </div>
         </div>
-
-        {/* Catatan Penting untuk Fungsionalitas Form */}
-        <div className="mt-8 text-center text-sm text-slate-500 dark:text-slate-400">
-          <p>
-            *Note: Untuk membuat formulir ini berfungsi, Anda perlu
-            mengintegrasikannya dengan layanan backend (seperti Express) atau
-            layanan pihak ketiga seperti{" "}
-            <a
-              href="https://formspree.io/"
-              target="_blank"
-              className="text-indigo-500 hover:underline"
-            >
-              Formspree
-            </a>
-            ,{" "}
-            <a
-              href="https://www.netlify.com/products/forms/"
-              target="_blank"
-              className="text-indigo-500 hover:underline"
-            >
-              Netlify Forms
-            </a>
-            , atau{" "}
-            <a
-              href="https://www.getform.io/"
-              target="_blank"
-              className="text-indigo-500 hover:underline"
-            >
-              Getform
-            </a>
-            .
-          </p>
-        </div>
       </div>
     </section>
   );

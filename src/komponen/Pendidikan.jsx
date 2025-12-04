@@ -32,7 +32,10 @@ const educationData = [
 
 export default function Pendidikan() {
   return (
-    <section className="py-20 md:py-28 px-4 md:px-8 bg-white dark:bg-slate-950 overflow-hidden">
+    <section
+      id="pendidikan"
+      className="py-20 md:py-28 px-4 md:px-8 bg-white dark:bg-slate-950 overflow-hidden"
+    >
       <div className="max-w-5xl mx-auto">
         {/* HEADER */}
         <motion.div
