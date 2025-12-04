@@ -58,7 +58,7 @@ const projectData = [
     title: "Portfolio Website",
     description:
       "Situs web portofolio pribadi untuk menampilkan proyek dan keterampilan.",
-    tech: ["Java Script", "Tailwind CSS"],
+    tech: ["React", "Tailwind CSS"],
     image: "https://placehold.co/800x600/1e293b/a5b4fc?text=Portfolio+Website", // Ganti dengan URL gambar Anda
     link: "https://dinaportfolioteacher.netlify.app/",
     category: "Web Development",
