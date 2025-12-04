@@ -1,5 +1,6 @@
 import Hero from "./komponen/Hero";
 import About from "./komponen/About";
+import Pendidikan from "./komponen/Pendidikan";
 import Skills from "./komponen/Skills";
 import Projects from "./komponen/Projects";
 import Experience from "./komponen/Experience";
@@ -11,6 +12,7 @@ const App = () => {
     <div>
       <Hero />
       <About />
+      <Pendidikan />
       <Skills />
       <Projects />
       <Experience />

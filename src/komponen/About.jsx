@@ -22,7 +22,6 @@ const About = () => {
                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-500"
               />
 
-              {/* Badge Mengambang (Opsional) */}
               <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-lg border-l-4 border-indigo-600">
                 <p className="text-3xl font-bold text-indigo-600">5+</p>
                 <p className="text-sm text-gray-600 font-medium">
