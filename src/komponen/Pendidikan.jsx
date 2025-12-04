@@ -6,7 +6,7 @@ const educationData = [
   {
     level: "S1 Administrasi Publik",
     school: "ITSK Muhammadiyah Selong",
-    year: "2020 - Sekarang",
+    year: "2020 - 2025",
     description:
       "Mempelajari konsep administrasi, kebijakan publik, dan manajemen pemerintahan.",
     achievements: ["Asisten Administrasi", "Pengurus Organisasi"],
