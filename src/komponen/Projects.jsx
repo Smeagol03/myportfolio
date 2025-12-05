@@ -1,5 +1,14 @@
 const projectData = [
   {
+    title: "Daftar Pelatihan Jahit",
+    description:
+      "Pendaftaran pelatihan menjahit secara online yang memudahkan peserta untuk mendaftar.",
+    tech: ["Firebase", "Tailwind CSS"],
+    image: "https://lpkduaberkah.com/src/img/galeri/1.webp", // Ganti dengan URL gambar Anda
+    link: "https://lpkduaberkah.com/",
+    category: "Web Development",
+  },
+  {
     title: "Pendaftaran Rusunawa Online",
     description:
       "Sistem pendaftaran online untuk rumah susun sewa yang memudahkan proses aplikasi bagi calon penghuni.",
