@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Bg from "/pasAlpianTabrani.jpg";
+import RotatingText from "./efek/RotatingText";
 
 const Hero = () => {
   const nama = "Alpian Tabrani";
@@ -32,18 +32,9 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen bg-linear-to-br from-slate-950 via-blue-950 to-slate-950 overflow-hidden">
-      {/* Subtle background elements - lightweight */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 right-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
-        <div
-          className="absolute bottom-20 left-10 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"
-          style={{ animationDelay: "2s" }}
-        ></div>
-      </div>
-
+    <section className="relative min-h-screen py-10 bg-linear-to-br from-slate-950 via-blue-950 to-slate-950 overflow-hidden">
       {/* Main content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 sm:py-32 flex flex-col justify-center min-h-screen">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left side - Text content */}
           <div
@@ -114,36 +105,27 @@ const Hero = () => {
           </div>
 
           {/* Right side - Visual element */}
-          <div
-            className={`transform transition-all duration-1000 delay-200 ${
-              isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-10"
-            }`}
-          >
-            <div className="relative w-full aspect-square">
+          <div>
+            <div className="relative w-full flex justify-center items-center">
               {/* Avatar circle with linear border */}
-              <div className="w-full h-full rounded-2xl bg-linear-to-br from-blue-500 to-cyan-500 p-1">
-                <img
-                  src={Bg}
-                  alt="Profile"
-                  className="w-full h-full rounded-2xl object-top object-cover"
-                />
-              </div>
-
-              {/* Floating badge */}
-              <div className="absolute -bottom-4 -right-4 bg-blue-600 text-white px-6 py-3 rounded-full shadow-xl flex items-center gap-2 animate-bounce">
-                <div className="w-3 h-3 bg-cyan-300 rounded-full"></div>
-                <span className="text-sm font-semibold">
-                  Available for Work
-                </span>
-              </div>
+              <RotatingText
+                texts={["Ambis", "Produktif", "Santai"]}
+                mainClassName="text-white mb-20 md:mb-0 overflow-hidden justify-center items-center text-4xl md:text-8xl font-bold"
+                staggerFrom={"last"}
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-120%" }}
+                staggerDuration={0.025}
+                splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                rotationInterval={2000}
+              />
             </div>
           </div>
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 animate-bounce">
           <svg
             className="w-6 h-6 text-cyan-300 opacity-70"
             fill="none"
