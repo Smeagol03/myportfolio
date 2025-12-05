@@ -1,4 +1,5 @@
-import Bg from "/my.webp";
+import DataDiri from "./DataDiri";
+import Bg from "/pasAlpianTabrani.jpg";
 
 const About = () => {
   return (
@@ -139,6 +140,7 @@ const About = () => {
             </div>
           </div>
         </div>
+        <DataDiri />
       </div>
     </section>
   );

@@ -5,7 +5,7 @@ import { Calendar, Award } from "lucide-react";
 const educationData = [
   {
     level: "S1 Administrasi Publik",
-    school: "ITSK Muhammadiyah Selong",
+    school: "ITSKes Muhammadiyah Selong",
     year: "2020 - 2025",
     description:
       "Mempelajari konsep administrasi, kebijakan publik, dan manajemen pemerintahan.",

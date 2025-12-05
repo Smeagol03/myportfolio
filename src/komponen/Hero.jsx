@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
-import Bg from "/my.webp";
+import Bg from "/pasAlpianTabrani.jpg";
 
 const Hero = () => {
   const nama = "Alpian Tabrani";
   const role = "Administrative & Web Support";
   const deskrisi =
     "I support organizations in managing data, documents, and digital systems while also building responsive websites using modern tools like React, Firebase, and Microsoft Office. I am detail-oriented, organized, and ready to contribute to an efficient work environment.";
+  const GitHubLink = "https://github.com/Smeagol03";
+  const LinkedInLink = "https://www.linkedin.com/in/alpian-tabrani-b83455275/";
+  const InstagramLink =
+    "https://www.instagram.com/npc_alpiant?igsh=ZjZrNjV5dHU3bzh6";
+
   const [isVisible, setIsVisible] = useState(false);
   const handleCTAclick = () => {
     // Scroll to Projects section
@@ -84,15 +89,27 @@ const Hero = () => {
 
             {/* Social Links */}
             <div className="flex gap-6 mt-10">
-              {["GitHub", "LinkedIn", "Twitter"].map((social, index) => (
-                <a
-                  key={index}
-                  href="#"
-                  className="text-slate-400 hover:text-cyan-300 transition-colors duration-200 text-sm font-medium"
-                >
-                  {social}
-                </a>
-              ))}
+              <a
+                href={GitHubLink}
+                target="_blank"
+                className="text-slate-400 hover:text-cyan-300 transition-colors duration-200 text-sm font-medium"
+              >
+                Github
+              </a>
+              <a
+                href={LinkedInLink}
+                target="_blank"
+                className="text-slate-400 hover:text-cyan-300 transition-colors duration-200 text-sm font-medium"
+              >
+                LinkedIn
+              </a>
+              <a
+                href={InstagramLink}
+                target="_blank"
+                className="text-slate-400 hover:text-cyan-300 transition-colors duration-200 text-sm font-medium"
+              >
+                Instagram
+              </a>
             </div>
           </div>
 
