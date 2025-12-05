@@ -89,14 +89,7 @@ const DataDiri = () => {
 
         {/* Footer */}
         <div className="mt-8 text-center text-gray-500 text-sm">
-          <p>
-            Data terakhir diperbarui:{" "}
-            {new Date().toLocaleDateString("id-ID", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </p>
+          <p>Data terakhir diperbarui: 4 Desember 2025</p>
         </div>
       </div>
     </div>
