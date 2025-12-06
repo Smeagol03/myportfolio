@@ -1,5 +1,9 @@
-import { useState, useEffect } from "react";
+import gsap from "gsap";
+import { useEffect, useRef } from "react";
 import RotatingText from "./efek/RotatingText";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const nama = "Alpian Tabrani";
@@ -11,7 +15,6 @@ const Hero = () => {
   const InstagramLink =
     "https://www.instagram.com/npc_alpiant?igsh=ZjZrNjV5dHU3bzh6";
 
-  const [isVisible, setIsVisible] = useState(false);
   const handleCTAclick = () => {
     // Scroll to Projects section
     const projectsSection = document.getElementById("about");
@@ -26,26 +29,54 @@ const Hero = () => {
       projectsSection.scrollIntoView({ behavior: "smooth" });
     }
   };
-  useEffect(() => {
-    // Trigger animation on mount
-    setIsVisible(true);
-  }, []);
 
+  const heroRef = useRef(null);
+  useEffect(() => {
+    if (!heroRef.current) return;
+
+    const items = heroRef.current.querySelectorAll(".hero-animate-item");
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: "top 20%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    items.forEach((item) => {
+      tl.fromTo(
+        item,
+        {
+          opacity: 0,
+          y: 40,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power3.out",
+        }
+      );
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+      tl.kill();
+    };
+  }, []);
   return (
-    <section className="relative min-h-screen py-10 bg-linear-to-br from-slate-950 via-blue-950 to-slate-950 overflow-hidden">
+    <section
+      ref={heroRef}
+      className="relative min-h-screen py-10 bg-linear-to-br from-slate-950 via-blue-950 to-slate-950 overflow-hidden"
+    >
       {/* Main content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left side - Text content */}
-          <div
-            className={`transform transition-all duration-1000 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
-          >
+          <div>
             {/* Name */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">
+            <h1 className="hero-animate-item text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">
               Hi, I'm{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-cyan-300">
                 {nama}
@@ -53,17 +84,17 @@ const Hero = () => {
             </h1>
 
             {/* Job Title */}
-            <p className="text-xl sm:text-2xl text-cyan-300 font-semibold mb-6">
+            <p className="hero-animate-item text-xl sm:text-2xl text-cyan-300 font-semibold mb-6">
               {role}
             </p>
 
             {/* Tagline */}
-            <p className="text-base sm:text-lg text-slate-300 mb-8 max-w-lg leading-relaxed">
+            <p className="hero-animate-item text-base sm:text-lg text-slate-300 mb-8 max-w-lg leading-relaxed">
               {deskrisi}
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4">
+            <div className="hero-animate-item flex flex-wrap gap-4">
               <button
                 onClick={handleCTAclick}
                 className="px-8 py-3 bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/50 transform hover:scale-105 transition-all duration-200"
@@ -83,21 +114,21 @@ const Hero = () => {
               <a
                 href={GitHubLink}
                 target="_blank"
-                className="text-slate-400 hover:text-cyan-300 transition-colors duration-200 text-sm font-medium"
+                className="hero-animate-item text-slate-400 hover:text-cyan-300 transition-colors duration-200 text-sm font-medium"
               >
                 Github
               </a>
               <a
                 href={LinkedInLink}
                 target="_blank"
-                className="text-slate-400 hover:text-cyan-300 transition-colors duration-200 text-sm font-medium"
+                className="hero-animate-item text-slate-400 hover:text-cyan-300 transition-colors duration-200 text-sm font-medium"
               >
                 LinkedIn
               </a>
               <a
                 href={InstagramLink}
                 target="_blank"
-                className="text-slate-400 hover:text-cyan-300 transition-colors duration-200 text-sm font-medium"
+                className="hero-animate-item text-slate-400 hover:text-cyan-300 transition-colors duration-200 text-sm font-medium"
               >
                 Instagram
               </a>
