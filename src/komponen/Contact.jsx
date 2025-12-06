@@ -1,5 +1,8 @@
-import React from "react";
+import { useRef, useEffect, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
 // Data Statis untuk Contact Info Block (Sisi Kiri)
 const contactInfo = [
   {
@@ -86,145 +89,280 @@ const contactInfo = [
 // ... (contactInfo array and import React)
 
 const Contact = () => {
-  // Handler placeholder untuk form submission (Ganti dengan logika Anda)
+  const contactRef = useRef(null);
+  const formRef = useRef(null);
+  const [formStatus, setFormStatus] = useState("idle"); // idle, submitting, success
+
+  // Animasi GSAP
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      // 1. Header Fade In
+      gsap.from(".contact-header", {
+        scrollTrigger: { trigger: ".contact-header", start: "top 85%" },
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+      });
+
+      // 2. Info Card Slide dari Kiri
+      gsap.from(".contact-info-card", {
+        scrollTrigger: { trigger: ".contact-wrapper", start: "top 75%" },
+        x: -50,
+        opacity: 0,
+        duration: 1,
+        delay: 0.2,
+        ease: "power3.out",
+      });
+
+      // 3. Form Card Slide dari Kanan/Bawah
+      gsap.from(".contact-form-card", {
+        scrollTrigger: { trigger: ".contact-wrapper", start: "top 75%" },
+        x: 50,
+        opacity: 0,
+        duration: 1,
+        delay: 0.4,
+        ease: "power3.out",
+      });
+    }, contactRef);
+
+    return () => ctx.revert();
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setFormStatus("submitting");
 
-    // Ambil nilai dari input
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
+    // 1. Ambil nilai dari input form berdasarkan ID
+    const name = e.target.querySelector("#name").value;
+    const email = e.target.querySelector("#email").value;
+    const subject = e.target.querySelector("#subject").value;
+    const message = e.target.querySelector("#message").value;
 
-    // GANTI dengan nomor WhatsApp kamu (pakai kode negara, tanpa + dan tanpa spasi)
-    const phone = "6281547190395";
+    // 2. Susun format pesan WhatsApp
+    // Gunakan \n untuk baris baru dan *tanda bintang* untuk menebalkan teks di WA
+    const whatsappMessage = `Halo, saya ingin berdiskusi mengenai "${subject}".
 
-    // Format pesan
-    const waMessage = `
+Detail Pengirim:
 Nama: ${name}
 Email: ${email}
 
+Pesan:
 ${message}
-  `;
 
-    // Encode pesan agar aman di URL
-    const encodedMessage = encodeURIComponent(waMessage);
+Terima kasih.`;
 
-    // Buka WhatsApp
-    window.open(`https://wa.me/${phone}?text=${encodedMessage}`, "_blank");
+    // 3. Encode pesan agar aman untuk URL (mengubah spasi jadi %20, dst)
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    const phoneNumber = "6281547190395"; // Nomor tujuan
+    const waUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    // 4. Simulasi loading, lalu buka WhatsApp
+    setTimeout(() => {
+      // Buka WhatsApp di tab baru
+      window.open(waUrl, "_blank");
+
+      setFormStatus("success");
+
+      // Reset form
+      if (formRef.current) formRef.current.reset();
+
+      // Kembalikan tombol ke status awal
+      setTimeout(() => setFormStatus("idle"), 3000);
+    }, 1500);
   };
 
   return (
-    <section id="contact" className="py-24 bg-slate-50 dark:bg-slate-900">
-      <div className="container mx-auto px-6 md:px-12 lg:px-20">
+    <section
+      id="contact"
+      ref={contactRef}
+      className="py-24 bg-slate-50 dark:bg-slate-900 relative overflow-hidden"
+    >
+      {/* --- Background Decorations (Blobs) --- */}
+      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-indigo-200 dark:bg-indigo-900/20 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-purple-200 dark:bg-purple-900/20 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+
+      <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
         {/* --- Header Section --- */}
-        <div className="text-center mb-16 max-w-2xl mx-auto">
-          <span className="text-indigo-600 font-semibold tracking-wider uppercase text-sm">
+        <div className="contact-header text-center mb-16 max-w-2xl mx-auto">
+          <span className="inline-block py-1 px-3 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-xs font-bold tracking-wider uppercase mb-3">
             Get In Touch
           </span>
-          <h2 className="mt-2 text-3xl md:text-4xl font-bold text-slate-800 dark:text-white">
-            Mari Berkolaborasi!
+          <h2 className="text-3xl md:text-5xl font-bold text-slate-800 dark:text-white leading-tight">
+            Mari Mulai Sesuatu yang <br />
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-purple-600">
+              Luar Biasa
+            </span>
           </h2>
+          <p className="mt-4 text-slate-600 dark:text-slate-400 text-lg">
+            Punya ide proyek? Atau sekadar ingin menyapa? Saya siap
+            mendengarkan.
+          </p>
         </div>
 
-        {/* --- Main Contact Grid (Split Layout) --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl dark:shadow-none">
-          {/* --- Sisi Kiri: Contact Info & CTA (Accent Color) --- */}
-          <div className="p-8 md:p-12 bg-indigo-600 text-white dark:bg-indigo-800/70 space-y-8">
-            <h3 className="text-2xl font-bold border-b border-indigo-400 pb-2">
-              Informasi Kontak
-            </h3>
-            <p className="text-indigo-100 dark:text-indigo-300">
-              Saya terbuka untuk proyek baru, peluang kolaborasi, atau sekadar
-              berdiskusi tentang teknologi. Jangan ragu untuk menghubungi saya
-              melalui email atau WhatsApp.
-            </p>
+        {/* --- Main Contact Grid --- */}
+        <div className="contact-wrapper grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 max-w-6xl mx-auto">
+          {/* --- Sisi Kiri: Contact Info (2 Kolom) --- */}
+          <div className="contact-info-card lg:col-span-2 bg-indigo-600 dark:bg-indigo-900 rounded-3xl p-8 md:p-10 text-white shadow-2xl relative overflow-hidden flex flex-col justify-between">
+            {/* Pattern Overlay */}
+            <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] bg-size-[20px_20px]"></div>
 
-            <div className="space-y-6">
-              {contactInfo.map((info, index) => (
-                <a
-                  key={index}
-                  href={info.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-4 group"
-                >
-                  <div className="p-3 rounded-full bg-indigo-700 group-hover:bg-white group-hover:text-indigo-700 transition-colors">
-                    {info.icon}
-                  </div>
-                  <div>
-                    <p className="text-sm font-light uppercase">{info.label}</p>
-                    <p className="text-lg font-semibold group-hover:underline">
-                      {info.value}
-                    </p>
-                  </div>
-                </a>
-              ))}
+            <div className="relative z-10">
+              <h3 className="text-2xl font-bold mb-6">Informasi Kontak</h3>
+              <p className="text-indigo-100 mb-10 leading-relaxed">
+                Saya selalu terbuka untuk berdiskusi tentang pengembangan
+                produk, desain, atau peluang kerja sama.
+              </p>
+
+              <div className="space-y-6">
+                {contactInfo.map((info, index) => (
+                  <a
+                    key={index}
+                    href={info.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-4 group p-3 rounded-xl hover:bg-white/10 transition-all border border-transparent hover:border-white/10"
+                  >
+                    <div className="p-2 bg-white/20 rounded-lg text-white group-hover:scale-110 transition-transform">
+                      {info.icon}
+                    </div>
+                    <div>
+                      <p className="text-xs font-medium text-indigo-200 uppercase tracking-wide">
+                        {info.label}
+                      </p>
+                      <p className="text-base font-semibold group-hover:text-indigo-100 transition-colors">
+                        {info.value}
+                      </p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Decoration Bottom */}
+            <div className="relative z-10 mt-12 pt-8 border-t border-white/20">
+              <p className="text-sm text-indigo-200">
+                © {new Date().getFullYear()} Your Name. All rights reserved.
+              </p>
             </div>
           </div>
 
-          {/* --- Sisi Kanan: Formulir Kontak --- */}
-          <div className="p-8 md:p-12 bg-white dark:bg-slate-800">
-            <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-6">
+          {/* --- Sisi Kanan: Formulir Kontak (3 Kolom) --- */}
+          <div className="contact-form-card lg:col-span-3 bg-white dark:bg-slate-800 p-8 md:p-10 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-700">
+            <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-8">
               Kirim Pesan Langsung
             </h3>
-            <form onSubmit={handleSubmit} className="space-y-5">
-              {/* Nama */}
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
-                >
-                  Nama Lengkap
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  required
-                  placeholder="Nama Anda"
-                  className="w-full p-3 border border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
+
+            <form onSubmit={handleSubmit} ref={formRef} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Nama */}
+                <div className="space-y-2">
+                  <label
+                    htmlFor="name"
+                    className="text-sm font-semibold text-slate-700 dark:text-slate-300"
+                  >
+                    Nama Lengkap
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    required
+                    placeholder="John Doe"
+                    className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                  />
+                </div>
+                {/* Email */}
+                <div className="space-y-2">
+                  <label
+                    htmlFor="email"
+                    className="text-sm font-semibold text-slate-700 dark:text-slate-300"
+                  >
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    required
+                    placeholder="john@example.com"
+                    className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                  />
+                </div>
               </div>
 
-              {/* Email */}
-              <div>
+              {/* Subjek (Optional - Tambahan agar lebih pro) */}
+              <div className="space-y-2">
                 <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
+                  htmlFor="subject"
+                  className="text-sm font-semibold text-slate-700 dark:text-slate-300"
                 >
-                  Email
+                  Subjek
                 </label>
-                <input
-                  type="email"
-                  id="email"
-                  required
-                  placeholder="email@example.com"
-                  className="w-full p-3 border border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
+                <select
+                  id="subject"
+                  className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                >
+                  <option>Tawaran Proyek</option>
+                  <option>Kolaborasi</option>
+                  <option>Pertanyaan Umum</option>
+                </select>
               </div>
 
               {/* Pesan */}
-              <div>
+              <div className="space-y-2">
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
+                  className="text-sm font-semibold text-slate-700 dark:text-slate-300"
                 >
-                  Pesan Anda
+                  Pesan
                 </label>
                 <textarea
                   id="message"
                   rows="4"
                   required
-                  placeholder="Jelaskan kebutuhan Anda di sini..."
-                  className="w-full p-3 border border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+                  placeholder="Ceritakan detail proyek Anda..."
+                  className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all resize-none"
                 ></textarea>
               </div>
 
-              {/* Tombol Submit */}
+              {/* Tombol Submit dengan Loading State */}
               <button
                 type="submit"
-                className="w-full mt-4 px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 transition-all transform hover:-translate-y-0.5"
+                disabled={
+                  formStatus === "submitting" || formStatus === "success"
+                }
+                className={`w-full py-4 px-6 rounded-xl font-bold text-white shadow-lg transition-all transform hover:-translate-y-1 focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-900 ${
+                  formStatus === "success"
+                    ? "bg-green-500 hover:bg-green-600"
+                    : "bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700"
+                }`}
               >
-                Kirim Pesan
+                {formStatus === "submitting" ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <svg
+                      className="animate-spin h-5 w-5 text-white"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                    Mengirim...
+                  </span>
+                ) : formStatus === "success" ? (
+                  "Pesan Terkirim! ✅"
+                ) : (
+                  "Kirim Pesan Sekarang"
+                )}
               </button>
             </form>
           </div>
