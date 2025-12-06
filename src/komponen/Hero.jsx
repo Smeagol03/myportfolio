@@ -68,7 +68,7 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen py-10 bg-linear-to-br from-slate-950 via-blue-950 to-slate-950 overflow-hidden"
+      className="relative min-h-screen py-10 bg-linear-to-br from-slate-900 via-zinc-800 to-slate-950 overflow-hidden"
     >
       {/* Main content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col justify-center">
