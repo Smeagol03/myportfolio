@@ -9,7 +9,7 @@ const educationData = [
     year: "2020 - 2025",
     description:
       "Mempelajari konsep administrasi, kebijakan publik, dan manajemen pemerintahan.",
-    achievements: ["Asisten Administrasi", "Pengurus Organisasi"],
+    achievements: ["Asisten Administrasi"],
   },
   {
     level: "SMK Multimedia",
