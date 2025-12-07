@@ -1,7 +1,58 @@
+import { motion } from "framer-motion";
 import DataDiri from "./DataDiri";
 import Bg from "/pasAlpianTabrani.jpg";
 
 const About = () => {
+  const gambarVariants = {
+    hidden: { x: -100, opacity: 0, scale: 0.5 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 1,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  // 1. Varian Anak (Item)
+  // Semua elemen yang akan bergerak menggunakan varian ini.
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 }, // Mulai dari 30px di bawah dan transparan
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+      },
+    },
+  };
+
+  // 2. Varian Induk (Container)
+  // Ini mendefinisikan urutan waktu antar-anak.
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.1, // Jeda sebelum anak pertama mulai
+        staggerChildren: 0.1, // Jeda waktu (detik) antar animasi anak
+      },
+    },
+  };
+
+  // Varian Khusus untuk Skill/Statistik List (agar elemen di dalamnya berurutan lagi)
+  const skillListContainer = {
+    visible: {
+      transition: {
+        staggerChildren: 0.15, // Stagger yang sedikit lebih lambat untuk item skill
+      },
+    },
+  };
+
   return (
     <section
       id="about"
@@ -10,11 +61,13 @@ const About = () => {
       <div className="container mx-auto px-6 md:px-12 lg:px-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* --- Bagian Kiri: Gambar --- */}
-          <div className="relative flex justify-center md:justify-start">
-            {/* Elemen Dekorasi Belakang (Kotak Warna) */}
-            <div className="absolute top-4 -left-4 w-72 h-80 bg-indigo-500 rounded-2xl -z-10 mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-            <div className="absolute top-0 -right-4 w-72 h-80 bg-purple-500 rounded-2xl -z-10 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-
+          <motion.div
+            className="relative flex justify-center md:justify-start"
+            variants={gambarVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }} // Opsi viewport
+          >
             {/* Container Gambar */}
             <div className=" relative rounded-2xl overflow-hidden shadow-2xl w-full max-w-md">
               <img
@@ -30,11 +83,17 @@ const About = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* --- Bagian Kanan: Konten Teks --- */}
-          <div className="space-y-6">
-            <div className="space-y-2">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }} // Opsi viewport
+            className="space-y-6"
+          >
+            <motion.div variants={itemVariants} className="space-y-2">
               <span className=" text-indigo-600 font-semibold tracking-wider uppercase text-sm">
                 About Me
               </span>
@@ -44,29 +103,41 @@ const About = () => {
                   Manajemen Data & Sistem Digital Modern
                 </span>
               </h2>
-            </div>
+            </motion.div>
 
-            <p className=" text-slate-600 dark:text-slate-300 leading-relaxed">
+            <motion.p
+              variants={itemVariants}
+              className=" text-slate-600 dark:text-slate-300 leading-relaxed"
+            >
               Halo! Saya adalah tenaga administrasi dan web support dengan
               pengalaman dalam pengelolaan data, dokumen, serta pengembangan
               website sederhana untuk mendukung sistem kerja yang lebih efisien.
               Saya terbiasa menggunakan Microsoft Office, React, Firebase, dan
               berbagai tools digital untuk membantu organisasi bekerja lebih
               cepat, rapi, dan terstruktur.
-            </p>
+            </motion.p>
 
-            <p className=" text-slate-600 dark:text-slate-300 leading-relaxed">
+            <motion.p
+              variants={itemVariants}
+              className=" text-slate-600 dark:text-slate-300 leading-relaxed"
+            >
               Saat ini saya terus mengembangkan keterampilan dalam pengelolaan
               sistem digital, pengolahan data, dan pengembangan website yang
               sederhana namun fungsional. Saya percaya bahwa ketelitian pada
               detail kecil dapat memberikan dampak besar terhadap efisiensi dan
               kualitas kerja.
-            </p>
+            </motion.p>
 
             {/* List Statistik / Skill Singkat */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6">
+            <motion.div
+              variants={skillListContainer}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6"
+            >
               {/* Item 1 */}
-              <div className=" flex items-start gap-4">
+              <motion.div
+                variants={itemVariants}
+                className=" flex items-start gap-4"
+              >
                 <div className="p-3 sm:p-4 bg-indigo-100/80 dark:bg-indigo-500/10 rounded-xl text-indigo-600 dark:text-indigo-400">
                   <svg
                     className="w-5 h-5 sm:w-6 sm:h-6"
@@ -91,10 +162,13 @@ const About = () => {
                     Dokumen • Arsip • Persuratan
                   </p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Item 2 */}
-              <div className=" flex items-start gap-4">
+              <motion.div
+                variants={itemVariants}
+                className=" flex items-start gap-4"
+              >
                 <div className="p-3 sm:p-4 bg-purple-100/80 dark:bg-purple-500/10 rounded-xl text-purple-600 dark:text-purple-400">
                   <svg
                     className="w-5 h-5 sm:w-6 sm:h-6"
@@ -119,11 +193,14 @@ const About = () => {
                     Optimized Build
                   </p>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             {/* Tombol CTA */}
-            <div className="pt-8 flex flex-col sm:flex-row gap-4 sm:gap-6">
+            <motion.div
+              variants={itemVariants}
+              className="pt-8 flex flex-col sm:flex-row gap-4 sm:gap-6"
+            >
               <a
                 href="#contact"
                 className=" w-full sm:w-auto text-center px-7 py-3 bg-indigo-600 text-white font-medium rounded-full shadow-md hover:bg-indigo-700 hover:shadow-indigo-500/30 transition-all transform hover:-translate-y-1"
@@ -137,10 +214,10 @@ const About = () => {
               >
                 Download CV
               </a>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-        <div className="">
+        <div>
           <DataDiri />
         </div>
       </div>
