@@ -73,7 +73,7 @@ const Hero = ({
           >
             {/* Greeting & Name */}
             <motion.h1
-              className="text-3xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight tracking-tight"
+              className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight tracking-tight"
               // Menggunakan itemVariants di sini, tetapi isinya akan dipecah
             >
               <motion.span variants={itemVariants} className="inline-block">
@@ -93,7 +93,7 @@ const Hero = ({
               className="inline-block mb-6 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm"
               variants={itemVariants} // Elemen urutan kedua
             >
-              <p className="text-sm sm:text-xl text-cyan-300 font-medium tracking-wide">
+              <p className="text-sm md:text-lg text-cyan-300 font-medium tracking-wide">
                 {role}
               </p>
             </motion.div>
