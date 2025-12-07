@@ -1,4 +1,15 @@
-import { User, MapPin, Calendar, Phone, Mail } from "lucide-react";
+import {
+  User,
+  MapPin,
+  Calendar,
+  Phone,
+  Mail,
+  Flag,
+  Heart,
+  Droplet,
+  BookOpen,
+} from "lucide-react";
+import { motion } from "framer-motion";
 
 const DataDiri = () => {
   const data = {
@@ -6,7 +17,7 @@ const DataDiri = () => {
     tempatLahir: "Lombok Timur",
     tanggalLahir: "21 Desember 2001",
     alamat: "Desa Rumbuk, Kec. Sakra, Kab. Lombok Timur, NTB",
-    noPonsel: "+62 815-4719-0395",
+    noPonsel: "6281547190395",
     email: "atabrani3@gmail.com",
     kewarganegaraan: "Indonesia",
     agama: "Islam",
@@ -14,97 +25,239 @@ const DataDiri = () => {
     golonganDarah: "O",
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0 },
+  };
+
   return (
-    <div className="mt-16 md:mt-24">
-      <div className="max-w-4xl mx-auto">
-        {/* Main Content */}
-        <div className="grid md:grid-cols-2 gap-6">
+    <div className="py-20 relative overflow-hidden">
+      {/* Decorative Elements */}
+      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-blue-100/50 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-indigo-100/50 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <span className="text-blue-600 font-semibold tracking-wider text-sm uppercase mb-2 block">
+            Biodata
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Informasi{" "}
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-600">
+              Diri & Kontak
+            </span>
+          </h2>
+          <div className="h-1.5 w-20 bg-linear-to-r from-blue-600 to-indigo-600 mx-auto rounded-full" />
+        </motion.div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12"
+        >
           {/* Informasi Pribadi */}
-          <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-            <h2 className="text-xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-500">
-              Informasi Pribadi
-            </h2>
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-shadow duration-500">
+            <div className="h-2 bg-linear-to-r from-blue-500 to-cyan-500" />
+            <div className="p-6 md:p-8">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="p-3 bg-blue-50 rounded-xl">
+                  <User className="w-8 h-8 text-blue-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">
+                    Pribadi
+                  </h3>
+                  <p className="text-gray-500 text-sm">
+                    Detail informasi personal
+                  </p>
+                </div>
+              </div>
 
-            <div className="space-y-4">
-              <InfoItem
-                icon={<Calendar className="w-5 h-5 text-blue-600" />}
-                label="Tempat, Tanggal Lahir"
-                value={`${data.tempatLahir}, ${data.tanggalLahir}`}
-              />
-
-              <InfoItem
-                icon={<User className="w-5 h-5 text-blue-600" />}
-                label="Kewarganegaraan"
-                value={data.kewarganegaraan}
-              />
-
-              <InfoItem
-                icon={<User className="w-5 h-5 text-blue-600" />}
-                label="Agama"
-                value={data.agama}
-              />
-
-              <InfoItem
-                icon={<User className="w-5 h-5 text-blue-600" />}
-                label="Status Perkawinan"
-                value={data.statusPerkawinan}
-              />
-
-              <InfoItem
-                icon={<User className="w-5 h-5 text-blue-600" />}
-                label="Golongan Darah"
-                value={data.golonganDarah}
-              />
+              <div className="space-y-6 text-xs md:text-sm">
+                <InfoItem
+                  variants={itemVariants}
+                  icon={<Calendar className="w-5 h-5 text-blue-600" />}
+                  label="Lahir"
+                  value={`${data.tempatLahir}, ${data.tanggalLahir}`}
+                />
+                <InfoItem
+                  variants={itemVariants}
+                  icon={<Flag className="w-5 h-5 text-blue-600" />}
+                  label="Kewarganegaraan"
+                  value={data.kewarganegaraan}
+                />
+                <InfoItem
+                  variants={itemVariants}
+                  icon={<BookOpen className="w-5 h-5 text-blue-600" />}
+                  label="Agama"
+                  value={data.agama}
+                />
+                <InfoItem
+                  variants={itemVariants}
+                  icon={<Heart className="w-5 h-5 text-blue-600" />}
+                  label="Status"
+                  value={data.statusPerkawinan}
+                />
+                <InfoItem
+                  variants={itemVariants}
+                  icon={<Droplet className="w-5 h-5 text-blue-600" />}
+                  label="Gol. Darah"
+                  value={data.golonganDarah}
+                />
+              </div>
             </div>
           </div>
 
           {/* Informasi Kontak */}
-          <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-            <h2 className="text-xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-indigo-500">
-              Informasi Kontak
-            </h2>
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-shadow duration-500">
+            <div className="h-2 bg-linear-to-r from-indigo-500 to-purple-500" />
+            <div className="p-6 md:p-8">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="p-3 bg-indigo-50 rounded-xl">
+                  <Phone className="w-8 h-8 text-indigo-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">
+                    Kontak
+                  </h3>
+                  <p className="text-gray-500 text-sm">
+                    Saluran komunikasi aktif
+                  </p>
+                </div>
+              </div>
 
-            <div className="space-y-4">
-              <InfoItem
-                icon={<MapPin className="w-5 h-5 text-indigo-600" />}
-                label="Alamat"
-                value={data.alamat}
-                multiline
-              />
+              <div className="space-y-6 text-xs md:text-sm">
+                <InfoItem
+                  variants={itemVariants}
+                  icon={<MapPin className="w-5 h-5 text-indigo-600" />}
+                  label="Alamat Domisili"
+                  value={data.alamat}
+                  multiline
+                />
+                <InfoItem
+                  variants={itemVariants}
+                  icon={<Phone className="w-5 h-5 text-indigo-600" />}
+                  label="No. Ponsel / WhatsApp"
+                  value={data.noPonsel}
+                  isLink
+                  linkType="tel"
+                />
+                <InfoItem
+                  variants={itemVariants}
+                  icon={<Mail className="w-5 h-5 text-indigo-600" />}
+                  label="Alamat Email"
+                  value={data.email}
+                  isLink
+                  linkType="mailto"
+                />
+              </div>
 
-              <InfoItem
-                icon={<Phone className="w-5 h-5 text-indigo-600" />}
-                label="No. Ponsel"
-                value={data.noPonsel}
-              />
-
-              <InfoItem
-                icon={<Mail className="w-5 h-5 text-indigo-600" />}
-                label="Email"
-                value={data.email}
-              />
+              {/* Added Call to Action area for better interactivity */}
+              <div className="mt-8 pt-6 border-t border-gray-100">
+                <p className="text-sm text-gray-500 mb-4">
+                  Ingin berkolaborasi?
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a
+                    href={`mailto:${data.email}`}
+                    className="flex-1 text-center py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition-colors text-sm shadow-sm hover:shadow-md"
+                  >
+                    Kirim Email
+                  </a>
+                  <a
+                    href={`https://wa.me/${data.noPonsel.replace(
+                      /[^0-9]/g,
+                      ""
+                    )}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex-1 text-center py-2.5 px-4 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition-colors text-sm shadow-sm hover:shadow-md"
+                  >
+                    WhatsApp
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Footer */}
-        <div className="mt-8 text-center text-gray-500 text-sm">
-          <p>Data terakhir diperbarui: 4 Desember 2025</p>
+        <div className="mt-12 text-center">
+          <p className="text-gray-400 text-sm font-medium">
+            Terakhir diperbarui:{" "}
+            <span className="text-gray-600">4 Desember 2025</span>
+          </p>
         </div>
       </div>
     </div>
   );
 };
 
-const InfoItem = ({ icon, label, value, multiline }) => {
-  return (
-    <div className={`flex gap-3 ${multiline ? "items-start" : "items-center"}`}>
-      <div className="shrink-0 mt-1">{icon}</div>
-      <div className="flex-1">
-        <p className="text-sm text-gray-500 font-medium">{label}</p>
-        <p className="text-gray-800 font-medium mt-0.5">{value}</p>
+const InfoItem = ({
+  icon,
+  label,
+  value,
+  multiline,
+  variants,
+  isLink,
+  linkType,
+}) => {
+  const content = (
+    <>
+      <div className="p-2.5 bg-gray-50 rounded-lg group-hover:bg-white group-hover:shadow-md transition-all duration-300">
+        {icon}
       </div>
-    </div>
+      <div className="flex-1">
+        <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-1">
+          {label}
+        </p>
+        <p
+          className={`text-gray-800 font-medium ${
+            multiline ? "leading-relaxed" : ""
+          }`}
+        >
+          {value}
+        </p>
+      </div>
+    </>
+  );
+
+  return (
+    <motion.div
+      variants={variants}
+      className="group flex gap-4 items-start p-2 rounded-lg hover:bg-gray-50/50 transition-colors"
+    >
+      {isLink ? (
+        <a
+          href={`${linkType}:${value}`}
+          className="flex gap-4 items-start w-full"
+          target={linkType === "tel" ? "_self" : "_blank"}
+          rel="noreferrer"
+        >
+          {content}
+        </a>
+      ) : (
+        content
+      )}
+    </motion.div>
   );
 };
 
