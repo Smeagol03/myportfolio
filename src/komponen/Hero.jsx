@@ -1,5 +1,4 @@
-import React, { useRef, useEffect } from "react";
-import { gsap } from "gsap";
+import { motion } from "framer-motion";
 import RotatingText from "./efek/RotatingText"; // Pastikan path import ini benar
 
 const Hero = ({
@@ -10,47 +9,50 @@ const Hero = ({
   LinkedInLink = "https://www.linkedin.com/in/alpian-tabrani-b83455275/",
   InstagramLink = "https://www.instagram.com/npc_alpiant?igsh=ZjZrNjV5dHU3bzh6",
 }) => {
-  const heroRef = useRef(null);
+  // 1. Variasi Container (Parent)
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      // Mengaktifkan efek berurutan
+      transition: {
+        delayChildren: 0.2, // Jeda sebelum elemen anak pertama mulai
+        staggerChildren: 0.15, // Jeda antar-animasi elemen anak
+      },
+    },
+  };
 
-  useEffect(() => {
-    let ctx = gsap.context(() => {
-      // 1. Animasi Elemen Teks (Muncul berurutan)
-      gsap.from(".hero-text-item", {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.15, // Jeda antar elemen
-        ease: "power3.out",
-        delay: 0.2,
-      });
+  // 2. Variasi Item (Child)
+  // Ini digunakan untuk semua elemen yang akan berurutan
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 }, // Mulai dari 30px ke bawah dan transparan
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 120, // Untuk memberikan sedikit efek pantulan
+        damping: 15,
+      },
+    },
+  };
 
-      // 2. Animasi Visual Kanan (Fade In + Scale)
-      gsap.from(".hero-visual", {
-        scale: 0.8,
-        opacity: 0,
-        duration: 1.2,
-        ease: "back.out(1.7)", // Efek membal sedikit
-        delay: 0.5,
-      });
-
-      // 3. Animasi Scroll Indicator (Naik turun infinite)
-      gsap.to(".scroll-indicator", {
-        y: 10,
-        repeat: -1,
-        yoyo: true,
-        duration: 1.5,
-        ease: "sine.inOut",
-      });
-    }, heroRef);
-
-    return () => ctx.revert();
-  }, []);
+  // Variasi Khusus untuk Teks Nama (agar bisa sedikit berbeda)
+  const nameVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        delay: 0.3, // Kita ingin nama muncul setelah "Hi, I'm"
+      },
+    },
+  };
 
   return (
-    <section
-      ref={heroRef}
-      className="relative min-h-screen flex items-center py-10 bg-slate-950 overflow-hidden"
-    >
+    <section className="relative min-h-screen flex items-center py-10 bg-slate-950 overflow-hidden">
       {/* --- BACKGROUND EFFECTS --- */}
       {/* 1. Grid Pattern Overlay */}
       <div className="absolute inset-0 z-0 opacity-20 pointer-events-none bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]"></div>
@@ -63,29 +65,52 @@ const Hero = ({
       <div className="relative z-10 container mx-auto px-6 md:px-12 lg:px-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* --- LEFT SIDE: TEXT CONTENT --- */}
-          <div className="text-center lg:text-left">
+          <motion.div
+            className="text-center lg:text-left"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             {/* Greeting & Name */}
-            <h1 className="hero-text-item text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
-              Hi, I'm <br />
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-cyan-400 to-emerald-400 animate-gradient-x">
+            <motion.h1
+              className="text-3xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight tracking-tight"
+              // Menggunakan itemVariants di sini, tetapi isinya akan dipecah
+            >
+              <motion.span variants={itemVariants} className="inline-block">
+                Hi, I'm
+              </motion.span>
+              <br />
+              <motion.span
+                className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-cyan-400 to-emerald-400 animate-gradient-x inline-block"
+                variants={nameVariants} // Menggunakan varian khusus
+              >
                 {nama}
-              </span>
-            </h1>
+              </motion.span>
+            </motion.h1>
 
             {/* Job Title */}
-            <div className="hero-text-item inline-block mb-6 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm">
-              <p className="text-lg sm:text-xl text-cyan-300 font-medium tracking-wide">
+            <motion.div
+              className="inline-block mb-6 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm"
+              variants={itemVariants} // Elemen urutan kedua
+            >
+              <p className="text-sm sm:text-xl text-cyan-300 font-medium tracking-wide">
                 {role}
               </p>
-            </div>
+            </motion.div>
 
             {/* Description */}
-            <p className="hero-text-item text-base sm:text-lg text-slate-400 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+            <motion.p
+              className="text-xs sm:text-lg text-slate-400 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed"
+              variants={itemVariants} // Elemen urutan ketiga
+            >
               {deskripsi}
-            </p>
+            </motion.p>
 
             {/* CTA Buttons */}
-            <div className="hero-text-item flex flex-wrap justify-center lg:justify-start gap-4 mb-10">
+            <motion.div
+              className="flex flex-wrap justify-center lg:justify-start gap-4 mb-10"
+              variants={itemVariants} // Elemen urutan keempat
+            >
               <a
                 href="#projects"
                 className="group relative px-8 py-3 bg-white text-slate-900 font-bold rounded-lg overflow-hidden transition-all hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
@@ -102,17 +127,21 @@ const Hero = ({
               >
                 Get In Touch
               </a>
-            </div>
+            </motion.div>
 
             {/* Social Links */}
-            <div className="hero-text-item flex justify-center lg:justify-start gap-6 items-center">
+            <motion.div
+              className="flex justify-center lg:justify-start gap-6 items-center"
+              variants={itemVariants} // Elemen urutan kelima
+            >
               <span className="h-px w-8 bg-slate-700 hidden lg:block"></span>
               {[
                 { name: "Github", link: GitHubLink },
                 { name: "LinkedIn", link: LinkedInLink },
                 { name: "Instagram", link: InstagramLink },
               ].map((social, idx) => (
-                <a
+                // Jika ingin social links juga berurutan, Anda bisa membungkusnya lagi dengan motion.a
+                <motion.a
                   key={idx}
                   href={social.link}
                   target="_blank"
@@ -120,13 +149,13 @@ const Hero = ({
                   className="text-slate-500 hover:text-cyan-400 transition-colors text-sm font-medium uppercase tracking-widest hover:-translate-y-1 transform duration-200"
                 >
                   {social.name}
-                </a>
+                </motion.a>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* --- RIGHT SIDE: VISUAL ELEMENT --- */}
-          <div className="hero-visual relative flex justify-center items-center w-full mt-10 lg:mt-0">
+          <div className="relative flex justify-center items-center w-full my-10 md:my-0 lg:mt-0">
             <div className="relative z-10 text-center w-full">
               <RotatingText
                 texts={["Ambis", "Produktif", "Santai"]}

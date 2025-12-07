@@ -1,8 +1,3 @@
-import { useRef, useEffect, use } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
-
 const experienceData = [
   {
     title: "Tenaga Teknis / Administrasi",
@@ -45,71 +40,14 @@ const experienceData = [
 ];
 
 const Experience = () => {
-  const pengalamanRef = useRef(null);
-
-  useEffect(() => {
-    // Gunakan gsap.context untuk pembersihan otomatis (sangat penting di React)
-    let ctx = gsap.context(() => {
-      // 1. Animasi Header (Muncul dari bawah)
-      gsap.from(".gsap-header", {
-        scrollTrigger: {
-          trigger: ".gsap-header",
-          start: "top 80%", // Mulai saat elemen 80% dari atas viewport
-        },
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-      });
-
-      // 2. Animasi Garis Tengah (Tumbuh ke bawah)
-      gsap.from(".gsap-line", {
-        scrollTrigger: {
-          trigger: ".gsap-line",
-          start: "top 70%",
-          end: "bottom 90%",
-          scrub: 1, // Animasi mengikuti pergerakan scroll mouse (halus)
-        },
-        scaleY: 0,
-        transformOrigin: "top center",
-        ease: "none",
-      });
-
-      // 3. Animasi Item Timeline (Masuk dari kiri/kanan)
-      const items = gsap.utils.toArray(".gsap-item");
-
-      items.forEach((item, i) => {
-        // Tentukan arah: Genap (Kiri) dari -100, Ganjil (Kanan) dari 100
-        // Catatan: Di mobile semua akan terasa "fade-up" atau sedikit geser
-        const isEven = i % 2 === 0;
-        const xValue = isEven ? -100 : 100;
-
-        gsap.from(item, {
-          scrollTrigger: {
-            trigger: item,
-            start: "top 85%", // Muncul agak awal agar user tidak menunggu
-            toggleActions: "play none none reverse", // Mainkan saat masuk, reverse saat keluar
-          },
-          x: xValue,
-          y: 50,
-          opacity: 0,
-          duration: 1,
-          ease: "power3.out",
-        });
-      });
-    }, pengalamanRef); // Scope selector ke ref ini
-
-    return () => ctx.revert(); // Hapus animasi saat komponen unmount
-  }, []);
   return (
     <section
-      ref={pengalamanRef}
       id="experience"
       className="py-24 bg-slate-50 dark:bg-slate-900 overflow-hidden"
     >
       <div className="container mx-auto px-6 md:px-12 lg:px-20">
         {/* --- Header Section --- */}
-        <div className="gsap-header text-center mb-20 max-w-3xl mx-auto">
+        <div className=" text-center mb-20 max-w-3xl mx-auto">
           <span className="inline-block py-1 px-3 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-xs font-bold tracking-wider uppercase mb-4">
             Jejak Karir
           </span>
@@ -127,7 +65,7 @@ const Experience = () => {
         {/* --- Timeline Container --- */}
         <div className="relative max-w-5xl mx-auto">
           {/* Garis Vertikal (Desktop: Tengah, Mobile: Kiri) */}
-          <div className="gsap-line absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-indigo-200 via-purple-200 to-indigo-200 dark:from-indigo-900 dark:via-purple-900 dark:to-indigo-900 md:-translate-x-1/2"></div>
+          <div className=" absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-indigo-200 via-purple-200 to-indigo-200 dark:from-indigo-900 dark:via-purple-900 dark:to-indigo-900 md:-translate-x-1/2"></div>
 
           {experienceData.map((exp, index) => {
             const isLeft = index % 2 === 0;
@@ -135,7 +73,7 @@ const Experience = () => {
             return (
               <div
                 key={index}
-                className={`gsap-item relative z-10 mb-12 md:mb-24 flex flex-col md:flex-row items-center ${
+                className={` relative z-10 mb-12 md:mb-24 flex flex-col md:flex-row items-center ${
                   isLeft ? "md:flex-row-reverse" : ""
                 }`}
               >

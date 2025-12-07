@@ -1,9 +1,4 @@
-import { useRef, useEffect, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-// Data Statis untuk Contact Info Block (Sisi Kiri)
+import { useRef, useState } from "react";
 const contactInfo = [
   {
     icon: (
@@ -93,42 +88,6 @@ const Contact = () => {
   const formRef = useRef(null);
   const [formStatus, setFormStatus] = useState("idle"); // idle, submitting, success
 
-  // Animasi GSAP
-  useEffect(() => {
-    let ctx = gsap.context(() => {
-      // 1. Header Fade In
-      gsap.from(".contact-header", {
-        scrollTrigger: { trigger: ".contact-header", start: "top 85%" },
-        y: 30,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-      });
-
-      // 2. Info Card Slide dari Kiri
-      gsap.from(".contact-info-card", {
-        scrollTrigger: { trigger: ".contact-wrapper", start: "top 75%" },
-        x: -50,
-        opacity: 0,
-        duration: 1,
-        delay: 0.2,
-        ease: "power3.out",
-      });
-
-      // 3. Form Card Slide dari Kanan/Bawah
-      gsap.from(".contact-form-card", {
-        scrollTrigger: { trigger: ".contact-wrapper", start: "top 75%" },
-        x: 50,
-        opacity: 0,
-        duration: 1,
-        delay: 0.4,
-        ease: "power3.out",
-      });
-    }, contactRef);
-
-    return () => ctx.revert();
-  }, []);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormStatus("submitting");
@@ -184,7 +143,7 @@ Terima kasih.`;
 
       <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
         {/* --- Header Section --- */}
-        <div className="contact-header text-center mb-16 max-w-2xl mx-auto">
+        <div className=" text-center mb-16 max-w-2xl mx-auto">
           <span className="inline-block py-1 px-3 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-xs font-bold tracking-wider uppercase mb-3">
             Get In Touch
           </span>
@@ -201,9 +160,9 @@ Terima kasih.`;
         </div>
 
         {/* --- Main Contact Grid --- */}
-        <div className="contact-wrapper grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 max-w-6xl mx-auto">
+        <div className=" grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 max-w-6xl mx-auto">
           {/* --- Sisi Kiri: Contact Info (2 Kolom) --- */}
-          <div className="contact-info-card lg:col-span-2 bg-indigo-600 dark:bg-indigo-900 rounded-3xl p-8 md:p-10 text-white shadow-2xl relative overflow-hidden flex flex-col justify-between">
+          <div className=" lg:col-span-2 bg-indigo-600 dark:bg-indigo-900 rounded-3xl p-8 md:p-10 text-white shadow-2xl relative overflow-hidden flex flex-col justify-between">
             {/* Pattern Overlay */}
             <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] bg-size-[20px_20px]"></div>
 
@@ -248,7 +207,7 @@ Terima kasih.`;
           </div>
 
           {/* --- Sisi Kanan: Formulir Kontak (3 Kolom) --- */}
-          <div className="contact-form-card lg:col-span-3 bg-white dark:bg-slate-800 p-8 md:p-10 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-700">
+          <div className=" lg:col-span-3 bg-white dark:bg-slate-800 p-8 md:p-10 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-700">
             <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-8">
               Kirim Pesan Langsung
             </h3>
