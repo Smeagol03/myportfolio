@@ -187,10 +187,10 @@ const About = () => {
               {features.map((feature, idx) => (
                 <div
                   key={idx}
-                  className={`flex items-start gap-4 p-4 rounded-xl ${feature.bg} border ${feature.border} hover:border-opacity-50 transition-colors duration-300 group`}
+                  className={`flex items-start gap-4 p-4 rounded-xl ${feature.bg} border ${feature.border}`}
                 >
                   <div
-                    className={`p-2.5 rounded-lg bg-slate-800/50 ${feature.color} group-hover:scale-110 transition-transform duration-300`}
+                    className={`p-2.5 rounded-lg bg-slate-800/50 ${feature.color}`}
                   >
                     {feature.icon}
                   </div>
