@@ -78,8 +78,9 @@ const About = () => {
   return (
     <section id="about" className="py-24 bg-slate-900 relative overflow-hidden">
       {/* Background Decorations */}
-      <div className="absolute top-0 left-0 w-1/2 h-full bg-linear-to-r from-blue-900/5 to-transparent pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
+      {/* Background Decorations - Optimized */}
+      <div className="absolute top-0 left-0 w-1/2 h-full bg-linear-to-r from-blue-900/10 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px] pointer-events-none translate-z-0" />
 
       <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -103,7 +104,7 @@ const About = () => {
                 alt="Alpian Tabrani"
                 className="w-full h-auto object-cover"
               />
-              {/* Gradient Overlay */}
+              {/* linear Overlay */}
               <div className="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent" />
 
               {/* Experience Badge */}
@@ -112,7 +113,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
-                className="absolute bottom-4 left-4 right-4 bg-slate-800/90 backdrop-blur-sm p-4 rounded-xl border border-slate-700/50"
+                className="absolute bottom-4 left-4 right-4 bg-slate-900/90 p-4 rounded-xl border border-slate-700/50 shadow-lg"
               >
                 <div className="flex items-center justify-between">
                   <div>
@@ -187,7 +188,7 @@ const About = () => {
               {features.map((feature, idx) => (
                 <div
                   key={idx}
-                  className={`flex items-start gap-4 p-4 rounded-xl ${feature.bg} border ${feature.border}`}
+                  className={`flex items-start gap-4 p-4 rounded-xl ${feature.bg} border ${feature.border} hover:bg-opacity-20 transition-colors duration-200`}
                 >
                   <div
                     className={`p-2.5 rounded-lg bg-slate-800/50 ${feature.color}`}
