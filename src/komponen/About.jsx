@@ -58,14 +58,6 @@ const About = () => {
       border: "border-cyan-500/20",
     },
     {
-      icon: <Zap className="w-5 h-5" />,
-      title: "Fast Performance",
-      desc: "Optimized & Responsive",
-      color: "text-purple-400",
-      bg: "bg-purple-500/10",
-      border: "border-purple-500/20",
-    },
-    {
       icon: <Users className="w-5 h-5" />,
       title: "Team Collaboration",
       desc: "Communication & Coordination",
