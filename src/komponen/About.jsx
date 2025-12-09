@@ -183,10 +183,7 @@ const About = () => {
             </motion.p>
 
             {/* Features Grid */}
-            <motion.div
-              variants={itemVariants}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4"
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
               {features.map((feature, idx) => (
                 <div
                   key={idx}
@@ -205,7 +202,7 @@ const About = () => {
                   </div>
                 </div>
               ))}
-            </motion.div>
+            </div>
 
             {/* CTA Buttons */}
             <motion.div
