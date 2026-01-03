@@ -22,8 +22,8 @@ const navLinks = [
   { name: "About", href: "#about" },
   { name: "Pendidikan", href: "#education" },
   { name: "Skills", href: "#skills" },
-  { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
+  { name: "Experience", href: "#experience" },
   { name: "Contact", href: "#contact" },
 ];
 
