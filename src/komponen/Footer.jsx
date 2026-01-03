@@ -120,9 +120,8 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
           <p className="flex items-center gap-1">
-            &copy; {currentYear} Alpian Tabrani. Built with
-            <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 animate-pulse" />
-            using React & Tailwind.
+            &copy; {currentYear} Alpian Tabrani. Built with using React &
+            Tailwind.
           </p>
 
           <motion.button
