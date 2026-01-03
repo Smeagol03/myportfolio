@@ -13,8 +13,8 @@ const Navbar = () => {
     { name: "About", href: "#about" },
     { name: "Pendidikan", href: "#pendidikan" },
     { name: "Skills", href: "#skills" },
-    { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
+    { name: "Experience", href: "#experience" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -26,20 +26,30 @@ const Navbar = () => {
       const sections = navLinks
         .map((link) => link.href.replace("#", ""))
         .filter(Boolean);
-      for (const section of sections.reverse()) {
+
+      // Use spread to avoid mutating original array, then reverse to check from bottom to top
+      let currentSection = "";
+      for (const section of [...sections].reverse()) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
+          // Check if section is in viewport (top is above threshold)
           if (rect.top <= 150) {
-            setActiveSection(section);
+            currentSection = section;
             break;
           }
         }
       }
-      if (window.scrollY < 100) setActiveSection("");
+
+      if (window.scrollY < 100) {
+        setActiveSection("");
+      } else {
+        setActiveSection(currentSection);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Call immediately to set initial state
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
