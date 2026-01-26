@@ -1,161 +1,173 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { Briefcase, Code, PenTool, Calendar, CheckCircle2 } from "lucide-react";
 
 const experienceData = [
   {
     title: "Tenaga Teknis / Administrasi",
-    company: "Dinas Perumahan & Kawasan Permukiman Kab. Lombok Timur",
+    company: "Dinas Perumahan & Kawasan Permukiman",
+    period: "2020 - Sekarang",
     description: [
-      "Mengelola dokumen dan arsip surat masuk dan keluar secara terstruktur.",
-      "Menyusun dan mendistribusikan surat menyurat internal dan eksternal.",
-      "Membantu pencatatan transaksi keuangan sederhana dan laporan administrasi.",
-      "Menyiapkan jadwal rapat serta mendukung kelancaran kegiatan kantor.",
-      "Terlibat dalam pengelolaan konten website dinas dan sistem e-government.",
+      "Manajemen arsip & dokumen digital organisasi.",
+      "Optimasi sistem e-government & CMS dinas.",
+      "Koordinasi administrasi internal & eksternal."
     ],
-    tech: [
-      "Microsoft Word",
-      "Microsoft Excel",
-      "Google Workspace",
-      "Website CMS",
-    ],
+    tech: ["MS Office", "CMS Admin", "Google Suite"],
+    icon: Briefcase,
+    color: "from-blue-500 to-cyan-500"
   },
   {
-    title: "Web Developer (Freelance & Personal Project)",
-    company: "Self-Employed",
+    title: "Web Developer",
+    company: "Freelance & Projects",
+    period: "2022 - Sekarang",
     description: [
-      "Membangun website pemesanan bukber dan toko online sederhana.",
-      "Membuat sistem absensi berbasis web menggunakan Firebase.",
-      "Mengembangkan sistem komentar realtime dengan fitur hapus, reply, dan ekspor data.",
-      "Mengintegrasikan form & keranjang belanja dengan WhatsApp.",
+      "Pemanfaatan AI Dengan Baik.",
+      "Mengembangkan Web dengan layanan Firebase.",
     ],
-    tech: ["HTML", "Tailwind CSS", "JavaScript", "Firebase", "Vite"],
+    tech: ["React.js", "Firebase", "Tailwind CSS"],
+    icon: Code,
+    color: "from-purple-500 to-pink-500"
   },
   {
-    title: "Praktik Kerja Lapangan (Multimedia)",
+    title: "Multimedia Professional",
     company: "Digital Printing Cahaya Mandiri",
+    period: "2018 - 2020",
     description: [
-      "Mengoperasikan mesin digital printing, cetak foto, dan cetak stiker.",
-      "Melakukan desain sederhana menggunakan Canva dan Photoshop.",
-      "Membantu dalam produksi sablon dan bordir pesanan pelanggan.",
+      "Produksi konten visual & digital printing.",
+      "Desain grafis untuk branding & promosi.",
+      "Manajemen operasional peralatan kreatif."
     ],
-    tech: ["Canva", "Photoshop", "CorelDraw", "Digital Printing Tools"],
+    tech: ["Photoshop", "Canva", "Printing Tools"],
+    icon: PenTool,
+    color: "from-amber-400 to-orange-500"
   },
 ];
 
 const Experience = () => {
-  const cardVariants = {
-    hidden: {
-      opacity: 0,
-      y: 20,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeInOut",
-      },
-    },
-  };
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   return (
-    <section
-      id="experience"
-      className="py-24 bg-slate-50 dark:bg-slate-900 overflow-hidden"
-    >
-      <div className="container mx-auto px-6 md:px-12 lg:px-20">
-        {/* --- Header Section --- */}
-        <div className=" text-center mb-20 max-w-3xl mx-auto">
-          <span className="inline-block py-1 px-3 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-xs font-bold tracking-wider uppercase mb-4">
-            Jejak Karir
-          </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
-            Pengalaman{" "}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-purple-600">
-              Profesional
-            </span>
-          </h2>
+    <section id="experience" ref={containerRef} className="py-32 relative overflow-hidden bg-[#030712]">
+      {/* Elegant Section Divider */}
+      <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-slate-800 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-linear-to-r from-transparent via-cyan-500/20 to-transparent blur-sm" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/4 h-px bg-linear-to-r from-transparent via-cyan-500/40 to-transparent" />
+
+      {/* Decorative background glow */}
+      <div className="absolute top-1/2 right-0 w-96 h-96 bg-purple-600/5 rounded-full blur-[120px] -z-10" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-24">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center gap-3 mb-4"
+          >
+            <div className="h-px w-8 bg-cyan-500" />
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-cyan-400">Career Timeline</span>
+            <div className="h-px w-8 bg-cyan-500" />
+          </motion.div>
+          
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-extrabold font-outfit text-white mb-6"
+          >
+            Jejak <span className="cyan-gradient-text">Profesional Saya.</span>
+          </motion.h2>
         </div>
 
-        {/* --- Timeline Container --- */}
-        <div className="relative max-w-4xl mx-auto">
-          {/* Vertical Line with Gradient */}
-          <div className="absolute left-4 md:left-1/2 top-4 bottom-4 w-0.5 bg-linear-to-b from-blue-200 via-indigo-400 to-purple-200 dark:from-blue-900 dark:via-indigo-700 dark:to-purple-900 md:-translate-x-1/2 rounded-full opacity-60"></div>
+        <div className="relative max-w-5xl mx-auto">
+          {/* The Flowing Thread (Animated Line) */}
+          <div className="absolute left-6 md:left-1/2 top-4 bottom-4 w-px bg-slate-800 hidden md:block" />
+          <motion.div
+            style={{ scaleY, originY: 0 }}
+            className="absolute left-6 md:left-1/2 top-4 bottom-4 w-[2px] bg-linear-to-b from-cyan-400 via-blue-500 to-purple-600 hidden md:block z-20 shadow-[0_0_15px_rgba(34,211,238,0.5)]"
+          />
 
-          {experienceData.map((exp, index) => {
-            const isLeft = index % 2 === 0;
-
-            return (
-              <div
-                key={index}
-                className={`relative z-10 mb-12 last:mb-0 flex flex-col md:flex-row items-start ${
-                  isLeft ? "md:flex-row-reverse" : ""
-                }`}
-              >
-                {/* 1. Spacer for Desktop Balance */}
-                <div className="hidden md:block md:w-1/2" />
-
-                {/* 2. Timeline Marker */}
-                <div className="absolute left-4 md:left-1/2 -translate-x-1/2 mt-1.5 flex items-center justify-center">
-                  <div className="w-8 h-8 rounded-full bg-white dark:bg-slate-900 border-4 border-indigo-100 dark:border-slate-700 flex items-center justify-center shadow-md z-20 ring-4 ring-white dark:ring-slate-900 transition-transform duration-300 hover:scale-110">
-                    <div className="w-3 h-3 rounded-full bg-indigo-600 dark:bg-indigo-400"></div>
-                  </div>
-                </div>
-
-                {/* 3. Card Content */}
-                <motion.div
-                  variants={cardVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ amount: 0.1, once: true }}
-                  className={`w-full md:w-1/2 pl-12 md:pl-0 ${
-                    isLeft ? "md:pr-10 lg:pr-14" : "md:pl-10 lg:pl-14"
-                  }`}
-                >
-                  <div className="group relative bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm hover:shadow-xl border border-slate-100 dark:border-slate-700 transition-all duration-300 transform hover:-translate-y-1">
-                    {/* Decorative subtle gradient background on hover */}
-                    <div className="absolute inset-0 bg-linear-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-900/10 dark:to-purple-900/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-                    <div className="relative z-10">
-                      <div className="flex flex-wrap items-center gap-2 mb-2 text-xs font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-                        <span className="py-1 px-2.5 rounded-md bg-indigo-50 dark:bg-indigo-900/30">
-                          Work
-                        </span>
-                      </div>
-
-                      <h3 className="text-lg md:text-xl font-bold text-slate-800 dark:text-gray-100 mb-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                        {exp.title}
-                      </h3>
-
-                      <div className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-4 flex items-center gap-1.5">
-                        {exp.company}
-                      </div>
-
-                      <ul className="space-y-2 mb-5 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-                        {exp.description.map((desc, idx) => (
-                          <li key={idx} className="flex items-start gap-2.5">
-                            <span className="mt-1.5 w-1.5 h-0.5 bg-indigo-400 rounded-full shrink-0"></span>
-                            <span>{desc}</span>
-                          </li>
-                        ))}
-                      </ul>
-
-                      {/* Tech Stack */}
-                      <div className="pt-4 border-t border-slate-100 dark:border-slate-700/50 flex flex-wrap gap-2">
-                        {exp.tech.map((techItem, techIndex) => (
-                          <span
-                            key={techIndex}
-                            className="px-2 py-1 text-[10px] md:text-xs font-medium text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-700/50 rounded-md border border-slate-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-indigo-700 transition-colors"
-                          >
-                            {techItem}
+          <div className="space-y-24">
+            {experienceData.map((exp, index) => {
+              const isLeft = index % 2 === 0;
+              return (
+                <div key={index} className="relative flex flex-col md:flex-row items-center justify-between">
+                  {/* Left Side (Desktop) */}
+                  <div className={`hidden md:block w-[42%] ${isLeft ? "text-right order-1" : "order-3"}`}>
+                    <motion.div
+                      initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <h3 className="text-2xl md:text-3xl font-bold font-outfit text-white mb-2">{exp.title}</h3>
+                      <p className="text-cyan-400 font-bold text-sm tracking-widest uppercase mb-4">{exp.company}</p>
+                      <div className={`flex flex-wrap gap-2 justify-center ${isLeft ? "md:justify-end" : "md:justify-start"}`}>
+                        {exp.tech.map((t, i) => (
+                          <span key={i} className="text-[10px] font-bold text-slate-500 bg-white/5 px-3 py-1 rounded-lg border border-white/5">
+                            {t}
                           </span>
                         ))}
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
-                </motion.div>
-              </div>
-            );
-          })}
+
+                  {/* Icon Node (Desktop Center) */}
+                  <div className="absolute left-0 md:left-1/2 -translate-x-1/2 z-30 flex items-center justify-center p-1.5 rounded-3xl bg-[#030712] border border-slate-800 shadow-2xl">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      className={`w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-linear-to-br ${exp.color} flex items-center justify-center`}
+                    >
+                      <exp.icon className="w-6 h-6 md:w-8 md:h-8 text-white" />
+                    </motion.div>
+                  </div>
+
+                  {/* Content Card */}
+                  <div className={`w-full md:w-[42%] pl-16 md:pl-0 ${isLeft ? "md:order-3" : "md:order-1"}`}>
+                    <motion.div
+                      initial={{ opacity: 0, x: isLeft ? 50 : -50 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                      className="glass-effect p-8 rounded-[2.5rem] border border-white/5 hover:border-white/10 transition-all shadow-sm group"
+                    >
+                      {/* Mobile Header (Hidden on Desktop) */}
+                      <div className="md:hidden mb-6">
+                        <h3 className="text-2xl font-bold font-outfit text-white mb-2">{exp.title}</h3>
+                        <p className="text-cyan-400 font-bold text-xs uppercase tracking-widest">{exp.company}</p>
+                      </div>
+
+                      <div className="flex items-center gap-3 mb-6">
+                        <Calendar className="w-4 h-4 text-slate-500" />
+                        <span className="text-xs font-bold text-slate-500 uppercase tracking-[0.2em]">{exp.period}</span>
+                      </div>
+
+                      <ul className="space-y-4">
+                        {exp.description.map((point, i) => (
+                          <li key={i} className="flex items-start gap-3">
+                            <CheckCircle2 className="w-4 h-4 text-cyan-500 mt-1 shrink-0" />
+                            <span className="text-slate-400 text-sm font-light leading-relaxed">{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
