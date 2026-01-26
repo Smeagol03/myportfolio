@@ -20,36 +20,28 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 20);
 
-      // Determine active section
       const sections = navLinks
         .map((link) => link.href.replace("#", ""))
         .filter(Boolean);
 
-      // Use spread to avoid mutating original array, then reverse to check from bottom to top
       let currentSection = "";
       for (const section of [...sections].reverse()) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          // Check if section is in viewport (top is above threshold)
           if (rect.top <= 150) {
             currentSection = section;
             break;
           }
         }
       }
-
-      if (window.scrollY < 100) {
-        setActiveSection("");
-      } else {
-        setActiveSection(currentSection);
-      }
+      setActiveSection(window.scrollY < 100 ? "" : currentSection);
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Call immediately to set initial state
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -58,82 +50,92 @@ const Navbar = () => {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-slate-900/80 backdrop-blur-xl border-b border-slate-800/50 shadow-lg shadow-black/10"
-            : "bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled ? "py-4" : "py-6"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16 md:h-20">
+          <div
+            className={`flex justify-between items-center transition-all duration-500 px-6 rounded-2xl ${
+              scrolled
+                ? "h-16 glass-effect shadow-2xl shadow-cyan-950/20"
+                : "h-20 bg-transparent"
+            }`}
+          >
             {/* Logo */}
             <motion.a
               href="#"
-              whileHover={{ scale: 1.02 }}
-              className="relative group"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="flex items-center gap-2 group"
             >
-              <span className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-linear-to-r from-white to-slate-400 tracking-tight">
-                ALPIAN
-              </span>
-              <span className="text-xl md:text-2xl font-bold text-cyan-400 ml-1">
-                .
-              </span>
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300" />
+              <div className="w-10 h-10 rounded-xl bg-linear-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20 group-hover:rotate-6 transition-transform duration-300">
+                <span className="text-white font-bold text-xl font-outfit">A</span>
+              </div>
+              <div className="flex flex-col leading-none">
+                <span className="text-lg font-bold font-outfit tracking-wider text-white">
+                  ALPIAN
+                </span>
+                <span className="text-[10px] uppercase tracking-[0.3em] font-medium text-cyan-400">
+                  Portfolio
+                </span>
+              </div>
             </motion.a>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-1">
-              {navLinks.map((link) => {
-                const isActive =
-                  activeSection === link.href.replace("#", "") ||
-                  (link.href === "#" && activeSection === "");
-                return (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-lg group ${
-                      isActive
-                        ? "text-cyan-400"
-                        : "text-slate-400 hover:text-white"
-                    }`}
-                  >
-                    {link.name}
-                    {/* Hover/Active indicator */}
-                    <span
-                      className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-cyan-400 rounded-full transition-all duration-300 ${
-                        isActive ? "w-4" : "w-0 group-hover:w-4"
+            <div className="hidden md:flex items-center gap-2">
+              <div className="flex items-center bg-slate-800/20 backdrop-blur-sm p-1.5 rounded-xl border border-white/5 mr-4">
+                {navLinks.map((link) => {
+                  const isActive =
+                    activeSection === link.href.replace("#", "") ||
+                    (link.href === "#" && activeSection === "");
+                  return (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg ${
+                        isActive
+                          ? "text-white"
+                          : "text-slate-400 hover:text-white"
                       }`}
-                    />
-                  </a>
-                );
-              })}
+                    >
+                      {isActive && (
+                        <motion.div
+                          layoutId="nav-active"
+                          className="absolute inset-0 bg-white/10 rounded-lg"
+                          transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                        />
+                      )}
+                      <span className="relative z-10">{link.name}</span>
+                    </a>
+                  );
+                })}
+              </div>
 
               {/* CTA Button */}
-              <a
+              <motion.a
                 href="#contact"
-                className="ml-4 px-5 py-2 text-sm font-semibold text-white bg-linear-to-r from-cyan-500 to-blue-600 rounded-lg hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:-translate-y-0.5"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-6 py-2.5 text-sm font-semibold text-white bg-linear-to-r from-cyan-500 to-blue-600 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 flex items-center gap-2"
               >
                 Hire Me
-              </a>
+              </motion.a>
             </div>
 
             {/* Mobile menu button */}
             <div className="md:hidden">
               <button
                 onClick={() => setIsOpen(true)}
-                className="inline-flex items-center justify-center p-2.5 rounded-lg text-slate-300 hover:text-white bg-slate-800/50 hover:bg-slate-800 border border-slate-700/50 hover:border-slate-600 transition-all"
-                aria-expanded="false"
+                className="w-11 h-11 flex items-center justify-center rounded-xl bg-slate-800/40 border border-slate-700/50 text-slate-300 hover:text-white hover:bg-slate-700/60 transition-all shadow-sm"
               >
-                <span className="sr-only">Open main menu</span>
-                <Menu size={20} />
+                <Menu size={22} />
               </button>
             </div>
           </div>
         </div>
       </motion.nav>
 
-      {/* Offcanvas Menu */}
       <OffcanvasMenu
         isOpen={isOpen}
         setIsOpen={setIsOpen}

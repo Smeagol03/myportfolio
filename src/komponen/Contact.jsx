@@ -1,51 +1,35 @@
 import { useRef, useState } from "react";
-import { motion } from "framer-motion";
-import {
-  Mail,
-  MapPin,
-  Phone,
-  Github,
-  Send,
-  Loader2,
-  CheckCircle2,
-} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, MapPin, Phone, Github, Send, Loader2, CheckCircle2, MessageSquare } from "lucide-react";
 
 const contactInfo = [
   {
-    icon: <Mail className="w-6 h-6" />,
+    icon: Mail,
     label: "Email",
     value: "atabrani3@gmail.com",
     link: "mailto:atabrani3@gmail.com",
-    color: "text-blue-500",
-    bg: "bg-blue-50",
-    darkBg: "dark:bg-blue-900/20",
+    color: "from-blue-500 to-cyan-500"
   },
   {
-    icon: <MapPin className="w-6 h-6" />,
-    label: "Lokasi",
-    value: "Lombok Timur, NTB",
-    link: "https://maps.app.goo.gl/pQuotFgBWLKhZzzv9",
-    color: "text-rose-500",
-    bg: "bg-rose-50",
-    darkBg: "dark:bg-rose-900/20",
-  },
-  {
-    icon: <Phone className="w-6 h-6" />,
+    icon: Phone,
     label: "WhatsApp",
     value: "+62 815-4719-0395",
     link: "https://wa.me/6281547190395",
-    color: "text-green-500",
-    bg: "bg-green-50",
-    darkBg: "dark:bg-green-900/20",
+    color: "from-green-500 to-emerald-500"
   },
   {
-    icon: <Github className="w-6 h-6" />,
+    icon: Github,
     label: "GitHub",
     value: "github.com/Smeagol03",
     link: "https://github.com/Smeagol03",
-    color: "text-purple-500",
-    bg: "bg-purple-50",
-    darkBg: "dark:bg-purple-900/20",
+    color: "from-purple-500 to-pink-500"
+  },
+  {
+    icon: MapPin,
+    label: "Location",
+    value: "Lombok Timur, NTB",
+    link: "https://maps.app.goo.gl/pQuotFgBWLKhZzzv9",
+    color: "from-rose-500 to-orange-500"
   },
 ];
 
@@ -59,12 +43,8 @@ const Contact = () => {
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-
-    const whatsappMessage = `Halo, saya ingin berdiskusi mengenai "${data.subject}".\n\nDetail Pengirim:\nNama: ${data.name}\nEmail: ${data.email}\n\nPesan:\n${data.message}`;
-
-    const waUrl = `https://wa.me/6281547190395?text=${encodeURIComponent(
-      whatsappMessage
-    )}`;
+    const whatsappMessage = `Halo Alpian, saya ${data.name}.\n\nSubjek: ${data.subject}\nEmail: ${data.email}\n\nPesan:\n${data.message}`;
+    const waUrl = `https://wa.me/6281547190395?text=${encodeURIComponent(whatsappMessage)}`;
 
     setTimeout(() => {
       window.open(waUrl, "_blank");
@@ -75,52 +55,42 @@ const Contact = () => {
   };
 
   return (
-    <section
-      id="contact"
-      className="py-24 relative overflow-hidden bg-slate-50 dark:bg-slate-900"
-    >
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-linear-to-l from-indigo-50/50 to-transparent dark:from-indigo-900/10 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-100/50 dark:bg-purple-900/10 rounded-full blur-3xl pointer-events-none -translate-x-1/2 translate-y-1/2" />
+    <section id="contact" className="py-32 relative overflow-hidden bg-[#030712]">
+      {/* Elegant Section Divider */}
+      <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-slate-800 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-linear-to-r from-transparent via-cyan-500/20 to-transparent blur-sm" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/4 h-px bg-linear-to-r from-transparent via-cyan-500/40 to-transparent" />
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+      {/* Background Decor */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(34,211,238,0.03)_0%,transparent_50%)] pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-20">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-block py-1 px-3 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-xs font-bold tracking-wider uppercase mb-4"
+            className="flex items-center justify-center gap-3 mb-4"
           >
-            Get In Touch
-          </motion.span>
+            <div className="h-px w-8 bg-cyan-500" />
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-cyan-400">Contact Path</span>
+            <div className="h-px w-8 bg-cyan-500" />
+          </motion.div>
+          
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6"
+            className="text-4xl md:text-5xl font-extrabold font-outfit text-white mb-6"
           >
-            Mari Mulai Sesuatu yang{" "}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-purple-600">
-              Luar Biasa
-            </span>
+            Mari Mulai <span className="cyan-gradient-text">Diskusi Hebat.</span>
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto"
-          >
-            Punya ide proyek? Atau sekadar ingin menyapa? Saya siap mendengarkan
-            dan mewujudkan ide Anda menjadi kenyataan digital.
-          </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-10 max-w-6xl mx-auto">
-          {/* Contact Info Cards */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="grid gap-6">
+        <div className="grid lg:grid-cols-12 gap-12 max-w-6xl mx-auto">
+          {/* Info Side */}
+          <div className="lg:col-span-5 space-y-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
               {contactInfo.map((item, idx) => (
                 <motion.a
                   key={idx}
@@ -131,161 +101,139 @@ const Contact = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md hover:border-indigo-200 dark:hover:border-indigo-800 transition-all group"
+                  className="glass-effect p-6 rounded-4xl border border-white/5 flex items-center gap-5 group transition-all hover:border-cyan-500/20 hover:shadow-2xl hover:shadow-cyan-500/5"
                 >
-                  <div
-                    className={`p-3 rounded-lg ${item.bg} ${item.darkBg} ${item.color} group-hover:scale-110 transition-transform`}
-                  >
-                    {item.icon}
+                  <div className={`w-12 h-12 rounded-2xl bg-linear-to-br ${item.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}>
+                    <item.icon className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-0.5">
-                      {item.label}
-                    </h4>
-                    <p className="text-slate-800 dark:text-slate-200 font-medium group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                      {item.value}
-                    </p>
+                    <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">{item.label}</p>
+                    <p className="text-white font-medium group-hover:text-cyan-400 transition-colors uppercase tracking-wider text-xs sm:text-sm">{item.value}</p>
                   </div>
                 </motion.a>
               ))}
             </div>
 
-            {/* Availability Badge */}
+            {/* Availability Status */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="p-6 rounded-2xl bg-linear-to-br from-indigo-600 to-purple-700 text-white shadow-xl relative overflow-hidden"
+              className="glass-effect p-8 rounded-[2.5rem] border border-cyan-500/10 relative overflow-hidden group"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+              <div className="absolute -top-12 -right-12 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
               <div className="relative z-10">
-                <h4 className="text-lg font-bold mb-2">
-                  Terbuka untuk Freelance
-                </h4>
-                <p className="text-indigo-100 text-sm mb-4">
-                  Saya saat ini tersedia untuk proyek baru. Mari diskusikan
-                  kebutuhan Anda.
-                </p>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 text-xs font-medium backdrop-blur-sm">
-                  <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                  Available Now
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
+                  <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest">Available for Hire</span>
                 </div>
+                <h4 className="text-xl font-bold font-outfit text-white mb-2">Punya Proyek Menarik?</h4>
+                <p className="text-slate-400 text-sm font-light leading-relaxed">
+                  Saya selalu terbuka untuk kolaborasi atau peluang freelance baru. Mari diskusikan bagaimana saya bisa membantu Anda.
+                </p>
               </div>
             </motion.div>
           </div>
 
-          {/* Contact Form */}
+          {/* Form Side */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
             className="lg:col-span-7"
           >
-            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 p-6 md:p-8">
-              <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-6">
-                Kirim Pesan Langsung
-              </h3>
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid md:grid-cols-2 gap-5">
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="name"
-                      className="text-sm font-medium text-slate-700 dark:text-slate-300"
-                    >
-                      Nama Lengkap
-                    </label>
+            <div className="glass-effect p-8 md:p-12 rounded-[3.5rem] border border-white/5 relative shadow-2xl">
+              <div className="flex items-center gap-3 mb-10">
+                <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10">
+                  <MessageSquare className="w-6 h-6 text-cyan-400" />
+                </div>
+                <h3 className="text-2xl font-bold font-outfit text-white">Direct Message</h3>
+              </div>
+
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-3">
+                    <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Nama</label>
                     <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all"
-                      placeholder="Nama Anda"
+                      type="text" name="name" required placeholder="Jhon Doe"
+                      className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/5 text-white placeholder:text-slate-600 focus:outline-none focus:border-cyan-500/50 focus:bg-white/10 transition-all font-light"
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="email"
-                      className="text-sm font-medium text-slate-700 dark:text-slate-300"
-                    >
-                      Email
-                    </label>
+                  <div className="space-y-3">
+                    <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Email</label>
                     <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all"
-                      placeholder="email@anda.com"
+                      type="email" name="email" required placeholder="hello@mail.com"
+                      className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/5 text-white placeholder:text-slate-600 focus:outline-none focus:border-cyan-500/50 focus:bg-white/10 transition-all font-light"
                     />
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label
-                    htmlFor="subject"
-                    className="text-sm font-medium text-slate-700 dark:text-slate-300"
-                  >
-                    Subjek
-                  </label>
+                <div className="space-y-3">
+                  <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Subject</label>
                   <select
-                    id="subject"
                     name="subject"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all appearance-none"
+                    className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/5 text-slate-300 focus:outline-none focus:border-cyan-500/50 focus:bg-white/10 transition-all font-light appearance-none cursor-pointer"
                   >
-                    <option value="Tawaran Proyek">Tawaran Proyek</option>
-                    <option value="Kolaborasi">Kolaborasi</option>
-                    <option value="Tanya Saja">Sekadar Bertanya</option>
+                    <option value="Project Proposal" className="bg-[#030712]">Project Proposal</option>
+                    <option value="Collaboration" className="bg-[#030712]">Collaboration</option>
+                    <option value="General Inquiry" className="bg-[#030712]">General Inquiry</option>
                   </select>
                 </div>
 
-                <div className="space-y-2">
-                  <label
-                    htmlFor="message"
-                    className="text-sm font-medium text-slate-700 dark:text-slate-300"
-                  >
-                    Pesan
-                  </label>
+                <div className="space-y-3">
+                  <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Pesan</label>
                   <textarea
-                    id="message"
-                    name="message"
-                    rows="5"
-                    required
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all resize-none"
-                    placeholder="Ceritakan detail proyek..."
+                    name="message" rows="4" required placeholder="What's on your mind?"
+                    className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/5 text-white placeholder:text-slate-600 focus:outline-none focus:border-cyan-500/50 focus:bg-white/10 transition-all font-light resize-none"
                   ></textarea>
                 </div>
 
-                <div className="pt-2">
-                  <button
-                    type="submit"
-                    disabled={formStatus !== "idle"}
-                    className={`w-full py-4 px-6 rounded-xl font-bold text-white shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/30 transition-all transform hover:-translate-y-1 active:translate-y-0 flex items-center justify-center gap-2 ${
-                      formStatus === "success"
-                        ? "bg-green-500"
-                        : "bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700"
-                    }`}
-                  >
+                <button
+                  type="submit"
+                  disabled={formStatus !== "idle"}
+                  className={`w-full py-5 rounded-2xl font-bold flex items-center justify-center gap-3 transition-all transform active:scale-[0.98] ${
+                    formStatus === "success" 
+                      ? "bg-emerald-500 text-white" 
+                      : "bg-white text-[#030712] hover:bg-cyan-400 hover:shadow-xl hover:shadow-cyan-500/20"
+                  }`}
+                >
+                  <AnimatePresence mode="wait">
                     {formStatus === "submitting" ? (
-                      <>
+                      <motion.div
+                        key="submitting"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="flex items-center gap-2"
+                      >
                         <Loader2 className="w-5 h-5 animate-spin" />
-                        Mengirim...
-                      </>
+                        <span>SENDING...</span>
+                      </motion.div>
                     ) : formStatus === "success" ? (
-                      <>
+                      <motion.div
+                        key="success"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="flex items-center gap-2"
+                      >
                         <CheckCircle2 className="w-5 h-5" />
-                        Terkirim Berhasil
-                      </>
+                        <span>SENT SUCCESSFULLY!</span>
+                      </motion.div>
                     ) : (
-                      <>
+                      <motion.div
+                        key="idle"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="flex items-center gap-2"
+                      >
                         <Send className="w-5 h-5" />
-                        Kirim Pesan
-                      </>
+                        <span>SEND MESSAGE</span>
+                      </motion.div>
                     )}
-                  </button>
-                </div>
+                  </AnimatePresence>
+                </button>
               </form>
             </div>
           </motion.div>
