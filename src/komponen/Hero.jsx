@@ -167,28 +167,6 @@ const Hero = ({
             className="lg:col-span-5 relative"
           >
             <div className="relative group">
-              {/* Animated Rings */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{
-                    duration: 20,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  className="w-full h-full rounded-[3rem] border border-dashed border-cyan-500/20 scale-110"
-                />
-                <motion.div
-                  animate={{ rotate: -360 }}
-                  transition={{
-                    duration: 25,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  className="w-[90%] h-[90%] rounded-[2.5rem] border border-dashed border-blue-500/10 scale-125"
-                />
-              </div>
-
               {/* Central Card */}
               <div className="relative z-10 glass-effect p-8 md:p-12 rounded-[3.5rem] aspect-square flex flex-col items-center justify-center text-center shadow-2xl">
                 <div className="absolute top-8 right-8">
