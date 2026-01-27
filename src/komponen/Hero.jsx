@@ -1,5 +1,12 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Instagram, ArrowRight, Download, MousePointer2 } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Instagram,
+  ArrowRight,
+  Download,
+  MousePointer2,
+} from "lucide-react";
 import RotatingText from "./efek/RotatingText";
 
 const Hero = ({
@@ -47,7 +54,12 @@ const Hero = ({
             scale: [1, 1.3, 1],
             opacity: [0.2, 0.4, 0.2],
           }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
           className="absolute -bottom-[10%] -right-[10%] w-[50%] h-[50%] bg-blue-600/10 rounded-full blur-[120px]"
         />
       </div>
@@ -74,19 +86,15 @@ const Hero = ({
               </span>
             </motion.div>
 
-            <motion.h1 
-              variants={itemVariants} 
+            <motion.h1
+              variants={itemVariants}
               className="text-5xl md:text-7xl font-extrabold font-outfit mb-6 leading-[1.05]"
             >
               <span className="block text-slate-400 text-2xl md:text-3xl font-medium mb-2">
                 Hi, I'm
               </span>
-              <span className="cyan-gradient-text block mb-2">
-                {nama}
-              </span>
-              <span className="text-white">
-                Digital Solution Expert.
-              </span>
+              <span className="cyan-gradient-text block mb-2">{nama}</span>
+              <span className="text-white">Tech & Admin Explorer.</span>
             </motion.h1>
 
             <motion.p
@@ -123,9 +131,14 @@ const Hero = ({
             </motion.div>
 
             {/* Social Medias */}
-            <motion.div variants={itemVariants} className="flex items-center justify-center lg:justify-start gap-4">
+            <motion.div
+              variants={itemVariants}
+              className="flex items-center justify-center lg:justify-start gap-4"
+            >
               <div className="h-px w-8 bg-slate-800" />
-              <p className="text-xs uppercase tracking-[0.3em] font-bold text-slate-500 mr-2">Follow Me</p>
+              <p className="text-xs uppercase tracking-[0.3em] font-bold text-slate-500 mr-2">
+                Follow Me
+              </p>
               {[
                 { icon: Github, link: GitHubLink, label: "GitHub" },
                 { icon: Linkedin, link: LinkedInLink, label: "LinkedIn" },
@@ -158,12 +171,20 @@ const Hero = ({
               <div className="absolute inset-0 flex items-center justify-center">
                 <motion.div
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  transition={{
+                    duration: 20,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
                   className="w-full h-full rounded-[3rem] border border-dashed border-cyan-500/20 scale-110"
                 />
                 <motion.div
                   animate={{ rotate: -360 }}
-                  transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                  transition={{
+                    duration: 25,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
                   className="w-[90%] h-[90%] rounded-[2.5rem] border border-dashed border-blue-500/10 scale-125"
                 />
               </div>
@@ -173,9 +194,9 @@ const Hero = ({
                 <div className="absolute top-8 right-8">
                   <MousePointer2 className="w-6 h-6 text-cyan-500 rotate-12" />
                 </div>
-                
+
                 <RotatingText
-                  texts={["Innovative", "Professional", "Productive", "Dynamic"]}
+                  texts={["Persistent", "Growing", "Productive", "Dynamic"]}
                   mainClassName="font-outfit font-black text-5xl md:text-7xl leading-none text-white tracking-tighter"
                   staggerFrom={"last"}
                   initial={{ y: "100%", opacity: 0 }}
@@ -186,7 +207,7 @@ const Hero = ({
                   transition={{ type: "spring", damping: 25, stiffness: 200 }}
                   rotationInterval={3000}
                 />
-                
+
                 <div className="mt-8 flex flex-col items-center">
                   <div className="h-1.5 w-12 bg-linear-to-r from-cyan-500 to-blue-600 rounded-full mb-4 shadow-[0_0_15px_rgba(34,211,238,0.5)]" />
                   <p className="text-slate-500 font-bold uppercase tracking-[0.4em] text-[10px]">
@@ -197,18 +218,30 @@ const Hero = ({
                 {/* Floating Tags */}
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
                   className="absolute -top-6 -right-6 px-5 py-2.5 glass-effect rounded-2xl border border-white/10 shadow-lg"
                 >
-                  <span className="text-cyan-400 font-bold text-xs uppercase tracking-wider">Web Support</span>
+                  <span className="text-cyan-400 font-bold text-xs uppercase tracking-wider">
+                    Web Support
+                  </span>
                 </motion.div>
-                
+
                 <motion.div
                   animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
                   className="absolute -bottom-6 -left-6 px-5 py-2.5 glass-effect rounded-2xl border border-white/10 shadow-lg"
                 >
-                  <span className="text-blue-400 font-bold text-xs uppercase tracking-wider">Admin Pro</span>
+                  <span className="text-blue-400 font-bold text-xs uppercase tracking-wider">
+                    Learning Admin
+                  </span>
                 </motion.div>
               </div>
             </div>
@@ -223,7 +256,9 @@ const Hero = ({
         transition={{ delay: 2, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center"
       >
-        <span className="text-[10px] uppercase tracking-[0.5em] text-slate-500 mb-4 font-bold">Scroll Down</span>
+        <span className="text-[10px] uppercase tracking-[0.5em] text-slate-500 mb-4 font-bold">
+          Scroll Down
+        </span>
         <div className="w-px h-12 bg-linear-to-b from-cyan-500 to-transparent relative overflow-hidden">
           <motion.div
             animate={{ y: ["-100%", "100%"] }}

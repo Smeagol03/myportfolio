@@ -22,8 +22,16 @@ const About = () => {
   };
 
   const stats = [
-    { label: "Years Experience", value: "3+", color: "from-cyan-400 to-blue-500" },
-    { label: "Completed Projects", value: "15+", color: "from-purple-400 to-pink-500" },
+    {
+      label: "Years Experience",
+      value: "3+",
+      color: "from-cyan-400 to-blue-500",
+    },
+    {
+      label: "Completed Projects",
+      value: "15+",
+      color: "from-purple-400 to-pink-500",
+    },
   ];
 
   return (
@@ -75,7 +83,9 @@ const About = () => {
               </div>
               <h2 className="text-4xl md:text-5xl font-extrabold font-outfit leading-tight text-white">
                 Membangun Efisiensi Melalui <br />
-                <span className="cyan-gradient-text">Solusi Digital Kreatif.</span>
+                <span className="cyan-gradient-text">
+                  Solusi Digital Kreatif.
+                </span>
               </h2>
             </motion.div>
 
@@ -83,17 +93,28 @@ const About = () => {
               variants={itemVariants}
               className="text-lg text-slate-400 leading-relaxed font-light"
             >
-              Halo! Saya Alpian Tabrani, tenaga administrasi dan web support yang berfokus pada efisiensi. 
-              Dengan keahlian manajemen data serta pengembangan solusi digital menggunakan 
-              <span className="text-white font-medium"> React & Firebase</span>, saya membantu organisasi 
-              bekerja lebih terstruktur dan profesional melalui pendekatan yang detail dan inovatif.
+              Halo! Saya Alpian Tabrani, tenaga administrasi dan web support
+              yang berdedikasi pada efisiensi. Dengan keahlian manajemen data
+              serta pengembangan solusi digital menggunakan
+              <span className="text-white font-medium"> React & Firebase</span>,
+              saya membantu organisasi bekerja lebih terstruktur dan terus
+              belajar untuk memberikan hasil yang lebih baik melalui pendekatan
+              yang detail.
             </motion.p>
 
             {/* Micro Stats Grid */}
-            <motion.div variants={itemVariants} className="grid grid-cols-2 gap-6 pb-4">
+            <motion.div
+              variants={itemVariants}
+              className="grid grid-cols-2 gap-6 pb-4"
+            >
               {stats.map((stat, idx) => (
-                <div key={idx} className="glass-effect p-6 rounded-3xl border border-white/5">
-                  <p className={`text-3xl font-bold bg-clip-text text-transparent bg-linear-to-r ${stat.color} font-outfit mb-1`}>
+                <div
+                  key={idx}
+                  className="glass-effect p-6 rounded-3xl border border-white/5"
+                >
+                  <p
+                    className={`text-3xl font-bold bg-clip-text text-transparent bg-linear-to-r ${stat.color} font-outfit mb-1`}
+                  >
                     {stat.value}
                   </p>
                   <p className="text-xs font-bold text-slate-500 uppercase tracking-widest leading-none">
@@ -104,21 +125,44 @@ const About = () => {
             </motion.div>
 
             {/* Core Pillars */}
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap gap-4"
+            >
               {[
-                { icon: FileText, text: "Data Management", color: "text-blue-400" },
-                { icon: Code2, text: "Web Architecture", color: "text-cyan-400" },
-                { icon: Users, text: "Collaboration", color: "text-purple-400" },
+                {
+                  icon: FileText,
+                  text: "Data Management",
+                  color: "text-blue-400",
+                },
+                {
+                  icon: Code2,
+                  text: "Web Architecture",
+                  color: "text-cyan-400",
+                },
+                {
+                  icon: Users,
+                  text: "Collaboration",
+                  color: "text-purple-400",
+                },
               ].map((pill, i) => (
-                <div key={i} className="flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
+                <div
+                  key={i}
+                  className="flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors"
+                >
                   <pill.icon className={`w-4 h-4 ${pill.color}`} />
-                  <span className="text-sm font-medium text-slate-300">{pill.text}</span>
+                  <span className="text-sm font-medium text-slate-300">
+                    {pill.text}
+                  </span>
                 </div>
               ))}
             </motion.div>
 
             {/* Action Group */}
-            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-6 pt-4">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap items-center gap-6 pt-4"
+            >
               <a
                 href="#contact"
                 className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-[#030712] font-bold rounded-2xl hover:bg-cyan-400 transition-all shadow-xl shadow-white/5"

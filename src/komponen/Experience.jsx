@@ -10,11 +10,11 @@ const experienceData = [
     description: [
       "Manajemen arsip & dokumen digital organisasi.",
       "Optimasi sistem e-government & CMS dinas.",
-      "Koordinasi administrasi internal & eksternal."
+      "Koordinasi administrasi internal & eksternal.",
     ],
     tech: ["MS Office", "CMS Admin", "Google Suite"],
     icon: Briefcase,
-    color: "from-blue-500 to-cyan-500"
+    color: "from-blue-500 to-cyan-500",
   },
   {
     title: "Web Developer",
@@ -26,20 +26,20 @@ const experienceData = [
     ],
     tech: ["React.js", "Firebase", "Tailwind CSS"],
     icon: Code,
-    color: "from-purple-500 to-pink-500"
+    color: "from-purple-500 to-pink-500",
   },
   {
-    title: "Multimedia Professional",
+    title: "Multimedia Enthusiast",
     company: "Digital Printing Cahaya Mandiri",
-    period: "2018 - 2020",
+    period: "2019 - 2019",
     description: [
       "Produksi konten visual & digital printing.",
       "Desain grafis untuk branding & promosi.",
-      "Manajemen operasional peralatan kreatif."
+      "Manajemen operasional peralatan kreatif.",
     ],
     tech: ["Photoshop", "Canva", "Printing Tools"],
     icon: PenTool,
-    color: "from-amber-400 to-orange-500"
+    color: "from-amber-400 to-orange-500",
   },
 ];
 
@@ -53,11 +53,15 @@ const Experience = () => {
   const scaleY = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
 
   return (
-    <section id="experience" ref={containerRef} className="py-32 relative overflow-hidden bg-[#030712]">
+    <section
+      id="experience"
+      ref={containerRef}
+      className="py-32 relative overflow-hidden bg-[#030712]"
+    >
       {/* Elegant Section Divider */}
       <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-slate-800 to-transparent" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-linear-to-r from-transparent via-cyan-500/20 to-transparent blur-sm" />
@@ -75,17 +79,19 @@ const Experience = () => {
             className="flex items-center justify-center gap-3 mb-4"
           >
             <div className="h-px w-8 bg-cyan-500" />
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-cyan-400">Career Timeline</span>
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-cyan-400">
+              Career Timeline
+            </span>
             <div className="h-px w-8 bg-cyan-500" />
           </motion.div>
-          
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-extrabold font-outfit text-white mb-6"
           >
-            Jejak <span className="cyan-gradient-text">Profesional Saya.</span>
+            Perjalanan <span className="cyan-gradient-text">Belajar Saya.</span>
           </motion.h2>
         </div>
 
@@ -101,20 +107,34 @@ const Experience = () => {
             {experienceData.map((exp, index) => {
               const isLeft = index % 2 === 0;
               return (
-                <div key={index} className="relative flex flex-col md:flex-row items-center justify-between">
+                <div
+                  key={index}
+                  className="relative flex flex-col md:flex-row items-center justify-between"
+                >
                   {/* Left Side (Desktop) */}
-                  <div className={`hidden md:block w-[42%] ${isLeft ? "text-right order-1" : "order-3"}`}>
+                  <div
+                    className={`hidden md:block w-[42%] ${isLeft ? "text-right order-1" : "order-3"}`}
+                  >
                     <motion.div
                       initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, margin: "-100px" }}
                       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     >
-                      <h3 className="text-2xl md:text-3xl font-bold font-outfit text-white mb-2">{exp.title}</h3>
-                      <p className="text-cyan-400 font-bold text-sm tracking-widest uppercase mb-4">{exp.company}</p>
-                      <div className={`flex flex-wrap gap-2 justify-center ${isLeft ? "md:justify-end" : "md:justify-start"}`}>
+                      <h3 className="text-2xl md:text-3xl font-bold font-outfit text-white mb-2">
+                        {exp.title}
+                      </h3>
+                      <p className="text-cyan-400 font-bold text-sm tracking-widest uppercase mb-4">
+                        {exp.company}
+                      </p>
+                      <div
+                        className={`flex flex-wrap gap-2 justify-center ${isLeft ? "md:justify-end" : "md:justify-start"}`}
+                      >
                         {exp.tech.map((t, i) => (
-                          <span key={i} className="text-[10px] font-bold text-slate-500 bg-white/5 px-3 py-1 rounded-lg border border-white/5">
+                          <span
+                            key={i}
+                            className="text-[10px] font-bold text-slate-500 bg-white/5 px-3 py-1 rounded-lg border border-white/5"
+                          >
                             {t}
                           </span>
                         ))}
@@ -135,7 +155,9 @@ const Experience = () => {
                   </div>
 
                   {/* Content Card */}
-                  <div className={`w-full md:w-[42%] pl-16 md:pl-0 ${isLeft ? "md:order-3" : "md:order-1"}`}>
+                  <div
+                    className={`w-full md:w-[42%] pl-16 md:pl-0 ${isLeft ? "md:order-3" : "md:order-1"}`}
+                  >
                     <motion.div
                       initial={{ opacity: 0, x: isLeft ? 50 : -50 }}
                       whileInView={{ opacity: 1, x: 0 }}
@@ -145,20 +167,28 @@ const Experience = () => {
                     >
                       {/* Mobile Header (Hidden on Desktop) */}
                       <div className="md:hidden mb-6">
-                        <h3 className="text-2xl font-bold font-outfit text-white mb-2">{exp.title}</h3>
-                        <p className="text-cyan-400 font-bold text-xs uppercase tracking-widest">{exp.company}</p>
+                        <h3 className="text-2xl font-bold font-outfit text-white mb-2">
+                          {exp.title}
+                        </h3>
+                        <p className="text-cyan-400 font-bold text-xs uppercase tracking-widest">
+                          {exp.company}
+                        </p>
                       </div>
 
                       <div className="flex items-center gap-3 mb-6">
                         <Calendar className="w-4 h-4 text-slate-500" />
-                        <span className="text-xs font-bold text-slate-500 uppercase tracking-[0.2em]">{exp.period}</span>
+                        <span className="text-xs font-bold text-slate-500 uppercase tracking-[0.2em]">
+                          {exp.period}
+                        </span>
                       </div>
 
                       <ul className="space-y-4">
                         {exp.description.map((point, i) => (
                           <li key={i} className="flex items-start gap-3">
                             <CheckCircle2 className="w-4 h-4 text-cyan-500 mt-1 shrink-0" />
-                            <span className="text-slate-400 text-sm font-light leading-relaxed">{point}</span>
+                            <span className="text-slate-400 text-sm font-light leading-relaxed">
+                              {point}
+                            </span>
                           </li>
                         ))}
                       </ul>
