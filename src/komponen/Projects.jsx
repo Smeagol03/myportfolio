@@ -46,7 +46,7 @@ const projectData = [
     title: "Sistem Absensi",
     description: "Sistem absensi karyawan berbasis web untuk pengelolaan kehadiran yang akurat.",
     tech: ["Firebase", "Tailwind CSS"],
-    image: "https://perkim-absensi.vercel.app/ss-absensi.png",
+    image: "/ss-absensi.png",
     link: "https://perkim-absensi.vercel.app/",
     category: "Administrative Tool",
   },
