@@ -11,11 +11,11 @@ const projectData = [
     category: "Web App",
   },
   {
-    title: "Pendaftaran Rusunawa Online",
-    description: "Sistem pendaftaran online untuk rumah susun sewa yang memudahkan proses aplikasi.",
-    tech: ["Firebase", "Tailwind CSS"],
-    image: "https://rusunawadaftar.vercel.app/src/asset/img/rusun.jpg",
-    link: "https://rusunawadaftar.vercel.app/",
+    title: "Aplikasi Pencatatan Keuangan",
+    description: "Sistem pencatatan keuangan online yang memudahkan pengelolaan keuangan rumah tangga.",
+    tech: ["Supabase", "Tailwind CSS"],
+    image: "https://laporan-keuangan-sand.vercel.app/logoBesar.png",
+    link: "https://laporan-keuangan-sand.vercel.app/login",
     category: "Management System",
   },
   {
@@ -43,11 +43,11 @@ const projectData = [
     category: "E-Commerce",
   },
   {
-    title: "Sistem Absensi Perkim",
+    title: "Sistem Absensi",
     description: "Sistem absensi karyawan berbasis web untuk pengelolaan kehadiran yang akurat.",
     tech: ["Firebase", "Tailwind CSS"],
-    image: "https://absensiperkim.vercel.app/images/Lambang_Kabupaten_Lombok_Timur.png",
-    link: "https://absensiperkim.vercel.app/",
+    image: "https://perkim-absensi.vercel.app/ss-absensi.png",
+    link: "https://perkim-absensi.vercel.app/",
     category: "Administrative Tool",
   },
 ];
