@@ -103,7 +103,7 @@ const Experience = () => {
             className="absolute left-6 md:left-1/2 top-4 bottom-4 w-0.5 bg-linear-to-b from-cyan-400 via-blue-500 to-purple-600 hidden md:block z-20 shadow-[0_0_15px_rgba(34,211,238,0.5)]"
           />
 
-          <div className="space-y-24 px-2">
+          <div className="space-y-24 px-5 md:px-0">
             {experienceData.map((exp, index) => {
               const isLeft = index % 2 === 0;
               return (
