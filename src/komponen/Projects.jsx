@@ -6,7 +6,7 @@ const projectData = [
     title: "Daftar Pelatihan Jahit",
     description: "Pendaftaran pelatihan menjahit secara online yang memudahkan peserta untuk mendaftar.",
     tech: ["Firebase", "Tailwind CSS"],
-    image: "https://lpkduaberkah.com/src/img/galeri/1.webp",
+    image: "https://lpkduaberkah.com/img/galeri/1.webp",
     link: "https://lpkduaberkah.com/",
     category: "Web App",
   },
