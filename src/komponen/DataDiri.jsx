@@ -158,8 +158,6 @@ const DataDiri = () => {
                     <span className="text-white">No. Ponsel / WhatsApp</span>
                   }
                   value={<span className="text-white">{data.noPonsel}</span>}
-                  isLink
-                  linkType="tel"
                 />
                 <InfoItem
                   variants={itemVariants}
@@ -184,7 +182,7 @@ const DataDiri = () => {
                   <a
                     href={`https://wa.me/${data.noPonsel.replace(
                       /[^0-9]/g,
-                      ""
+                      "",
                     )}`}
                     target="_blank"
                     rel="noreferrer"
