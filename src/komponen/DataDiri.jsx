@@ -17,7 +17,7 @@ const DataDiri = () => {
     tempatLahir: "Lombok Timur",
     tanggalLahir: "21 Desember 2001",
     alamat: "Desa Rumbuk, Kec. Sakra, Kab. Lombok Timur, NTB",
-    noPonsel: "6281547190395",
+    noPonsel: "6287894721726",
     email: "atabrani3@gmail.com",
     kewarganegaraan: "Indonesia",
     agama: "Islam",

@@ -22,8 +22,8 @@ const contactInfo = [
   {
     icon: Phone,
     label: "WhatsApp",
-    value: "+62 815-4719-0395",
-    link: "https://wa.me/6281547190395",
+    value: "+6287894721726",
+    link: "https://wa.me/6287894721726",
     color: "from-green-500 to-emerald-500",
   },
   {
