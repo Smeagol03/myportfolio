@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import OffcanvasMenu from "./OffcanvasMenu";
 
 const Navbar = () => {
@@ -50,7 +50,7 @@ const Navbar = () => {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled ? "py-4" : "py-6"
         }`}
       >
@@ -58,7 +58,7 @@ const Navbar = () => {
           <div
             className={`flex justify-between items-center transition-all duration-500 px-6 rounded-2xl ${
               scrolled
-                ? "h-16 glass-effect shadow-2xl shadow-cyan-950/20"
+                ? "h-16 bg-zinc-900/40 backdrop-blur-md border border-zinc-800/50 shadow-sm"
                 : "h-20 bg-transparent"
             }`}
           >
@@ -69,22 +69,21 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               className="flex items-center gap-2 group"
             >
-              <div className="w-10 h-10 rounded-xl bg-linear-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20 group-hover:rotate-6 transition-transform duration-300">
-                <span className="text-white font-bold text-xl font-outfit">A</span>
+              <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors duration-300">
+                <span className="text-white group-hover:text-black font-bold text-xl font-outfit">
+                  A
+                </span>
               </div>
-              <div className="flex flex-col leading-none">
+              <div className="flex flex-col leading-none ml-2">
                 <span className="text-lg font-bold font-outfit tracking-wider text-white">
                   ALPIAN
-                </span>
-                <span className="text-[10px] uppercase tracking-[0.3em] font-medium text-cyan-400">
-                  Portfolio
                 </span>
               </div>
             </motion.a>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-2">
-              <div className="flex items-center bg-slate-800/20 backdrop-blur-sm p-1.5 rounded-xl border border-white/5 mr-4">
+              <div className="flex items-center space-x-1 mr-4 rounded-xl p-1">
                 {navLinks.map((link) => {
                   const isActive =
                     activeSection === link.href.replace("#", "") ||
@@ -93,20 +92,28 @@ const Navbar = () => {
                     <a
                       key={link.name}
                       href={link.href}
-                      className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg ${
-                        isActive
-                          ? "text-white"
-                          : "text-slate-400 hover:text-white"
-                      }`}
+                      className="relative px-4 py-2 text-sm font-medium transition-colors"
                     >
+                      {isActive ? (
+                        <span className="text-white relative z-10">
+                          {link.name}
+                        </span>
+                      ) : (
+                        <span className="text-zinc-400 hover:text-white transition-colors relative z-10">
+                          {link.name}
+                        </span>
+                      )}
                       {isActive && (
                         <motion.div
                           layoutId="nav-active"
                           className="absolute inset-0 bg-white/10 rounded-lg"
-                          transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                          transition={{
+                            type: "spring",
+                            bounce: 0.1,
+                            duration: 0.4,
+                          }}
                         />
                       )}
-                      <span className="relative z-10">{link.name}</span>
                     </a>
                   );
                 })}
@@ -117,7 +124,7 @@ const Navbar = () => {
                 href="#contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-2.5 text-sm font-semibold text-white bg-linear-to-r from-cyan-500 to-blue-600 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 flex items-center gap-2"
+                className="px-6 py-2.5 text-sm font-semibold text-zinc-950 bg-white rounded-xl hover:bg-zinc-200 transition-colors"
               >
                 Hire Me
               </motion.a>
@@ -127,7 +134,7 @@ const Navbar = () => {
             <div className="md:hidden">
               <button
                 onClick={() => setIsOpen(true)}
-                className="w-11 h-11 flex items-center justify-center rounded-xl bg-slate-800/40 border border-slate-700/50 text-slate-300 hover:text-white hover:bg-slate-700/60 transition-all shadow-sm"
+                className="w-11 h-11 flex items-center justify-center rounded-xl bg-zinc-900/80 border border-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all"
               >
                 <Menu size={22} />
               </button>

@@ -1,178 +1,101 @@
 import { motion } from "framer-motion";
-import { Code2, FileText, Users, ArrowRight } from "lucide-react";
-import DataDiri from "./DataDiri";
+import { CheckCircle2, FileText, Database, Shield } from "lucide-react";
 import Bg from "/pasAlpianTabrani.jpg";
 
 const About = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
-
-  const stats = [
-    {
-      label: "Years Experience",
-      value: "3+",
-      color: "from-cyan-400 to-blue-500",
-    },
-    {
-      label: "Completed Projects",
-      value: "15+",
-      color: "from-purple-400 to-pink-500",
-    },
-  ];
-
   return (
-    <section id="about" className="py-32 relative overflow-hidden bg-[#030712]">
-      {/* Subtle Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(34,211,238,0.05)_0%,transparent_50%)] pointer-events-none" />
-
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          {/* Left: Minimalist Image Frame */}
+    <section
+      id="about"
+      className="py-24 bg-[#0A0A0A] border-t border-zinc-900 relative overflow-hidden"
+    >
+      <div className="container mx-auto px-6 max-w-6xl relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Image Side */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 relative group"
+            className="relative"
           >
-            <div className="relative">
-              {/* Main Image */}
-              <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl z-20 aspect-4/5 lg:aspect-auto">
-                <img
-                  src={Bg}
-                  alt="Alpian Tabrani"
-                  className="w-full h-full object-cover grayscale-20 group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-[#030712]/60 via-transparent to-transparent" />
-              </div>
+            <div className="aspect-4/5 max-w-sm mx-auto lg:mx-0 relative rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-2xl">
+              <img
+                src={Bg}
+                alt="Alpian Tabrani"
+                className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-[#0A0A0A] to-transparent opacity-50" />
+            </div>
 
-              {/* Decorative Elements */}
-              <div className="absolute -bottom-6 -right-6 w-full h-full border border-cyan-500/20 rounded-[2.5rem] -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500" />
-              <div className="absolute -top-6 -left-6 w-24 h-24 border-t-2 border-l-2 border-cyan-500/30 rounded-tl-4xl -z-10" />
+            {/* Quick Stat Overlay */}
+            <div className="absolute -bottom-6 -right-6 md:right-0 lg:-right-12 max-w-xs glass-panel p-6 rounded-2xl hidden md:block">
+              <p className="text-4xl font-outfit font-bold text-white mb-1">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-indigo-500">
+                  3+
+                </span>
+              </p>
+              <p className="text-sm font-medium text-zinc-400 leading-relaxed">
+                Years of cross-functional experience in Web Support &
+                Administration.
+              </p>
             </div>
           </motion.div>
 
-          {/* Right: Refined Content */}
+          {/* Text Side */}
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-7 space-y-8"
           >
-            <motion.div variants={itemVariants} className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="h-px w-8 bg-cyan-500" />
-                <span className="text-xs font-bold uppercase tracking-[0.3em] text-cyan-400">
-                  Inside My Story
-                </span>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-extrabold font-outfit leading-tight text-white">
-                Membangun Efisiensi Melalui <br />
-                <span className="cyan-gradient-text">
-                  Solusi Digital Kreatif.
-                </span>
-              </h2>
-            </motion.div>
+            <h2 className="text-4xl md:text-5xl font-outfit font-bold tracking-tight text-white mb-8">
+              Detail-Oriented <br />
+              <span className="text-zinc-500">Problem Solver.</span>
+            </h2>
 
-            <motion.p
-              variants={itemVariants}
-              className="text-lg text-slate-400 leading-relaxed font-light"
-            >
-              Halo! Saya Alpian Tabrani, tenaga administrasi dan web support
-              yang berdedikasi pada efisiensi. Dengan keahlian manajemen data
-              serta pengembangan solusi digital menggunakan
-              <span className="text-white font-medium"> React & Firebase</span>,
-              saya membantu organisasi bekerja lebih terstruktur dan terus
-              belajar untuk memberikan hasil yang lebih baik melalui pendekatan
-              yang detail.
-            </motion.p>
+            <div className="space-y-6 text-zinc-400 text-lg font-light leading-relaxed mb-10">
+              <p>
+                Hello! I am Alpian Tabrani, a dedicated professional blending
+                administrative precision with full-stack web development
+                capabilities.
+              </p>
+              <p>
+                My expertise lies in building efficient digital solutions using{" "}
+                <strong className="text-white font-medium">
+                  React & Firebase
+                </strong>
+                , while ensuring data integrity and seamless organizational
+                workflows. I thrive in environments where structured data meets
+                intuitive user interfaces.
+              </p>
+            </div>
 
-            {/* Micro Stats Grid */}
-            <motion.div
-              variants={itemVariants}
-              className="grid grid-cols-2 gap-6 pb-4"
-            >
-              {stats.map((stat, idx) => (
-                <div
-                  key={idx}
-                  className="glass-effect p-6 rounded-3xl border border-white/5"
-                >
-                  <p
-                    className={`text-3xl font-bold bg-clip-text text-transparent bg-linear-to-r ${stat.color} font-outfit mb-1`}
-                  >
-                    {stat.value}
-                  </p>
-                  <p className="text-xs font-bold text-slate-500 uppercase tracking-widest leading-none">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </motion.div>
-
-            {/* Core Pillars */}
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-wrap gap-4"
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4">
               {[
-                {
-                  icon: FileText,
-                  text: "Data Management",
-                  color: "text-blue-400",
-                },
-                {
-                  icon: Code2,
-                  text: "Web Architecture",
-                  color: "text-cyan-400",
-                },
-                {
-                  icon: Users,
-                  text: "Collaboration",
-                  color: "text-purple-400",
-                },
-              ].map((pill, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors"
-                >
-                  <pill.icon className={`w-4 h-4 ${pill.color}`} />
-                  <span className="text-sm font-medium text-slate-300">
-                    {pill.text}
+                { icon: Database, text: "Database Management" },
+                { icon: FileText, text: "Administrative Support" },
+                { icon: Shield, text: "System Reliability" },
+                { icon: CheckCircle2, text: "Detail Optimization" },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0">
+                    <item.icon className="w-5 h-5 text-zinc-400" />
+                  </div>
+                  <span className="text-zinc-300 font-medium text-sm">
+                    {item.text}
                   </span>
                 </div>
               ))}
-            </motion.div>
+            </div>
 
-            {/* Action Group */}
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-wrap items-center gap-6 pt-4"
-            >
-              <a
-                href="#contact"
-                className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-[#030712] font-bold rounded-2xl hover:bg-cyan-400 transition-all shadow-xl shadow-white/5"
-              >
-                Let's Talk
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <div className="h-10 w-px bg-slate-800 hidden sm:block" />
-              <DataDiri />
-            </motion.div>
+            <div className="mt-12 sm:hidden">
+              <div className="glass-panel p-6 rounded-2xl">
+                <p className="text-4xl font-outfit font-bold text-white mb-1">
+                  3+
+                </p>
+                <p className="text-sm font-medium text-zinc-400">
+                  Years of cross-functional experience.
+                </p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

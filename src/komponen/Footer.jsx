@@ -1,18 +1,16 @@
 import { motion } from "framer-motion";
-import { Github, Instagram, ArrowUp, Mail, MapPin, Globe } from "lucide-react";
+import { Github, Instagram, ArrowUp, Mail, MapPin } from "lucide-react";
 
 const socialLinks = [
   {
     name: "GitHub",
     href: "https://github.com/Smeagol03",
     icon: Github,
-    color: "from-blue-500 to-cyan-500",
   },
   {
     name: "Instagram",
     href: "https://www.instagram.com/npc_alpiant?igsh=ZjZrNjV5dHU3bzh6",
     icon: Instagram,
-    color: "from-pink-500 to-rose-500",
   },
 ];
 
@@ -28,17 +26,13 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-[#030712] overflow-hidden pt-20 pb-10 border-t border-white">
-      {/* Decorative Orbs */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/5 rounded-full blur-[120px] -z-10" />
-
+    <footer className="relative bg-[#0A0A0A] overflow-hidden pt-20 pb-10 border-t border-zinc-900">
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 mb-20">
-          {/* Brand Section */}
           <div className="md:col-span-12 lg:col-span-5 space-y-8">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-2xl bg-linear-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
-                <span className="text-white font-bold text-2xl font-outfit">
+              <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center">
+                <span className="text-black font-bold text-2xl font-outfit">
                   A
                 </span>
               </div>
@@ -49,7 +43,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <p className="text-slate-400 font-light leading-relaxed max-w-md text-lg">
+            <p className="text-zinc-400 font-light leading-relaxed max-w-md text-lg">
               Membangun efisiensi melalui solusi digital kreatif. Berfokus pada
               manajemen data dan pengembangan web modern.
             </p>
@@ -61,17 +55,16 @@ const Footer = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-2xl glass-effect border border-white/5 flex items-center justify-center group transition-all hover:border-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/5"
+                  className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center group transition-colors hover:bg-zinc-800"
                 >
-                  <link.icon className="w-5 h-5 text-slate-400 group-hover:text-cyan-400 transition-colors" />
+                  <link.icon className="w-5 h-5 text-zinc-400 group-hover:text-white transition-colors" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Quick Links */}
           <div className="md:col-span-6 lg:col-span-3">
-            <h3 className="text-white font-bold font-outfit uppercase tracking-widest text-sm mb-8">
+            <h3 className="text-zinc-500 font-bold font-outfit uppercase tracking-widest text-sm mb-8">
               Navigation
             </h3>
             <ul className="grid grid-cols-2 gap-y-4 gap-x-8">
@@ -86,10 +79,9 @@ const Footer = () => {
               ].map((item) => (
                 <li key={item}>
                   <a
-                    href={`#${item.toLowerCase()}`}
-                    className="text-slate-400 hover:text-cyan-400 transition-colors text-sm font-light flex items-center gap-2 group"
+                    href={item === "Home" ? "#" : `#${item.toLowerCase()}`}
+                    className="text-zinc-400 hover:text-white transition-colors text-sm font-medium"
                   >
-                    <span className="w-1 h-1 rounded-full bg-slate-800 group-hover:bg-cyan-500 transition-colors" />
                     {item}
                   </a>
                 </li>
@@ -97,9 +89,8 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Preview */}
           <div className="md:col-span-6 lg:col-span-4">
-            <h3 className="text-white font-bold font-outfit uppercase tracking-widest text-sm mb-8">
+            <h3 className="text-zinc-500 font-bold font-outfit uppercase tracking-widest text-sm mb-8">
               Quick Connect
             </h3>
             <div className="space-y-6">
@@ -107,18 +98,18 @@ const Footer = () => {
                 href="mailto:atabrani3@gmail.com"
                 className="flex items-center gap-4 group"
               >
-                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center group-hover:bg-cyan-500/10 transition-colors">
-                  <Mail className="w-4 h-4 text-slate-400 group-hover:text-cyan-400" />
+                <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:bg-zinc-800 transition-colors">
+                  <Mail className="w-4 h-4 text-zinc-400 group-hover:text-white" />
                 </div>
-                <span className="text-slate-400 font-light text-sm group-hover:text-white transition-colors">
+                <span className="text-zinc-400 font-medium text-sm group-hover:text-white transition-colors">
                   atabrani3@gmail.com
                 </span>
               </a>
               <div className="flex items-center gap-4 group cursor-default">
-                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center">
-                  <MapPin className="w-4 h-4 text-slate-400" />
+                <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center">
+                  <MapPin className="w-4 h-4 text-zinc-400" />
                 </div>
-                <span className="text-slate-400 font-light text-sm">
+                <span className="text-zinc-400 font-medium text-sm">
                   Lombok Timur, NTB - ID
                 </span>
               </div>
@@ -126,27 +117,21 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex flex-col md:flex-row items-center gap-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-600">
-            <span>© {currentYear} Alpian Tabrani</span>
-            <span className="hidden md:block w-1 h-1 rounded-full bg-slate-800" />
-            <span>Built with React & Tailwind</span>
+        <div className="pt-8 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-600">
+            © {currentYear} Alpian Tabrani. Built with React & Tailwind.
           </div>
 
           <motion.a
             href="#"
             onClick={scrollToTop}
-            whileHover={{ y: -5 }}
-            whileTap={{ scale: 0.9 }}
-            className="group flex items-center gap-3 px-6 py-3 rounded-2xl glass-effect border border-white/5 text-slate-400 hover:text-cyan-400 transition-all cursor-pointer"
+            whileHover={{ y: -2 }}
+            className="flex items-center gap-2 text-zinc-500 hover:text-white transition-colors"
           >
             <span className="text-xs font-bold uppercase tracking-widest">
               Back to Top
             </span>
-            <div className="w-8 h-8 rounded-xl bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500/20 transition-all">
-              <ArrowUp className="w-4 h-4" />
-            </div>
+            <ArrowUp className="w-4 h-4" />
           </motion.a>
         </div>
       </div>

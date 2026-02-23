@@ -16,7 +16,7 @@ const OffcanvasMenu = ({ isOpen, setIsOpen, navLinks }) => {
   }, [isOpen]);
 
   const menuVariants = {
-    closed: { x: "100%" }, // Slide from right for better UX
+    closed: { x: "100%" },
     open: { x: 0 },
   };
 
@@ -29,30 +29,29 @@ const OffcanvasMenu = ({ isOpen, setIsOpen, navLinks }) => {
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop overlay */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-md z-40 md:hidden"
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 md:hidden"
             onClick={() => setIsOpen(false)}
           />
 
-          {/* Offcanvas Menu */}
           <motion.div
             variants={menuVariants}
             initial="closed"
             animate="open"
             exit="closed"
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed top-0 right-0 h-full w-[80%] max-w-[320px] bg-slate-950 border-l border-white/5 shadow-2xl z-50 md:hidden flex flex-col"
+            className="fixed top-0 right-0 h-full w-[80%] max-w-[320px] bg-[#0A0A0A] border-l border-zinc-800 shadow-2xl z-50 md:hidden flex flex-col"
           >
-            {/* Header */}
-            <div className="flex justify-between items-center p-6 pb-2">
+            <div className="flex justify-between items-center p-6 border-b border-zinc-900">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-linear-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
-                  <span className="text-white font-bold text-sm font-outfit">A</span>
+                <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center">
+                  <span className="text-black font-bold text-sm font-outfit">
+                    A
+                  </span>
                 </div>
                 <span className="text-lg font-bold font-outfit tracking-wider text-white">
                   ALPIAN
@@ -60,14 +59,13 @@ const OffcanvasMenu = ({ isOpen, setIsOpen, navLinks }) => {
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-800/50 text-slate-400 hover:text-white transition-colors"
+                className="w-10 h-10 flex items-center justify-center rounded-xl text-zinc-400 hover:text-white hover:bg-zinc-900 transition-colors"
                 aria-label="Close menu"
               >
                 <X size={20} />
               </button>
             </div>
 
-            {/* Navigation Links */}
             <nav className="flex-1 px-4 py-8 overflow-y-auto">
               <ul className="space-y-2">
                 {navLinks.map((link, idx) => (
@@ -76,35 +74,32 @@ const OffcanvasMenu = ({ isOpen, setIsOpen, navLinks }) => {
                     variants={itemVariants}
                     initial="closed"
                     animate="open"
-                    transition={{ delay: idx * 0.05 + 0.2 }}
+                    transition={{ delay: idx * 0.05 + 0.1 }}
                   >
                     <a
                       href={link.href}
-                      className="flex items-center justify-between px-5 py-4 rounded-2xl text-slate-300 hover:text-white hover:bg-white/5 transition-all duration-300 group"
+                      className="flex items-center justify-between px-5 py-4 rounded-xl text-zinc-400 hover:text-white hover:bg-zinc-900 transition-all duration-300 group"
                       onClick={() => setIsOpen(false)}
                     >
-                      <span className="font-outfit text-lg font-medium tracking-wide">
+                      <span className="font-medium tracking-wide">
                         {link.name}
                       </span>
-                      <div className="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-cyan-400 transition-colors shadow-[0_0_8px_rgba(34,211,238,0)] group-hover:shadow-[0_0_8px_rgba(34,211,238,0.5)]" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover:bg-white transition-colors" />
                     </a>
                   </motion.li>
                 ))}
               </ul>
             </nav>
 
-            {/* Footer / CTA */}
-            <div className="p-6 mt-auto">
-              <div className="p-1 rounded-2xl bg-linear-to-r from-cyan-500/20 to-blue-600/20 border border-cyan-500/10 mb-6">
-                <a
-                  href="#contact"
-                  onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-center w-full px-4 py-4 text-base font-bold text-white bg-linear-to-r from-cyan-500 to-blue-600 rounded-xl shadow-lg shadow-cyan-500/25 active:scale-[0.98] transition-all"
-                >
-                  Hire Me
-                </a>
-              </div>
-              <p className="text-center text-slate-500 text-xs font-medium uppercase tracking-[0.2em]">
+            <div className="p-6 mt-auto border-t border-zinc-900">
+              <a
+                href="#contact"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center justify-center w-full px-4 py-4 text-base font-bold text-zinc-950 bg-white hover:bg-zinc-200 rounded-xl transition-all mb-4"
+              >
+                Hire Me
+              </a>
+              <p className="text-center text-zinc-600 text-xs font-medium uppercase tracking-[0.2em]">
                 &copy; {new Date().getFullYear()} Alpian Tabrani
               </p>
             </div>
