@@ -6,7 +6,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 
 function cn(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -158,7 +158,7 @@ const RotatingText = forwardRef((props, ref) => {
   return (
     <motion.span
       className={cn(
-        "flex flex-wrap whitespace-pre-wrap relative",
+        "flex flex-wrap whitespace-pre-wrap relative text-slate-900 dark:text-white",
         mainClassName
       )}
       {...rest}

@@ -63,28 +63,36 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="py-24 bg-[#0A0A0A] relative border-t border-zinc-900 overflow-hidden"
+      className="py-24 bg-white dark:bg-[#0A0A0A] relative border-t border-slate-200 dark:border-zinc-900 overflow-hidden transition-colors duration-500"
     >
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16">
-          <div className="max-w-xl">
-            <h2 className="text-4xl md:text-5xl font-outfit font-bold tracking-tight text-white mb-4">
-              Selected <span className="text-zinc-500">Works.</span>
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="max-w-xl"
+          >
+            <h2 className="text-4xl md:text-5xl font-outfit font-bold tracking-tight text-slate-900 dark:text-white mb-4">
+              Selected <span className="text-blue-600 dark:text-zinc-500">Works.</span>
             </h2>
-            <p className="text-zinc-400 text-lg">
+            <p className="text-slate-600 dark:text-zinc-400 text-lg">
               A showcase of digital solutions I've built, emphasizing clean
               code, intuitive user experiences, and measurable business impact.
             </p>
-          </div>
-          <a
+          </motion.div>
+          <motion.a
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             href="https://github.com/Smeagol03"
             target="_blank"
             rel="noopener noreferrer"
-            className="group hidden md:flex items-center gap-2 text-zinc-400 hover:text-white transition-colors mt-6 md:mt-0 font-medium"
+            className="group hidden md:flex items-center gap-2 text-slate-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-white transition-colors mt-6 md:mt-0 font-medium"
           >
             View all on GitHub
             <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </a>
+          </motion.a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -96,37 +104,38 @@ const Projects = () => {
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -10 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative glass-card p-2.5 rounded-2xl overflow-hidden interactive-hover flex flex-col h-full"
+              className="group relative p-3 rounded-2xl overflow-hidden flex flex-col h-full border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 hover:shadow-xl hover:border-blue-200 dark:hover:border-zinc-700 transition-all"
             >
-              <div className="relative h-48 w-full rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 mb-4">
+              <div className="relative h-48 w-full rounded-xl overflow-hidden bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 mb-4">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-[#0A0A0A] via-[#0A0A0A]/20 to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <div className="absolute top-3 left-3">
-                  <span className="px-2.5 py-1 bg-zinc-900/80 backdrop-blur-md border border-zinc-700/50 rounded-md text-[10px] font-semibold tracking-wider uppercase text-zinc-300">
+                  <span className="px-2.5 py-1 bg-white/90 dark:bg-zinc-900/80 backdrop-blur-md border border-slate-200 dark:border-zinc-700/50 rounded-md text-[10px] font-semibold tracking-wider uppercase text-slate-700 dark:text-zinc-300 shadow-sm">
                     {project.category}
                   </span>
                 </div>
               </div>
 
               <div className="px-2 pb-2 grow flex flex-col">
-                <h3 className="text-xl font-bold font-outfit text-white mb-2 group-hover:text-blue-400 transition-colors">
+                <h3 className="text-xl font-bold font-outfit text-slate-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-zinc-400 text-sm mb-4 line-clamp-2 grow">
+                <p className="text-slate-600 dark:text-zinc-400 text-sm mb-4 line-clamp-2 grow">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-1.5 mt-auto">
                   {project.tech.map((tech, i) => (
                     <span
                       key={i}
-                      className="text-[10px] font-semibold tracking-wider uppercase text-zinc-500 bg-zinc-900/50 border border-zinc-800 px-2 py-1 rounded"
+                      className="text-[10px] font-semibold tracking-wider uppercase text-slate-600 dark:text-zinc-500 bg-slate-100 dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 px-2 py-1 rounded group-hover:bg-blue-50 dark:group-hover:bg-zinc-800 group-hover:text-blue-700 dark:group-hover:text-zinc-300 transition-colors"
                     >
                       {tech}
                     </span>
@@ -142,7 +151,7 @@ const Projects = () => {
             href="https://github.com/Smeagol03"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors font-medium"
+            className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-white transition-colors font-medium"
           >
             View all on GitHub
             <ArrowUpRight className="w-5 h-5" />

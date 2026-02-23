@@ -1,22 +1,24 @@
 import { useState, useEffect } from "react";
-import { Menu } from "lucide-react";
+import { Menu, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import OffcanvasMenu from "./OffcanvasMenu";
+import { useTheme } from "../context/useTheme";
+
+const navLinks = [
+  { name: "Home", href: "#" },
+  { name: "About", href: "#about" },
+  { name: "Pendidikan", href: "#pendidikan" },
+  { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Experience", href: "#experience" },
+  { name: "Contact", href: "#contact" },
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-
-  const navLinks = [
-    { name: "Home", href: "#" },
-    { name: "About", href: "#about" },
-    { name: "Pendidikan", href: "#pendidikan" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Experience", href: "#experience" },
-    { name: "Contact", href: "#contact" },
-  ];
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,7 +60,7 @@ const Navbar = () => {
           <div
             className={`flex justify-between items-center transition-all duration-500 px-6 rounded-2xl ${
               scrolled
-                ? "h-16 bg-zinc-900/40 backdrop-blur-md border border-zinc-800/50 shadow-sm"
+                ? "h-16 bg-white/80 dark:bg-zinc-900/40 backdrop-blur-md border border-zinc-200 dark:border-zinc-800/50 shadow-sm"
                 : "h-20 bg-transparent"
             }`}
           >
@@ -69,13 +71,13 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               className="flex items-center gap-2 group"
             >
-              <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors duration-300">
-                <span className="text-white group-hover:text-black font-bold text-xl font-outfit">
+              <div className="w-10 h-10 rounded-xl bg-blue-600 dark:bg-zinc-900 border border-blue-500 dark:border-zinc-800 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors duration-300">
+                <span className="text-white group-hover:text-blue-600 dark:group-hover:text-black font-bold text-xl font-outfit">
                   A
                 </span>
               </div>
               <div className="flex flex-col leading-none ml-2">
-                <span className="text-lg font-bold font-outfit tracking-wider text-white">
+                <span className="text-lg font-bold font-outfit tracking-wider text-slate-900 dark:text-white">
                   ALPIAN
                 </span>
               </div>
@@ -83,7 +85,7 @@ const Navbar = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-2">
-              <div className="flex items-center space-x-1 mr-4 rounded-xl p-1">
+              <div className="flex items-center space-x-1 mr-4 rounded-xl p-1 bg-gray-100/50 dark:bg-zinc-800/50 backdrop-blur-sm border border-gray-200/50 dark:border-zinc-700/50">
                 {navLinks.map((link) => {
                   const isActive =
                     activeSection === link.href.replace("#", "") ||
@@ -95,22 +97,22 @@ const Navbar = () => {
                       className="relative px-4 py-2 text-sm font-medium transition-colors"
                     >
                       {isActive ? (
-                        <span className="text-white relative z-10">
+                        <span className="text-blue-600 dark:text-white relative z-10 font-semibold">
                           {link.name}
                         </span>
                       ) : (
-                        <span className="text-zinc-400 hover:text-white transition-colors relative z-10">
+                        <span className="text-slate-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-white transition-colors relative z-10">
                           {link.name}
                         </span>
                       )}
                       {isActive && (
                         <motion.div
                           layoutId="nav-active"
-                          className="absolute inset-0 bg-white/10 rounded-lg"
+                          className="absolute inset-0 bg-white dark:bg-zinc-700 rounded-lg shadow-sm"
                           transition={{
                             type: "spring",
-                            bounce: 0.1,
-                            duration: 0.4,
+                            bounce: 0.2,
+                            duration: 0.6,
                           }}
                         />
                       )}
@@ -119,22 +121,38 @@ const Navbar = () => {
                 })}
               </div>
 
+              {/* Theme Toggle */}
+              <button
+                onClick={toggleTheme}
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-400 hover:bg-gray-200 dark:hover:bg-zinc-700 transition-all"
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+
               {/* CTA Button */}
               <motion.a
                 href="#contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-2.5 text-sm font-semibold text-zinc-950 bg-white rounded-xl hover:bg-zinc-200 transition-colors"
+                className="ml-2 px-6 py-2.5 text-sm font-semibold text-white bg-blue-600 dark:bg-white dark:text-zinc-950 rounded-xl hover:bg-blue-700 dark:hover:bg-zinc-200 transition-colors shadow-lg shadow-blue-500/20 dark:shadow-white/10"
               >
                 Hire Me
               </motion.a>
             </div>
 
-            {/* Mobile menu button */}
-            <div className="md:hidden">
+            {/* Mobile Actions */}
+            <div className="flex items-center gap-4 md:hidden">
+              <button
+                onClick={toggleTheme}
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-400 hover:bg-gray-200 dark:hover:bg-zinc-700 transition-all"
+              >
+                {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+              
               <button
                 onClick={() => setIsOpen(true)}
-                className="w-11 h-11 flex items-center justify-center rounded-xl bg-zinc-900/80 border border-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all"
+                className="w-11 h-11 flex items-center justify-center rounded-xl bg-white dark:bg-zinc-900/80 border border-gray-200 dark:border-zinc-800 text-slate-700 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-zinc-800 transition-all shadow-sm"
               >
                 <Menu size={22} />
               </button>

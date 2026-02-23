@@ -62,18 +62,23 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-24 relative overflow-hidden bg-[#0A0A0A] border-t border-zinc-900"
+      className="py-24 relative overflow-hidden bg-white dark:bg-[#0A0A0A] border-t border-slate-200 dark:border-zinc-900 transition-colors duration-500"
     >
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-outfit font-bold tracking-tight text-white mb-4">
-            Let's Start a <span className="text-zinc-500">Conversation.</span>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-outfit font-bold tracking-tight text-slate-900 dark:text-white mb-4">
+            Let's Start a <span className="text-blue-600 dark:text-zinc-500">Conversation.</span>
           </h2>
-          <p className="text-zinc-400 text-lg">
+          <p className="text-slate-600 dark:text-zinc-400 text-lg">
             Terbuka untuk peluang baru, diskusi teknologi, atau proyek
             kolaborasi.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid lg:grid-cols-12 gap-12 max-w-6xl mx-auto">
           {/* Info Side */}
@@ -87,18 +92,20 @@ const Contact = () => {
                   rel="noopener noreferrer"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
+                  whileHover={{ x: 5, backgroundColor: "var(--bg-hover)" }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="glass-card p-6 rounded-2xl border border-zinc-800 flex items-center gap-5 group transition-all"
+                  style={{ "--bg-hover": "rgba(59, 130, 246, 0.05)" }}
+                  className="p-6 rounded-2xl border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 flex items-center gap-5 group transition-all hover:border-blue-200 dark:hover:border-zinc-700 hover:shadow-lg dark:hover:shadow-none"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center">
-                    <item.icon className="w-5 h-5 text-zinc-300 group-hover:text-white transition-colors" />
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-zinc-900 border border-blue-100 dark:border-zinc-800 flex items-center justify-center group-hover:bg-blue-600 dark:group-hover:bg-zinc-800 transition-colors duration-300">
+                    <item.icon className="w-5 h-5 text-blue-600 dark:text-zinc-400 group-hover:text-white transition-colors" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-zinc-500 tracking-widest uppercase mb-1">
+                    <p className="text-xs font-bold text-blue-600 dark:text-zinc-500 tracking-widest uppercase mb-1 group-hover:text-blue-700 dark:group-hover:text-zinc-400">
                       {item.label}
                     </p>
-                    <p className="text-zinc-300 font-medium group-hover:text-white transition-colors text-sm">
+                    <p className="text-slate-700 dark:text-zinc-300 font-medium group-hover:text-blue-900 dark:group-hover:text-white transition-colors text-sm">
                       {item.value}
                     </p>
                   </div>
@@ -110,19 +117,20 @@ const Contact = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="glass-panel p-8 rounded-2xl border border-zinc-800 relative overflow-hidden"
+              whileHover={{ y: -5 }}
+              className="p-8 rounded-2xl border border-blue-100 dark:border-zinc-800 bg-blue-50/50 dark:bg-zinc-900/30 relative overflow-hidden"
             >
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse" />
-                  <span className="text-xs font-bold text-blue-400 uppercase tracking-widest">
+                  <div className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-pulse" />
+                  <span className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest">
                     Available for Hire
                   </span>
                 </div>
-                <h4 className="text-xl font-bold font-outfit text-white mb-2">
+                <h4 className="text-xl font-bold font-outfit text-slate-900 dark:text-white mb-2">
                   Membutuhkan Tenaga Profesional?
                 </h4>
-                <p className="text-zinc-400 text-sm font-light leading-relaxed">
+                <p className="text-slate-600 dark:text-zinc-400 text-sm font-light leading-relaxed">
                   Saya selalu siap untuk berdiskusi peran purna waktu atau
                   proyek web independen.
                 </p>
@@ -137,12 +145,12 @@ const Contact = () => {
             viewport={{ once: true }}
             className="lg:col-span-7"
           >
-            <div className="glass-panel p-8 md:p-12 rounded-2xl md:rounded-[2.5rem] border border-zinc-800 relative">
+            <div className="p-8 md:p-12 rounded-2xl md:rounded-[2.5rem] border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 relative shadow-xl dark:shadow-none">
               <div className="flex items-center gap-3 mb-10">
-                <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center">
-                  <MessageSquare className="w-6 h-6 text-zinc-300" />
+                <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-zinc-900 border border-blue-100 dark:border-zinc-800 flex items-center justify-center">
+                  <MessageSquare className="w-6 h-6 text-blue-600 dark:text-zinc-300" />
                 </div>
-                <h3 className="text-2xl font-bold font-outfit text-white">
+                <h3 className="text-2xl font-bold font-outfit text-slate-900 dark:text-white">
                   Direct Message
                 </h3>
               </div>
@@ -150,7 +158,7 @@ const Contact = () => {
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest ml-1">
+                    <label className="text-xs font-bold text-slate-500 dark:text-zinc-500 uppercase tracking-widest ml-1">
                       Nama
                     </label>
                     <input
@@ -158,11 +166,11 @@ const Contact = () => {
                       name="name"
                       required
                       placeholder="Jhon Doe"
-                      className="w-full px-5 py-4 rounded-xl bg-zinc-900 border border-zinc-800 text-white placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 transition-all font-light"
+                      className="w-full px-5 py-4 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-blue-500 dark:focus:border-zinc-500 focus:ring-1 focus:ring-blue-500 dark:focus:ring-zinc-500 transition-all font-light"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest ml-1">
+                    <label className="text-xs font-bold text-slate-500 dark:text-zinc-500 uppercase tracking-widest ml-1">
                       Email
                     </label>
                     <input
@@ -170,33 +178,32 @@ const Contact = () => {
                       name="email"
                       required
                       placeholder="hello@mail.com"
-                      className="w-full px-5 py-4 rounded-xl bg-zinc-900 border border-zinc-800 text-white placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 transition-all font-light"
+                      className="w-full px-5 py-4 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-blue-500 dark:focus:border-zinc-500 focus:ring-1 focus:ring-blue-500 dark:focus:ring-zinc-500 transition-all font-light"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest ml-1">
+                  <label className="text-xs font-bold text-slate-500 dark:text-zinc-500 uppercase tracking-widest ml-1">
                     Subject
                   </label>
-                  <select
-                    name="subject"
-                    className="w-full px-5 py-4 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 focus:outline-none focus:border-zinc-500 transition-all font-light appearance-none cursor-pointer"
-                  >
-                    <option value="Project Proposal" className="bg-[#0A0A0A]">
-                      Project Proposal
-                    </option>
-                    <option value="Job Opportunity" className="bg-[#0A0A0A]">
-                      Job Opportunity
-                    </option>
-                    <option value="General Inquiry" className="bg-[#0A0A0A]">
-                      General Inquiry
-                    </option>
-                  </select>
+                  <div className="relative">
+                    <select
+                      name="subject"
+                      className="w-full px-5 py-4 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-slate-900 dark:text-zinc-300 focus:outline-none focus:border-blue-500 dark:focus:border-zinc-500 focus:ring-1 focus:ring-blue-500 dark:focus:ring-zinc-500 transition-all font-light appearance-none cursor-pointer"
+                    >
+                      <option value="Project Proposal">Project Proposal</option>
+                      <option value="Job Opportunity">Job Opportunity</option>
+                      <option value="General Inquiry">General Inquiry</option>
+                    </select>
+                    <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
+                      <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest ml-1">
+                  <label className="text-xs font-bold text-slate-500 dark:text-zinc-500 uppercase tracking-widest ml-1">
                     Pesan
                   </label>
                   <textarea
@@ -204,17 +211,19 @@ const Contact = () => {
                     rows="4"
                     required
                     placeholder="Sampaikan pesan Anda di sini..."
-                    className="w-full px-5 py-4 rounded-xl bg-zinc-900 border border-zinc-800 text-white placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 transition-all font-light resize-none"
+                    className="w-full px-5 py-4 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-blue-500 dark:focus:border-zinc-500 focus:ring-1 focus:ring-blue-500 dark:focus:ring-zinc-500 transition-all font-light resize-none"
                   ></textarea>
                 </div>
 
-                <button
+                <motion.button
                   type="submit"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   disabled={formStatus !== "idle"}
-                  className={`w-full py-4 rounded-xl font-bold flex items-center justify-center gap-3 transition-all transform active:scale-[0.98] ${
+                  className={`w-full py-4 rounded-xl font-bold flex items-center justify-center gap-3 transition-all shadow-lg ${
                     formStatus === "success"
-                      ? "bg-emerald-600 text-white"
-                      : "bg-white text-zinc-950 hover:bg-zinc-200"
+                      ? "bg-emerald-600 text-white shadow-emerald-500/20"
+                      : "bg-blue-600 dark:bg-white text-white dark:text-zinc-950 hover:bg-blue-700 dark:hover:bg-zinc-200 shadow-blue-500/20 dark:shadow-white/10"
                   }`}
                 >
                   <AnimatePresence mode="wait">
@@ -253,7 +262,7 @@ const Contact = () => {
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </button>
+                </motion.button>
               </form>
             </div>
           </motion.div>
