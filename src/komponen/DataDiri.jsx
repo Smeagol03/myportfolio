@@ -41,7 +41,7 @@ const DataDiri = () => {
   };
 
   return (
-    <div className="py-20 bg-slate-50 dark:bg-[#0A0A0A] relative overflow-hidden transition-colors duration-500">
+    <div className="py-20 bg-(--bg-secondary) relative overflow-hidden transition-colors duration-500">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -53,10 +53,10 @@ const DataDiri = () => {
           <span className="text-blue-600 dark:text-white font-semibold tracking-wider text-sm uppercase mb-2 block">
             Biodata
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-(--text-primary) mb-4">
             Informasi Diri & Kontak
           </h2>
-          <div className="h-1.5 w-20 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full" />
+          <div className="h-1.5 w-20 bg-linear-to-r from-blue-600 to-indigo-600 mx-auto rounded-full" />
         </motion.div>
 
         <motion.div
@@ -67,21 +67,21 @@ const DataDiri = () => {
           className="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12"
         >
           {/* Informasi Pribadi */}
-          <motion.div 
+          <motion.div
             whileHover={{ y: -5 }}
-            className="bg-white dark:bg-slate-800/90 backdrop-blur-sm rounded-xl border border-slate-200 dark:border-slate-700/50 overflow-hidden shadow-lg dark:shadow-xl hover:shadow-2xl transition-all duration-500"
+            className="bg-(--bg-primary) backdrop-blur-sm rounded-xl border-(--border-color) overflow-hidden shadow-lg dark:shadow-xl hover:shadow-2xl transition-all duration-500"
           >
-            <div className="h-2 bg-gradient-to-r from-blue-500 to-cyan-500" />
+            <div className="h-2 bg-linear-to-r from-blue-500 to-cyan-500" />
             <div className="p-6 md:p-8">
               <div className="flex items-center gap-4 mb-8">
                 <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-xl">
                   <User className="w-8 h-8 text-blue-600 dark:text-blue-400" />
                 </div>
                 <div>
-                  <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white">
+                  <h3 className="text-xl md:text-2xl font-bold text-(--text-primary)">
                     Pribadi
                   </h3>
-                  <p className="text-slate-500 dark:text-slate-300 text-sm">
+                  <p className="text-(--text-muted) text-sm">
                     Detail informasi personal
                   </p>
                 </div>
@@ -90,40 +90,64 @@ const DataDiri = () => {
               <div className="space-y-6 text-xs md:text-sm">
                 <InfoItem
                   variants={itemVariants}
-                  icon={<Calendar className="w-5 h-5 text-blue-600 dark:text-blue-400" />}
-                  label={<span className="text-slate-500 dark:text-slate-400">Lahir</span>}
+                  icon={
+                    <Calendar className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  }
+                  label={<span className="text-(--text-muted)">Lahir</span>}
                   value={
-                    <span className="text-slate-900 dark:text-white font-medium">{`${data.tempatLahir}, ${data.tanggalLahir}`}</span>
+                    <span className="text-(--text-primary) font-medium">{`${data.tempatLahir}, ${data.tanggalLahir}`}</span>
                   }
                 />
                 <InfoItem
                   variants={itemVariants}
-                  icon={<Flag className="w-5 h-5 text-blue-600 dark:text-blue-400" />}
-                  label={<span className="text-slate-500 dark:text-slate-400">Kewarganegaraan</span>}
+                  icon={
+                    <Flag className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  }
+                  label={
+                    <span className="text-(--text-muted)">Kewarganegaraan</span>
+                  }
                   value={
-                    <span className="text-slate-900 dark:text-white font-medium">{data.kewarganegaraan}</span>
+                    <span className="text-(--text-primary) font-medium">
+                      {data.kewarganegaraan}
+                    </span>
                   }
                 />
                 <InfoItem
                   variants={itemVariants}
-                  icon={<BookOpen className="w-5 h-5 text-blue-600 dark:text-blue-400" />}
-                  label={<span className="text-slate-500 dark:text-slate-400">Agama</span>}
-                  value={<span className="text-slate-900 dark:text-white font-medium">{data.agama}</span>}
-                />
-                <InfoItem
-                  variants={itemVariants}
-                  icon={<Heart className="w-5 h-5 text-blue-600 dark:text-blue-400" />}
-                  label={<span className="text-slate-500 dark:text-slate-400">Status</span>}
+                  icon={
+                    <BookOpen className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  }
+                  label={<span className="text-(--text-muted)">Agama</span>}
                   value={
-                    <span className="text-slate-900 dark:text-white font-medium">{data.statusPerkawinan}</span>
+                    <span className="text-(--text-primary) font-medium">
+                      {data.agama}
+                    </span>
                   }
                 />
                 <InfoItem
                   variants={itemVariants}
-                  icon={<Droplet className="w-5 h-5 text-blue-600 dark:text-blue-400" />}
-                  label={<span className="text-slate-500 dark:text-slate-400">Gol. Darah</span>}
+                  icon={
+                    <Heart className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  }
+                  label={<span className="text-(--text-muted)">Status</span>}
                   value={
-                    <span className="text-slate-900 dark:text-white font-medium">{data.golonganDarah}</span>
+                    <span className="text-(--text-primary) font-medium">
+                      {data.statusPerkawinan}
+                    </span>
+                  }
+                />
+                <InfoItem
+                  variants={itemVariants}
+                  icon={
+                    <Droplet className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  }
+                  label={
+                    <span className="text-(--text-muted)">Gol. Darah</span>
+                  }
+                  value={
+                    <span className="text-(--text-primary) font-medium">
+                      {data.golonganDarah}
+                    </span>
                   }
                 />
               </div>
@@ -131,45 +155,71 @@ const DataDiri = () => {
           </motion.div>
 
           {/* Informasi Kontak */}
-          <motion.div 
+          <motion.div
             whileHover={{ y: -5 }}
-            className="bg-white dark:bg-slate-800/90 backdrop-blur-sm rounded-2xl shadow-lg dark:shadow-xl border border-slate-200 dark:border-slate-700/50 overflow-hidden hover:shadow-2xl transition-all duration-500"
+            className="bg-(--bg-primary) backdrop-blur-sm rounded-2xl shadow-lg dark:shadow-xl border-(--border-color) overflow-hidden hover:shadow-2xl transition-all duration-500"
           >
-            <div className="h-2 bg-gradient-to-r from-indigo-500 to-purple-500" />
+            <div className="h-2 bg-linear-to-r from-indigo-500 to-purple-500" />
             <div className="p-6 md:p-8">
               <div className="flex items-center gap-4 mb-8">
                 <div className="p-3 bg-indigo-50 dark:bg-indigo-900/30 rounded-xl">
                   <Phone className="w-8 h-8 text-indigo-600 dark:text-indigo-400" />
                 </div>
                 <div>
-                  <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white">
+                  <h3 className="text-xl md:text-2xl font-bold text-(--text-primary)">
                     Kontak
                   </h3>
-                  <p className="text-slate-500 dark:text-slate-300 text-sm">Saluran komunikasi aktif</p>
+                  <p className="text-(--text-muted) text-sm">
+                    Saluran komunikasi aktif
+                  </p>
                 </div>
               </div>
 
               <div className="space-y-6 text-xs md:text-sm">
                 <InfoItem
                   variants={itemVariants}
-                  icon={<MapPin className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />}
-                  label={<span className="text-slate-500 dark:text-slate-400">Alamat Domisili</span>}
-                  value={<span className="text-slate-900 dark:text-white font-medium">{data.alamat}</span>}
+                  icon={
+                    <MapPin className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                  }
+                  label={
+                    <span className="text-(--text-muted)">Alamat Domisili</span>
+                  }
+                  value={
+                    <span className="text-(--text-primary) font-medium">
+                      {data.alamat}
+                    </span>
+                  }
                   multiline
                 />
                 <InfoItem
                   variants={itemVariants}
-                  icon={<Phone className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />}
-                  label={
-                    <span className="text-slate-500 dark:text-slate-400">No. Ponsel / WhatsApp</span>
+                  icon={
+                    <Phone className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
                   }
-                  value={<span className="text-slate-900 dark:text-white font-medium">{data.noPonsel}</span>}
+                  label={
+                    <span className="text-(--text-muted)">
+                      No. Ponsel / WhatsApp
+                    </span>
+                  }
+                  value={
+                    <span className="text-(--text-primary) font-medium">
+                      {data.noPonsel}
+                    </span>
+                  }
                 />
                 <InfoItem
                   variants={itemVariants}
-                  icon={<Mail className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />}
-                  label={<span className="text-slate-500 dark:text-slate-400">Alamat Email</span>}
-                  value={<span className="text-slate-900 dark:text-white font-medium">{data.email}</span>}
+                  icon={
+                    <Mail className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                  }
+                  label={
+                    <span className="text-(--text-muted)">Alamat Email</span>
+                  }
+                  value={
+                    <span className="text-(--text-primary) font-medium">
+                      {data.email}
+                    </span>
+                  }
                   isLink
                   linkType="mailto"
                 />
@@ -177,7 +227,9 @@ const DataDiri = () => {
 
               {/* Added Call to Action area for better interactivity */}
               <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-700">
-                <p className="text-sm text-slate-600 dark:text-slate-300 mb-4 font-medium">Ingin berkolaborasi?</p>
+                <p className="text-sm text-(--text-secondary) mb-4 font-medium">
+                  Ingin berkolaborasi?
+                </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <motion.a
                     whileHover={{ scale: 1.02 }}
@@ -208,9 +260,9 @@ const DataDiri = () => {
 
         {/* Footer */}
         <div className="mt-12 text-center">
-          <p className="text-slate-400 dark:text-gray-400 text-sm font-medium">
+          <p className="text-(--text-muted) text-sm font-medium">
             Terakhir diperbarui:{" "}
-            <span className="text-slate-600 dark:text-gray-600">4 Desember 2025</span>
+            <span className="text-(--text-secondary)">4 Desember 2025</span>
           </p>
         </div>
       </div>
@@ -236,13 +288,7 @@ const InfoItem = ({
         <p className="text-xs uppercase tracking-wide font-semibold mb-1">
           {label}
         </p>
-        <p
-          className={`${
-            multiline ? "leading-relaxed" : ""
-          }`}
-        >
-          {value}
-        </p>
+        <p className={`${multiline ? "leading-relaxed" : ""}`}>{value}</p>
       </div>
     </>
   );

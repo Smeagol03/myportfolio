@@ -62,6 +62,16 @@
   </head>
 
   <body>
+    <!-- Prevent FOUC (Flash of Unstyled Content) -->
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = (savedTheme === 'dark' || savedTheme === 'light') ? savedTheme : (systemPrefersDark ? 'dark' : 'light');
+        document.documentElement.classList.add(theme);
+      })();
+    </script>
+    
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

@@ -52,6 +52,7 @@ const Navbar = () => {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
+        style={{ position: 'fixed' }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled ? "py-4" : "py-6"
         }`}
@@ -60,7 +61,7 @@ const Navbar = () => {
           <div
             className={`flex justify-between items-center transition-all duration-500 px-6 rounded-2xl ${
               scrolled
-                ? "h-16 bg-white/80 dark:bg-zinc-900/40 backdrop-blur-md border border-zinc-200 dark:border-zinc-800/50 shadow-sm"
+                ? "h-16 bg-[var(--glass-bg)] backdrop-blur-md border-[var(--border-color)] shadow-sm"
                 : "h-20 bg-transparent"
             }`}
           >
@@ -77,7 +78,7 @@ const Navbar = () => {
                 </span>
               </div>
               <div className="flex flex-col leading-none ml-2">
-                <span className="text-lg font-bold font-outfit tracking-wider text-slate-900 dark:text-white">
+                <span className="text-lg font-bold font-outfit tracking-wider text-[var(--text-primary)]">
                   ALPIAN
                 </span>
               </div>
@@ -101,7 +102,7 @@ const Navbar = () => {
                           {link.name}
                         </span>
                       ) : (
-                        <span className="text-slate-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-white transition-colors relative z-10">
+                        <span className="text-[var(--text-secondary)] hover:text-blue-600 dark:hover:text-white transition-colors relative z-10">
                           {link.name}
                         </span>
                       )}
@@ -124,7 +125,7 @@ const Navbar = () => {
               {/* Theme Toggle */}
               <button
                 onClick={toggleTheme}
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-400 hover:bg-gray-200 dark:hover:bg-zinc-700 transition-all"
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 dark:bg-zinc-800 text-[var(--text-secondary)] hover:bg-gray-200 dark:hover:bg-zinc-700 transition-all"
                 aria-label="Toggle theme"
               >
                 {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
@@ -145,14 +146,14 @@ const Navbar = () => {
             <div className="flex items-center gap-4 md:hidden">
               <button
                 onClick={toggleTheme}
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-400 hover:bg-gray-200 dark:hover:bg-zinc-700 transition-all"
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 dark:bg-zinc-800 text-[var(--text-secondary)] hover:bg-gray-200 dark:hover:bg-zinc-700 transition-all"
               >
                 {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
               </button>
-              
+
               <button
                 onClick={() => setIsOpen(true)}
-                className="w-11 h-11 flex items-center justify-center rounded-xl bg-white dark:bg-zinc-900/80 border border-gray-200 dark:border-zinc-800 text-slate-700 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-zinc-800 transition-all shadow-sm"
+                className="w-11 h-11 flex items-center justify-center rounded-xl bg-[var(--bg-primary)] border-[var(--border-color)] text-[var(--text-secondary)] hover:text-blue-600 dark:hover:text-white hover:bg-[var(--bg-secondary)] transition-all shadow-sm"
               >
                 <Menu size={22} />
               </button>

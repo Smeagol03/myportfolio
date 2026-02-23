@@ -29,7 +29,7 @@ const Hero = ({
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden bg-white dark:bg-[#050505] transition-colors duration-500"
+      className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden bg-(--bg-primary) transition-colors duration-500"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -49,11 +49,11 @@ const Hero = ({
         {/* Geometric Outlines */}
         <motion.div
           style={{ y: y2, rotate: rotate1 }}
-          className="absolute top-[25%] right-[15%] w-16 h-16 border border-slate-200 dark:border-white/10 rounded-lg hidden md:block"
+          className="absolute top-[25%] right-[15%] w-16 h-16 border-(--border-color) rounded-lg hidden md:block"
         />
         <motion.div
           style={{ y: y1, rotate: rotate2 }}
-          className="absolute bottom-[30%] left-[15%] w-12 h-12 border border-slate-200 dark:border-white/10 rounded-full hidden md:block"
+          className="absolute bottom-[30%] left-[15%] w-12 h-12 border-(--border-color) rounded-full hidden md:block"
         />
         <motion.div
           animate={{
@@ -88,7 +88,7 @@ const Hero = ({
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="text-5xl md:text-8xl font-outfit font-bold tracking-tight text-slate-900 dark:text-white mb-8 leading-[1.1]"
+            className="text-5xl md:text-8xl font-outfit font-bold tracking-tight text-(--text-primary) mb-8 leading-[1.1]"
           >
             Crafting{" "}
             <span className="relative inline-block">
@@ -110,10 +110,10 @@ const Hero = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-lg md:text-xl text-slate-600 dark:text-zinc-400 max-w-2xl mx-auto mb-12 leading-relaxed font-light"
+            className="text-lg md:text-xl text-(--text-secondary) max-w-2xl mx-auto mb-12 leading-relaxed font-light"
           >
             Hi, I'm{" "}
-            <strong className="text-slate-900 dark:text-white font-medium">
+            <strong className="text-(--text-primary) font-medium">
               {nama}
             </strong>
             . {deskripsi}
@@ -135,9 +135,9 @@ const Hero = ({
 
             <a
               href="/AlpianTabrani.pdf"
-              className="group w-full sm:w-auto px-8 py-4 bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 text-slate-700 dark:text-white font-medium rounded-2xl hover:bg-slate-50 dark:hover:bg-zinc-800 hover:border-slate-300 dark:hover:border-zinc-700 backdrop-blur-md flex items-center justify-center gap-2 transition-all shadow-sm hover:shadow-md"
+              className="group w-full sm:w-auto px-8 py-4 bg-(--bg-primary) border-(--border-color) text-(--text-secondary) dark:text-white font-medium rounded-2xl hover:bg-(--bg-secondary) dark:hover:bg-zinc-800 hover:border-slate-300 dark:hover:border-zinc-700 backdrop-blur-md flex items-center justify-center gap-2 transition-all shadow-sm hover:shadow-md"
             >
-              <Download className="w-4 h-4 text-slate-500 dark:text-zinc-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" />
+              <Download className="w-4 h-4 text-(--text-muted) group-hover:text-slate-900 dark:group-hover:text-white transition-colors" />
               Get Resume
             </a>
           </motion.div>
@@ -162,10 +162,10 @@ const Hero = ({
                 aria-label={social.label}
                 className="group flex flex-col items-center gap-2"
               >
-                <div className="w-12 h-12 rounded-2xl bg-slate-50 dark:bg-zinc-900/30 border border-slate-200 dark:border-zinc-800/50 flex items-center justify-center text-slate-500 dark:text-zinc-500 group-hover:text-blue-600 dark:group-hover:text-white group-hover:bg-white dark:group-hover:bg-zinc-800/50 group-hover:border-blue-200 dark:group-hover:border-white/20 transition-all duration-300 shadow-sm hover:shadow-md">
+                <div className="w-12 h-12 rounded-2xl bg-(--bg-secondary) border-(--border-color) flex items-center justify-center text-(--text-muted) group-hover:text-blue-600 dark:group-hover:text-white group-hover:bg-(--bg-primary) dark:group-hover:bg-zinc-800/50 group-hover:border-blue-200 dark:group-hover:border-white/20 transition-all duration-300 shadow-sm hover:shadow-md">
                   <social.icon className="w-5 h-5" />
                 </div>
-                <span className="text-[10px] uppercase tracking-widest text-slate-500 dark:text-zinc-600 group-hover:text-blue-600 dark:group-hover:text-zinc-400 transition-colors font-bold">
+                <span className="text-[10px] uppercase tracking-widest text-(--text-muted) group-hover:text-blue-600 dark:group-hover:text-zinc-400 transition-colors font-bold">
                   {social.label}
                 </span>
               </a>
@@ -173,19 +173,6 @@ const Hero = ({
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-[10px] uppercase tracking-[0.2em] text-slate-400 dark:text-zinc-600 font-bold">
-          Scroll
-        </span>
-        <div className="w-px h-12 bg-linear-to-b from-slate-300 dark:from-zinc-800 to-transparent" />
-      </motion.div>
     </section>
   );
 };

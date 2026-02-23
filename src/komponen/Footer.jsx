@@ -26,7 +26,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-white dark:bg-[#0A0A0A] overflow-hidden pt-20 pb-10 border-t border-slate-200 dark:border-zinc-900 transition-colors duration-500">
+    <footer className="relative bg-(--bg-primary) overflow-hidden pt-20 pb-10 border-t border-(--border-color) transition-colors duration-500">
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 mb-20">
           <div className="md:col-span-12 lg:col-span-5 space-y-8">
@@ -37,13 +37,13 @@ const Footer = () => {
                 </span>
               </div>
               <div className="flex flex-col leading-none">
-                <span className="text-xl font-black font-outfit tracking-wider text-slate-900 dark:text-white">
+                <span className="text-xl font-black font-outfit tracking-wider text-(--text-primary)">
                   ALPIAN TABRANI
                 </span>
               </div>
             </div>
 
-            <p className="text-slate-600 dark:text-zinc-400 font-light leading-relaxed max-w-md text-lg">
+            <p className="text-(--text-secondary) font-light leading-relaxed max-w-md text-lg">
               Membangun efisiensi melalui solusi digital kreatif. Berfokus pada
               manajemen data dan pengembangan web modern.
             </p>
@@ -55,16 +55,16 @@ const Footer = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 flex items-center justify-center group transition-colors hover:bg-blue-600 dark:hover:bg-zinc-800"
+                  className="w-12 h-12 rounded-xl bg-(--bg-secondary) border-(--border-color) flex items-center justify-center group transition-colors hover:bg-blue-600 dark:hover:bg-zinc-800"
                 >
-                  <link.icon className="w-5 h-5 text-slate-500 dark:text-zinc-400 group-hover:text-white transition-colors" />
+                  <link.icon className="w-5 h-5 text-(--text-muted) group-hover:text-white transition-colors" />
                 </a>
               ))}
             </div>
           </div>
 
           <div className="md:col-span-6 lg:col-span-3">
-            <h3 className="text-slate-500 dark:text-zinc-500 font-bold font-outfit uppercase tracking-widest text-sm mb-8">
+            <h3 className="text-(--text-muted)-bold font-outfit uppercase tracking-widest text-sm mb-8">
               Navigation
             </h3>
             <ul className="grid grid-cols-2 gap-y-4 gap-x-8">
@@ -80,7 +80,7 @@ const Footer = () => {
                 <li key={item}>
                   <a
                     href={item === "Home" ? "#" : `#${item.toLowerCase()}`}
-                    className="text-slate-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-white transition-colors text-sm font-medium"
+                    className="text-(--text-secondary) hover:text-blue-600 dark:hover:text-white transition-colors text-sm font-medium"
                   >
                     {item}
                   </a>
@@ -90,7 +90,7 @@ const Footer = () => {
           </div>
 
           <div className="md:col-span-6 lg:col-span-4">
-            <h3 className="text-slate-500 dark:text-zinc-500 font-bold font-outfit uppercase tracking-widest text-sm mb-8">
+            <h3 className="text-(--text-muted) font-bold font-outfit uppercase tracking-widest text-sm mb-8">
               Quick Connect
             </h3>
             <div className="space-y-6">
@@ -98,18 +98,18 @@ const Footer = () => {
                 href="mailto:atabrani3@gmail.com"
                 className="flex items-center gap-4 group"
               >
-                <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 flex items-center justify-center group-hover:bg-blue-600 dark:group-hover:bg-zinc-800 transition-colors">
-                  <Mail className="w-4 h-4 text-slate-500 dark:text-zinc-400 group-hover:text-white" />
+                <div className="w-10 h-10 rounded-xl bg-(--bg-secondary) border-(--border-color) flex items-center justify-center group-hover:bg-blue-600 dark:group-hover:bg-zinc-800 transition-colors">
+                  <Mail className="w-4 h-4 text-(--text-muted) group-hover:text-white" />
                 </div>
-                <span className="text-slate-600 dark:text-zinc-400 font-medium text-sm group-hover:text-blue-600 dark:group-hover:text-white transition-colors">
+                <span className="text-(--text-secondary) font-medium text-sm group-hover:text-blue-600 dark:group-hover:text-white transition-colors">
                   atabrani3@gmail.com
                 </span>
               </a>
               <div className="flex items-center gap-4 group cursor-default">
-                <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 flex items-center justify-center">
-                  <MapPin className="w-4 h-4 text-slate-500 dark:text-zinc-400" />
+                <div className="w-10 h-10 rounded-xl bg-(--bg-secondary) border-(--border-color) flex items-center justify-center">
+                  <MapPin className="w-4 h-4 text-(--text-muted)" />
                 </div>
-                <span className="text-slate-600 dark:text-zinc-400 font-medium text-sm">
+                <span className="text-(--text-secondary) font-medium text-sm">
                   Lombok Timur, NTB - ID
                 </span>
               </div>
@@ -117,16 +117,12 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-slate-200 dark:border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-zinc-600">
-            © {currentYear} Alpian Tabrani. Built with React & Tailwind.
-          </div>
-
+        <div className="pt-8 border-t border-(--border-color) flex flex-col md:flex-row justify-between items-center gap-8">
           <motion.a
             href="#"
             onClick={scrollToTop}
             whileHover={{ y: -2 }}
-            className="flex items-center gap-2 text-slate-500 dark:text-zinc-500 hover:text-blue-600 dark:hover:text-white transition-colors"
+            className="flex items-center gap-2 text-(--text-muted) hover:text-blue-600 dark:hover:text-white transition-colors"
           >
             <span className="text-xs font-bold uppercase tracking-widest">
               Back to Top

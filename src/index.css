@@ -3,17 +3,70 @@
 @theme {
   --font-inter: "Inter", sans-serif;
   --font-outfit: "Outfit", sans-serif;
+  --color-dark-bg: #0A0A0A;
+  --color-dark-bg-subtle: #050505;
+  --color-dark-surface: #121212;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
 }
 
 :root {
+  color-scheme: light;
+}
+
+:root.dark {
   color-scheme: dark;
 }
 
 body {
-  @apply bg-[#0A0A0A] text-zinc-300 font-inter selection:bg-zinc-800 selection:text-white;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Light mode (default) */
+:root {
+  --bg-primary: theme(colors.white);
+  --bg-secondary: theme(colors.slate.50);
+  --bg-subtle: theme(colors.slate.100);
+  --text-primary: theme(colors.slate.900);
+  --text-secondary: theme(colors.slate.700);
+  --text-muted: theme(colors.slate.500);
+  --border-color: theme(colors.slate.200);
+  --scrollbar-track: theme(colors.slate.100);
+  --scrollbar-thumb: theme(colors.slate.300);
+  --scrollbar-thumb-hover: theme(colors.slate.400);
+  --glass-bg: rgb(255 255 255 / 0.8);
+  --glass-border: rgb(148 163 184 / 0.5);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* Dark mode */
+:root.dark {
+  --bg-primary: var(--color-dark-bg);
+  --bg-secondary: var(--color-dark-surface);
+  --bg-subtle: #1a1a1a;
+  --text-primary: theme(colors.zinc.100);
+  --text-secondary: theme(colors.zinc.300);
+  --text-muted: theme(colors.zinc.500);
+  --border-color: theme(colors.zinc.800);
+  --scrollbar-track: var(--color-dark-bg);
+  --scrollbar-thumb: theme(colors.zinc.800);
+  --scrollbar-thumb-hover: theme(colors.zinc.700);
+  --glass-bg: rgb(24 24 27 / 0.4);
+  --glass-border: rgb(255 255 255 / 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+body {
+  @apply bg-[var(--bg-primary)] text-[var(--text-secondary)] font-inter selection:bg-blue-100 selection:text-blue-900;
+}
+
+:root.dark body {
+  @apply selection:bg-zinc-800 selection:text-white;
 }
 
 h1,
@@ -22,43 +75,68 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-outfit text-zinc-100 tracking-tight;
+  @apply font-outfit text-[var(--text-primary)] tracking-tight;
 }
 
-/* Custom Scrollbar - Sleek */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-[#0A0A0A];
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-zinc-800 rounded-full hover:bg-zinc-700 transition-colors;
+  @apply rounded-full transition-colors;
+  background: var(--scrollbar-thumb);
 }
 
-/* Smooth Scrolling */
-html {
-  scroll-behavior: smooth;
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
 }
 
-/* Premium Glassmorphism - Minimal Setup */
+/* Premium Glassmorphism */
 .glass-panel {
-  @apply bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 shadow-[0_8px_32px_rgba(0,0,0,0.5)];
+  background: var(--glass-bg);
+  @apply backdrop-blur-xl border;
+  border-color: var(--glass-border);
+  box-shadow: var(--glass-shadow);
 }
 
 .glass-card {
-  @apply bg-zinc-900/30 backdrop-blur-md border border-zinc-800/40 hover:bg-zinc-800/40 hover:border-zinc-700/50 transition-all duration-300;
+  background: rgb(255 255 255 / 0.6);
+  @apply backdrop-blur-md border transition-all duration-300;
+  border-color: rgb(148 163 184 / 0.4);
 }
 
-/* Gradient Text - Elegant */
+.glass-card:hover {
+  background: rgb(255 255 255 / 0.8);
+  border-color: rgb(148 163 184 / 0.5);
+}
+
+:root.dark .glass-card {
+  background: rgb(24 24 27 / 0.3);
+  border-color: rgb(255 255 255 / 0.1);
+}
+
+:root.dark .glass-card:hover {
+  background: rgb(39 39 42 / 0.4);
+  border-color: rgb(255 255 255 / 0.2);
+}
+
+/* Gradient Text */
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-linear-to-b from-white to-zinc-400;
+  @apply bg-clip-text text-transparent bg-linear-to-b;
+  background-image: linear-gradient(to bottom, var(--text-primary), var(--text-secondary));
 }
 
 .text-gradient-accent {
-  @apply bg-clip-text text-transparent bg-linear-to-r from-blue-400 to-indigo-500;
+  @apply bg-clip-text text-transparent bg-linear-to-r from-blue-600 to-indigo-600;
+}
+
+:root.dark .text-gradient-accent {
+  @apply from-blue-400 to-indigo-500;
 }
 
 /* Base interactive elements */
