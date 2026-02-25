@@ -63,7 +63,10 @@ const About = () => {
             >
               <img
                 src={Bg}
-                alt="Alpian Tabrani"
+                alt="Alpian Tabrani — Web Developer dan Tenaga Administrasi dari Lombok Timur, NTB"
+                loading="lazy"
+                width="400"
+                height="500"
                 className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-linear-to-t from-slate-900/40 via-transparent to-transparent opacity-60 dark:from-dark-bg-subtle" />

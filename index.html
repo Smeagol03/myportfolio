@@ -1,54 +1,111 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
   <head>
     <!-- Basic Meta -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="title" content="Alpian Tabrani | Portfolio" />
+    <meta
+      name="title"
+      content="Alpian Tabrani | Portfolio — Web Developer & Administrasi"
+    />
     <meta
       name="description"
-      content="Portfolio Alpian Tabrani — Web Developer, Desainer, dan Tenaga Administrasi dari Lombok. Lihat proyek, pengalaman, dan keterampilan saya."
+      content="Portfolio Alpian Tabrani — Web Developer, Desainer, dan Tenaga Administrasi dari Lombok. Lihat proyek, pengalaman, dan keterampilan saya di bidang React, Firebase, dan manajemen data."
     />
     <meta
       name="keywords"
-      content="Alpian Tabrani, Portfolio, Web Developer Lombok, Desain Grafis, Administrasi, React, Firebase"
+      content="Alpian Tabrani, Portfolio, Web Developer Lombok, Desain Grafis, Administrasi, React, Firebase, Full Stack Developer, NTB, Lombok Timur"
     />
     <meta name="author" content="Alpian Tabrani" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://alpian-portfolio.netlify.app/" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1"
+    />
+    <link rel="canonical" href="https://alpiant.my.id/" />
+    <link rel="alternate" hreflang="id" href="https://alpiant.my.id/" />
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon.png" />
+    <link rel="apple-touch-icon" href="/icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#2563eb" />
 
     <!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://alpian-portfolio.netlify.app/" />
-    <meta property="og:title" content="Alpian Tabrani | Portfolio" />
+    <meta property="og:url" content="https://alpiant.my.id/" />
+    <meta
+      property="og:title"
+      content="Alpian Tabrani | Web Developer & Administrasi"
+    />
     <meta
       property="og:description"
-      content="Lihat proyek dan pengalaman Alpian Tabrani di bidang web development dan administrasi."
+      content="Portfolio Alpian Tabrani — Web Developer, Desainer, dan Tenaga Administrasi dari Lombok. Lihat proyek dan pengalaman di bidang web development dan administrasi."
     />
     <meta
       property="og:image"
-      content="https://alpian-portfolio.netlify.app/my.webp"
+      content="https://alpiant.my.id/pasAlpianTabrani.jpg"
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Alpian Tabrani — Web Developer & Administrative Professional"
+    />
     <meta property="og:locale" content="id_ID" />
     <meta property="og:site_name" content="Portfolio Alpian Tabrani" />
 
     <!-- Twitter / X -->
-    <meta property="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://alpiant.my.id/" />
     <meta
-      property="twitter:url"
-      content="https://alpian-portfolio.netlify.app/"
-    />
-    <meta property="twitter:title" content="Alpian Tabrani | Portfolio" />
-    <meta
-      property="twitter:description"
-      content="Lihat proyek dan pengalaman Alpian Tabrani di bidang web development dan administrasi."
+      name="twitter:title"
+      content="Alpian Tabrani | Web Developer & Administrasi"
     />
     <meta
-      property="twitter:image"
-      content="https://alpian-portfolio.netlify.app/my.webp"
+      name="twitter:description"
+      content="Portfolio Alpian Tabrani — Lihat proyek dan pengalaman di bidang web development dan administrasi."
     />
+    <meta
+      name="twitter:image"
+      content="https://alpiant.my.id/pasAlpianTabrani.jpg"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Alpian Tabrani — Web Developer & Administrative Professional"
+    />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Alpian Tabrani",
+        "url": "https://alpiant.my.id",
+        "image": "https://alpiant.my.id/pasAlpianTabrani.jpg",
+        "jobTitle": "Web Developer & Administrative Professional",
+        "description": "Web Developer, Desainer, dan Tenaga Administrasi dari Lombok yang berfokus pada React, Firebase, dan manajemen data.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Lombok Timur",
+          "addressRegion": "Nusa Tenggara Barat",
+          "addressCountry": "ID"
+        },
+        "email": "atabrani3@gmail.com",
+        "knowsAbout": [
+          "Web Development",
+          "React",
+          "Firebase",
+          "Database Management",
+          "Administrative Support",
+          "Graphic Design"
+        ],
+        "sameAs": [
+          "https://github.com/Smeagol03",
+          "https://www.linkedin.com/in/alpian-tabrani-b83455275/",
+          "https://www.instagram.com/npc_alpiant"
+        ]
+      }
+    </script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -58,20 +115,29 @@
       rel="stylesheet"
     />
 
-    <title>Alpian Tabrani | Portfolio</title>
+    <title>
+      Alpian Tabrani | Portfolio — Web Developer & Administrasi dari Lombok
+    </title>
   </head>
 
   <body>
     <!-- Prevent FOUC (Flash of Unstyled Content) -->
     <script>
-      (function() {
-        const savedTheme = localStorage.getItem('theme');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = (savedTheme === 'dark' || savedTheme === 'light') ? savedTheme : (systemPrefersDark ? 'dark' : 'light');
+      (function () {
+        const savedTheme = localStorage.getItem("theme");
+        const systemPrefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        const theme =
+          savedTheme === "dark" || savedTheme === "light"
+            ? savedTheme
+            : systemPrefersDark
+              ? "dark"
+              : "light";
         document.documentElement.classList.add(theme);
       })();
     </script>
-    
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
