@@ -5,6 +5,7 @@ import Pendidikan from "./komponen/Pendidikan";
 import Skills from "./komponen/Skills";
 import Projects from "./komponen/Projects";
 import Experience from "./komponen/Experience";
+import Layanan from "./komponen/layanan";
 import Contact from "./komponen/Contact";
 import Footer from "./komponen/Footer";
 
@@ -19,6 +20,7 @@ const App = () => {
         <Skills />
         <Projects />
         <Experience />
+        <Layanan />
         <Contact />
       </main>
       <Footer />
