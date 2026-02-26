@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
 import { Monitor, Briefcase, Palette, Layout } from "lucide-react";
+import { FadeIn } from "./animasi";
 
 const skillsData = [
   {
@@ -43,39 +43,36 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="py-32 relative border-t border-white/5 bg-transparent"
+      className="py-32 relative border-t border-white/5 bg-transparent overflow-hidden"
     >
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <header className="mb-20">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          <FadeIn
+            delay={0}
+            direction="left"
             className="flex items-center gap-4 mb-6"
           >
             <div className="h-px w-12 bg-blue-500/50" />
             <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-zinc-500">
               Expertise
             </span>
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-6xl md:text-8xl font-outfit font-bold tracking-tighter text-(--text-primary) uppercase leading-[0.8]"
+          </FadeIn>
+          <FadeIn
+            delay={0.2}
+            direction="up"
+            className="text-4xl md:text-8xl font-outfit font-bold tracking-tighter text-(--text-primary) uppercase leading-[0.8]"
           >
             Capabilities<span className="text-(--text-muted)">.</span>
-          </motion.h2>
+          </FadeIn>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {skillsData.map((skill, index) => (
-            <motion.div
+            <FadeIn
               key={index}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              delay={index * 0.1}
+              direction="up"
+              duration={0.6}
               className="group glass-2 p-8 lg:p-10 rounded-sm flex flex-col justify-between hover:border-(--accent-blue)/30 transition-all duration-700"
             >
               <div>
@@ -100,7 +97,7 @@ const Skills = () => {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </FadeIn>
           ))}
         </div>
       </div>

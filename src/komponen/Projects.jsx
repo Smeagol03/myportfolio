@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
 import { useRef } from "react";
+import { FadeIn } from "./animasi";
 
 const projectData = [
   {
@@ -37,6 +38,14 @@ const projectData = [
     link: "https://wedding-of-wijaya-rara.netlify.app/",
   },
   {
+    title: "Modern Wedding Invitation",
+    description:
+      "Undangan pernikahan digital dengan tampilan modern dan fitur interaktif premium.",
+    tech: ["Firebase", "Tailwind CSS"],
+    image: "https://pernikahan-zulfan-izza.netlify.app/asset/img/open2.jpeg",
+    link: "https://pernikahan-zulfan-izza.netlify.app/",
+  },
+  {
     title: "Warung Makan Digital",
     description: "Platform pemesanan makanan online yang memudahkan pelanggan.",
     tech: ["Firebase", "Tailwind"],
@@ -63,25 +72,23 @@ const Projects = () => {
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         {/* Header Section */}
         <div className="flex flex-col mb-20">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          <FadeIn
+            delay={0}
+            direction="left"
             className="flex items-center gap-4 mb-6"
           >
             <div className="h-px w-12 bg-blue-500/50" />
             <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-(--text-muted)">
               Selected Works
             </span>
-          </motion.div>
+          </FadeIn>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-col md:flex-row justify-between items-end gap-8"
+          <FadeIn
+            delay={0.2}
+            direction="up"
+            className="flex flex-col md:flex-row justify-between gap-8"
           >
-            <h2 className="text-6xl md:text-8xl font-outfit font-bold tracking-tighter text-(--text-primary) uppercase leading-[0.8]">
+            <h2 className="text-4xl md:text-8xl font-outfit font-bold tracking-tighter text-(--text-primary) uppercase leading-[0.8]">
               Portfolio<span className="text-(--text-muted)">.</span>
             </h2>
 
@@ -93,22 +100,17 @@ const Projects = () => {
             >
               GitHub / Explore <ArrowUpRight className="w-4 h-4" />
             </motion.a>
-          </motion.div>
+          </FadeIn>
         </div>
 
         {/* Project Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {projectData.map((project, index) => (
-            <motion.div
+            <FadeIn
               key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{
-                duration: 0.8,
-                delay: index * 0.1,
-                ease: [0.16, 1, 0.3, 1],
-              }}
+              delay={index * 0.1}
+              direction="up"
+              duration={0.8}
               className="group glass-2 rounded-sm flex flex-col h-full hover:border-(--accent-blue)/50 transition-all duration-700 overflow-hidden"
             >
               {/* Image Container */}
@@ -149,7 +151,7 @@ const Projects = () => {
                   View Project <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
-            </motion.div>
+            </FadeIn>
           ))}
         </div>
       </div>

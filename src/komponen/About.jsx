@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useRef } from "react";
 import { CheckCircle2, FileText, Database, Shield } from "lucide-react";
 import Bg from "/pasAlpianTabrani.jpg";
+import { FadeIn } from "./animasi";
 
 const About = () => {
   const containerRef = useRef(null);
@@ -30,10 +31,10 @@ const About = () => {
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           {/* Image Side */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          <FadeIn
+            delay={0}
+            direction="left"
+            duration={0.8}
             className="relative group lg:max-w-md"
           >
             <motion.div
@@ -49,10 +50,9 @@ const About = () => {
             </motion.div>
 
             {/* Quick Stat Overlay - Swiss / Glass 2.0 */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+            <FadeIn
+              delay={0.3}
+              direction="up"
               className="absolute bottom-20 -right-10 glass-2 p-8 rounded-sm shadow-2xl z-20 hidden md:block max-w-[200px]"
             >
               <div className="text-5xl font-outfit font-bold text-(--text-primary) mb-2 leading-none uppercase tracking-tighter">
@@ -61,16 +61,12 @@ const About = () => {
               <p className="text-[10px] font-bold text-(--text-muted) uppercase tracking-widest leading-loose">
                 Years blending Admin & Development Excellence.
               </p>
-            </motion.div>
-          </motion.div>
+            </FadeIn>
+          </FadeIn>
 
           {/* Text Side */}
           <div className="flex flex-col">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
+            <FadeIn delay={0.2} direction="up">
               <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-blue-500 mb-6 block">
                 Biography
               </span>
@@ -78,12 +74,12 @@ const About = () => {
                 Problem <br />
                 <span className="text-(--text-muted)">Solver.</span>
               </h2>
-            </motion.div>
+            </FadeIn>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+            <FadeIn
+              delay={0.4}
+              direction="up"
+              duration={0.8}
               className="space-y-8 text-(--text-secondary) text-lg md:text-xl font-inter leading-relaxed mb-12"
             >
               <p>
@@ -100,24 +96,23 @@ const About = () => {
                 while ensuring data integrity and seamless organizational
                 workflows.
               </p>
-            </motion.div>
+            </FadeIn>
 
             {/* Feature Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {features.map((item, i) => (
-                <motion.div
+                <FadeIn
                   key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
+                  delay={0.5 + i * 0.1}
+                  direction="up"
+                  duration={0.5}
                   className="flex items-center gap-4 p-4 glass-2 hover:bg-(--accent-blue)/10 transition-all rounded-sm"
                 >
                   <item.icon className="w-5 h-5 text-blue-500" />
                   <span className="text-(--text-primary) font-bold text-[10px] uppercase tracking-widest">
                     {item.text}
                   </span>
-                </motion.div>
+                </FadeIn>
               ))}
             </div>
           </div>

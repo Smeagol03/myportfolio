@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import {
   ArrowRight,
   Download,
@@ -6,6 +5,7 @@ import {
   Linkedin,
   Instagram,
 } from "lucide-react";
+import { FadeIn, StaggerText } from "./animasi";
 
 const Hero = ({
   nama = "Alpian Tabrani",
@@ -19,77 +19,36 @@ const Hero = ({
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col items-center text-center">
           {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-12"
-          >
-            <span className="px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[10px] font-bold uppercase tracking-[0.3em] text-blue-400">
-              Personal Portfolio 2025
+          <FadeIn delay={0} direction="down" duration={0.5} className="mb-12">
+            <span className="px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[10px] font-bold uppercase tracking-[0.3em] text-(--accent-blue)">
+              Personal Portfolio {new Date().getFullYear()}
             </span>
-          </motion.div>
+          </FadeIn>
 
           {/* Typography-Led Title */}
-          <div className="relative mb-16">
-            <motion.h1
-              initial="hidden"
-              animate="visible"
-              variants={{
-                visible: {
-                  transition: {
-                    staggerChildren: 0.03,
-                    delayChildren: 0.1,
-                  },
-                },
-              }}
-              className="text-hero font-outfit uppercase flex flex-col items-center"
-            >
-              <div className="flex pb-4">
-                {"Creative".split("").map((char, index) => (
-                  <motion.span
-                    key={index}
-                    variants={{
-                      hidden: { y: 20, opacity: 0 },
-                      visible: {
-                        y: 0,
-                        opacity: 0.4,
-                        transition: { duration: 0.4, ease: "easeOut" },
-                      },
-                    }}
-                    className="inline-block bg-linear-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent"
-                  >
-                    {char}
-                  </motion.span>
-                ))}
-              </div>
-              <div className="flex -mt-4 md:-mt-8 lg:-mt-12 pb-4">
-                {"Builder.".split("").map((char, index) => (
-                  <motion.span
-                    key={index}
-                    variants={{
-                      hidden: { y: 20, opacity: 0 },
-                      visible: {
-                        y: 0,
-                        opacity: 1,
-                        transition: { duration: 0.4, ease: "easeOut" },
-                      },
-                    }}
-                    className={`inline-block text-(--text-primary) ${char === " " ? "ml-4" : ""}`}
-                  >
-                    {char}
-                  </motion.span>
-                ))}
-              </div>
-            </motion.h1>
+          <div className="relative mb-16 flex flex-col items-center">
+            <div className="pb-4">
+              <StaggerText
+                text="Creative"
+                delay={0.1}
+                className="bg-linear-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent text-hero font-outfit uppercase opacity-40"
+              />
+            </div>
+            <div className="-mt-4 md:-mt-8 lg:-mt-12 pb-4 tracking-tighter">
+              <StaggerText
+                text="Builder."
+                delay={0.1}
+                className="text-(--text-primary) text-hero font-outfit uppercase"
+              />
+            </div>
           </div>
 
           {/* Description & CTA */}
           <div className="max-w-3xl mx-auto">
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
+            <FadeIn
+              delay={0.5}
+              direction="up"
+              duration={1}
               className="text-xl md:text-2xl text-(--text-secondary) font-inter mb-12 leading-relaxed tracking-tight"
             >
               Hi, I'm{" "}
@@ -97,12 +56,12 @@ const Hero = ({
                 {nama}
               </span>
               .{deskripsi}
-            </motion.p>
+            </FadeIn>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
+            <FadeIn
+              delay={0.8}
+              direction="up"
+              duration={0.5}
               className="flex flex-col sm:flex-row items-center justify-center gap-6"
             >
               <a
@@ -122,14 +81,14 @@ const Hero = ({
                   <Download className="w-4 h-4" /> Resume
                 </span>
               </a>
-            </motion.div>
+            </FadeIn>
           </div>
 
           {/* Social Links Bar */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 1 }}
+          <FadeIn
+            delay={1.5}
+            direction="up"
+            duration={1}
             className="flex items-center gap-12 pt-10"
           >
             {[
@@ -147,19 +106,8 @@ const Hero = ({
                 <social.icon className="w-5 h-5" />
               </a>
             ))}
-          </motion.div>
+          </FadeIn>
         </div>
-      </div>
-
-      {/* Swiss Vertical Text Indicator */}
-      <div className="absolute top-1/2 right-10 -translate-y-1/2 hidden lg:block overflow-hidden">
-        <motion.div
-          animate={{ y: [0, -100, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="text-[10px] font-bold uppercase tracking-[1em] text-white/5 [writing-mode:vertical-lr]"
-        >
-          Built with precision • Swiss Design Philosophy • 2025 Edition •
-        </motion.div>
       </div>
     </section>
   );

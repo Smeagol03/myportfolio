@@ -48,21 +48,16 @@ const OffcanvasMenu = ({ isOpen, setIsOpen, navLinks }) => {
           >
             <div className="flex justify-between items-center p-6 border-b border-(--border-color)">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-(--accent-blue) flex items-center justify-center">
-                  <span className="text-white font-bold text-sm font-outfit">
-                    A
-                  </span>
-                </div>
                 <span className="text-lg font-bold font-outfit tracking-wider text-(--text-primary)">
                   ALPIAN
                 </span>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="w-10 h-10 flex items-center justify-center rounded-xl text-(--text-muted) hover:text-(--accent-blue) hover:bg-(--bg-secondary) transition-colors"
+                className="w-10 h-10 flex items-center justify-center text-(--text-muted) hover:text-(--accent-blue) transition-colors"
                 aria-label="Close menu"
               >
-                <X size={20} />
+                <X size={24} />
               </button>
             </div>
 
@@ -78,13 +73,13 @@ const OffcanvasMenu = ({ isOpen, setIsOpen, navLinks }) => {
                   >
                     <a
                       href={link.href}
-                      className="flex items-center justify-between px-5 py-4 rounded-xl text-(--text-secondary) hover:text-(--accent-blue) hover:bg-(--bg-secondary) transition-all duration-300 group"
+                      className="flex items-center justify-between px-2 py-4 border-b border-(--border-color) text-(--text-secondary) hover:text-(--accent-blue) transition-all duration-300 group"
                       onClick={() => setIsOpen(false)}
                     >
-                      <span className="font-medium tracking-wide">
+                      <span className="text-sm font-bold uppercase tracking-widest">
                         {link.name}
                       </span>
-                      <div className="w-1.5 h-1.5 rounded-full bg-(--border-color) group-hover:bg-(--accent-blue) transition-colors" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-transparent group-hover:bg-(--accent-blue) transition-colors" />
                     </a>
                   </motion.li>
                 ))}
@@ -95,7 +90,7 @@ const OffcanvasMenu = ({ isOpen, setIsOpen, navLinks }) => {
               <a
                 href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center w-full px-4 py-4 text-base font-bold text-(--bg-primary) bg-(--text-primary) hover:opacity-90 rounded-xl transition-all mb-4 shadow-lg shadow-blue-500/10"
+                className="flex items-center justify-center w-full px-4 py-4 text-xs font-bold uppercase tracking-widest text-(--bg-primary) bg-(--text-primary) hover:opacity-90 rounded-sm transition-all mb-6"
               >
                 Hire Me
               </a>

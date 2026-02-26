@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { FadeIn } from "./animasi";
 import {
   Mail,
-  MapPin,
   Phone,
   Github,
   Send,
@@ -59,62 +59,61 @@ const Contact = () => {
       className="py-32 relative border-t border-white/5 bg-transparent overflow-hidden"
     >
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        <header className="mb-20 text-center lg:text-left">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center justify-center lg:justify-start gap-4 mb-6"
+        <header className="mb-20">
+          <FadeIn
+            delay={0}
+            direction="left"
+            className="flex items-center gap-4 mb-6"
           >
             <div className="h-px w-12 bg-blue-500/50" />
             <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-(--text-muted)">
               Contact
             </span>
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-6xl md:text-8xl font-outfit font-bold tracking-tighter text-(--text-primary) uppercase leading-[0.8]"
+          </FadeIn>
+          <FadeIn
+            delay={0.2}
+            direction="up"
+            className="text-4xl md:text-8xl font-outfit font-bold tracking-tighter text-(--text-primary) uppercase leading-[0.8]"
           >
             Let's Talk<span className="text-(--text-muted)">.</span>
-          </motion.h2>
+          </FadeIn>
         </header>
 
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
           <div className="lg:col-span-5 space-y-8">
             <div className="grid grid-cols-1 gap-4">
               {contactInfo.map((item, idx) => (
-                <motion.a
+                <FadeIn
                   key={idx}
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="p-8 glass-2 flex items-center gap-6 group hover:border-(--accent-blue)/30 transition-all rounded-sm"
+                  delay={idx * 0.1}
+                  direction="left"
+                  className="group"
                 >
-                  <div className="w-12 h-12 glass-2 flex items-center justify-center rounded-sm group-hover:bg-(--accent-blue) group-hover:text-white transition-all duration-500">
-                    <item.icon className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold text-(--text-muted) uppercase tracking-widest mb-1">
-                      {item.label}
-                    </p>
-                    <p className="text-(--text-primary) font-bold group-hover:text-(--accent-blue) transition-colors uppercase tracking-tighter">
-                      {item.value}
-                    </p>
-                  </div>
-                </motion.a>
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-8 glass-2 flex items-center gap-6 hover:border-(--accent-blue)/30 transition-all rounded-sm h-full"
+                  >
+                    <div className="w-12 h-12 glass-2 flex items-center justify-center rounded-sm group-hover:bg-(--accent-blue) group-hover:text-white transition-all duration-500">
+                      <item.icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-bold text-(--text-muted) uppercase tracking-widest mb-1">
+                        {item.label}
+                      </p>
+                      <p className="text-(--text-primary) font-bold group-hover:text-(--accent-blue) transition-colors uppercase tracking-tighter">
+                        {item.value}
+                      </p>
+                    </div>
+                  </a>
+                </FadeIn>
               ))}
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+            <FadeIn
+              delay={0.3}
+              direction="up"
               className="p-10 glass-2 relative overflow-hidden rounded-sm"
             >
               <div className="relative z-10">
@@ -133,15 +132,10 @@ const Contact = () => {
                   projects. Let's build something exceptional.
                 </p>
               </div>
-            </motion.div>
+            </FadeIn>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-7"
-          >
+          <FadeIn delay={0.4} direction="up" className="lg:col-span-7">
             <div className="p-10 glass-2 rounded-sm">
               <div className="flex items-center gap-4 mb-12">
                 <div className="w-12 h-12 glass-2 flex items-center justify-center rounded-sm">
@@ -244,14 +238,14 @@ const Contact = () => {
                     ) : (
                       <div className="flex items-center gap-2">
                         <Send className="w-4 h-4" />
-                        <span>Initialize Transmission</span>
+                        <span>Send</span>
                       </div>
                     )}
                   </AnimatePresence>
                 </motion.button>
               </form>
             </div>
-          </motion.div>
+          </FadeIn>
         </div>
       </div>
     </section>

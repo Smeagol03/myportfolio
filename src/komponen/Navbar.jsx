@@ -52,114 +52,129 @@ const Navbar = () => {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        style={{ position: "fixed" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "py-4" : "py-6"
+        transition={{
+          type: "spring",
+          stiffness: 200,
+          damping: 25,
+        }}
+        className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 ${
+          scrolled ? "w-[90%] md:w-[75%] max-w-4xl" : "w-auto min-w-[120px]"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            className={`flex justify-between items-center transition-all duration-500 px-6 rounded-2xl ${
-              scrolled
-                ? "h-16 bg-(--glass-bg) backdrop-blur-md border border-(--border-color) shadow-sm"
-                : "h-20 bg-transparent"
-            }`}
-          >
-            {/* Logo */}
-            <motion.a
-              href="#"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="flex items-center gap-2 group"
-            >
-              <div className="w-10 h-10 rounded-xl bg-(--accent-blue) border border-(--accent-blue)/20 flex items-center justify-center group-hover:bg-(--text-primary) group-hover:text-(--bg-primary) transition-all duration-300">
-                <span className="text-white group-hover:text-(--bg-primary) font-bold text-xl font-outfit">
-                  A
-                </span>
-              </div>
-              <div className="flex flex-col leading-none ml-2">
-                <span className="text-lg font-bold font-outfit tracking-wider text-(--text-primary)">
+        {/* Floating Island Container */}
+        <motion.div
+          layout
+          transition={{
+            type: "spring",
+            stiffness: 200,
+            damping: 25,
+            mass: 0.8,
+          }}
+          className={`
+          relative rounded-full overflow-hidden
+          backdrop-blur-xl backdrop-saturate-180
+          bg-(--bg-primary)/95
+          border border-(--border-color)/30
+          shadow-lg
+        `}
+        >
+          <div className="relative px-6">
+            <div className="flex justify-between items-center h-12 md:h-14 gap-8">
+              {/* Logo - Ultra Minimal */}
+              <motion.a
+                href="#"
+                layout
+                whileHover={{ scale: 1.05 }}
+                className="flex items-center group shrink-0"
+              >
+                <span className="text-sm font-bold text-(--text-primary) tracking-tighter">
                   ALPIAN
                 </span>
-              </div>
-            </motion.a>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-2">
-              <div className="flex items-center space-x-1 mr-4 rounded-xl p-1 bg-(--bg-secondary) backdrop-blur-sm border border-(--border-color)">
-                {navLinks.map((link) => {
-                  const isActive =
-                    activeSection === link.href.replace("#", "") ||
-                    (link.href === "#" && activeSection === "");
-                  return (
-                    <a
-                      key={link.name}
-                      href={link.href}
-                      className="relative px-4 py-2 text-sm font-medium transition-colors"
-                    >
-                      {isActive ? (
-                        <span className="text-(--accent-blue) relative z-10 font-semibold">
-                          {link.name}
-                        </span>
-                      ) : (
-                        <span className="text-(--text-secondary) hover:text-(--accent-blue) transition-colors relative z-10">
-                          {link.name}
-                        </span>
-                      )}
-                      {isActive && (
-                        <motion.div
-                          layoutId="nav-active"
-                          className="absolute inset-0 bg-(--bg-primary) rounded-lg shadow-sm"
-                          transition={{
-                            type: "spring",
-                            bounce: 0.2,
-                            duration: 0.6,
-                          }}
-                        />
-                      )}
-                    </a>
-                  );
-                })}
-              </div>
-
-              {/* Theme Toggle */}
-              <button
-                onClick={toggleTheme}
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-(--bg-secondary) text-(--text-secondary) hover:bg-(--bg-subtle) transition-all"
-                aria-label="Toggle theme"
-              >
-                {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-              </button>
-
-              {/* CTA Button */}
-              <motion.a
-                href="#contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="ml-2 px-6 py-2.5 text-sm font-semibold text-(--bg-primary) bg-(--text-primary) rounded-xl hover:opacity-90 transition-all shadow-lg shadow-blue-500/10"
-              >
-                Hire Me
               </motion.a>
-            </div>
 
-            {/* Mobile Actions */}
-            <div className="flex items-center gap-4 md:hidden">
-              <button
-                onClick={toggleTheme}
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-(--bg-secondary) text-(--text-secondary) hover:bg-(--bg-subtle) transition-all"
-              >
-                {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-              </button>
+              {/* Desktop Navigation - Adaptive Pill Dock */}
+              <AnimatePresence mode="wait">
+                {scrolled && (
+                  <motion.div
+                    initial={{ width: 0, opacity: 0 }}
+                    animate={{ width: "auto", opacity: 1 }}
+                    exit={{ width: 0, opacity: 0 }}
+                    transition={{
+                      duration: 0.35,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                    className="hidden md:flex items-center overflow-hidden"
+                  >
+                    <nav className="flex items-center gap-1">
+                      {navLinks.map((link) => {
+                        const isActive =
+                          activeSection === link.href.replace("#", "") ||
+                          (link.href === "#" && activeSection === "");
+                        return (
+                          <motion.a
+                            key={link.name}
+                            href={link.href}
+                            className="relative px-3 py-1 text-[9px] font-bold uppercase tracking-widest"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            {isActive ? (
+                              <>
+                                <span className="absolute inset-x-0 bottom-0 h-0.5 bg-(--text-primary)" />
+                                <span className="text-(--text-primary)">
+                                  {link.name}
+                                </span>
+                              </>
+                            ) : (
+                              <motion.span
+                                className="text-(--text-muted)"
+                                whileHover={{ color: "var(--text-primary)" }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                {link.name}
+                              </motion.span>
+                            )}
+                          </motion.a>
+                        );
+                      })}
+                    </nav>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
-              <button
-                onClick={() => setIsOpen(true)}
-                className="w-11 h-11 flex items-center justify-center rounded-xl bg-(--bg-primary) border border-(--border-color) text-(--text-secondary) hover:text-(--accent-blue) hover:bg-(--bg-secondary) transition-all shadow-sm"
-              >
-                <Menu size={22} />
-              </button>
+              {/* Right Side Actions */}
+              <motion.div layout className="flex items-center gap-4 shrink-0">
+                <motion.button
+                  onClick={toggleTheme}
+                  className="text-(--text-muted) hover:text-(--text-primary) transition-colors"
+                  aria-label="Toggle theme"
+                  whileHover={{ scale: 1.15, rotate: 15 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
+                </motion.button>
+
+                <motion.a
+                  href="#contact"
+                  className="hidden sm:block text-[9px] font-black uppercase tracking-[0.2em] text-(--text-primary)"
+                  whileHover={{ scale: 1.05, textDecoration: "underline" }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Hire
+                </motion.a>
+
+                <motion.button
+                  onClick={() => setIsOpen(true)}
+                  className="text-(--text-primary) md:hidden"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9, rotate: 90 }}
+                >
+                  <Menu size={18} />
+                </motion.button>
+              </motion.div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </motion.nav>
 
       <OffcanvasMenu

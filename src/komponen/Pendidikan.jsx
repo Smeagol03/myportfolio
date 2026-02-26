@@ -1,11 +1,11 @@
-import { motion } from "framer-motion";
 import { GraduationCap, School, BookOpen, Library, Award } from "lucide-react";
+import { FadeIn } from "./animasi";
 
 const educationData = [
   {
     level: "S1 Administrasi Publik",
     school: "ITSKes Muhammadiyah Selong",
-    year: "2020 - 2025",
+    year: "2021 - 2025",
     description:
       "Mempelajari konsep administrasi, kebijakan publik, dan manajemen pemerintahan.",
     achievements: ["Asisten Administrasi"],
@@ -39,15 +39,10 @@ const Pendidikan = () => {
   return (
     <section
       id="pendidikan"
-      className="py-24 bg-(--bg-primary) border-t border-(--border-color) relative transition-colors duration-500"
+      className="py-24 bg-(--bg-primary) border-t border-(--border-color) relative transition-colors duration-500 overflow-hidden"
     >
       <div className="container mx-auto px-6 max-w-4xl relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <FadeIn delay={0} direction="up" className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-outfit font-bold tracking-tight text-(--text-primary) mb-4">
             Education <span className="text-(--accent-blue)">Journey.</span>
           </h2>
@@ -55,60 +50,59 @@ const Pendidikan = () => {
             Rekam jejak pendidikan yang membentuk dasar pemikiran kritis dan
             keahlian teknis.
           </p>
-        </motion.div>
+        </FadeIn>
 
-        <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {educationData.map((item, index) => (
-            <motion.div
+            <FadeIn
               key={index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              whileHover={{ x: 10 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: index * 0.1, type: "spring", stiffness: 50 }}
-              className="group relative p-6 sm:p-8 rounded-2xl flex flex-col md:flex-row gap-6 sm:gap-8 items-start border border-(--border-color) bg-(--bg-primary) hover:bg-(--bg-secondary) hover:border-(--accent-blue)/30 shadow-sm hover:shadow-md transition-all"
+              delay={index * 0.1}
+              direction="up"
+              className="group relative p-8 rounded-sm flex flex-col items-start border border-transparent bg-transparent hover:bg-(--bg-secondary)/40 hover:border-(--border-color) transition-all duration-500 overflow-hidden"
             >
-              <div className="md:w-1/4 shrink-0 mt-1">
-                <div className="text-xs font-bold text-(--text-muted) tracking-widest uppercase mb-3">
-                  {item.year}
+              {/* Decorative Large Background Icon */}
+              <item.icon className="absolute -right-8 -bottom-8 w-48 h-48 text-(--text-muted) opacity-[0.03] group-hover:opacity-10 group-hover:text-(--accent-blue) group-hover:scale-110 group-hover:-rotate-12 transition-all duration-700 pointer-events-none" />
+
+              <div className="flex items-start md:items-center gap-4 mb-6 z-10">
+                <div className="w-12 h-12 rounded-sm bg-(--bg-secondary) border border-(--border-color) flex items-center justify-center group-hover:bg-(--accent-blue) group-hover:border-(--accent-blue) transition-all duration-500 shrink-0">
+                  <item.icon className="w-5 h-5 text-(--text-secondary) group-hover:text-white transition-colors" />
                 </div>
-                <div className="hidden md:flex w-12 h-12 rounded-xl bg-(--bg-secondary) border border-(--border-color) items-center justify-center group-hover:scale-110 transition-transform">
-                  <item.icon className="w-5 h-5 text-(--text-secondary) group-hover:text-(--accent-blue) transition-colors" />
+                <div>
+                  <div className="text-[10px] font-bold text-(--accent-blue) tracking-widest uppercase mb-1">
+                    {item.year}
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold font-outfit text-(--text-primary) group-hover:text-(--accent-blue) transition-colors leading-tight">
+                    {item.level}
+                  </h3>
                 </div>
               </div>
 
-              <div className="md:w-3/4">
-                <h3 className="text-2xl font-bold font-outfit text-(--text-primary) mb-1 group-hover:text-(--accent-blue) transition-colors">
-                  {item.level}
-                </h3>
-                {item.school ? (
-                  <p className="text-(--accent-blue) font-medium mb-4 text-sm">
+              <div className="z-10 flex-col flex h-full">
+                {item.school && (
+                  <p className="text-(--text-primary) font-bold text-sm mb-3">
                     {item.school}
                   </p>
-                ) : (
-                  <div className="mb-4"></div>
                 )}
 
-                <p className="text-(--text-secondary) text-sm leading-relaxed mb-6">
+                <p className="text-(--text-secondary) text-sm leading-relaxed mb-6 flex-1">
                   {item.description}
                 </p>
 
                 {item.achievements && (
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-(--border-color)/50">
                     {item.achievements.map((ach, i) => (
-                      <motion.div
+                      <span
                         key={i}
-                        whileHover={{ scale: 1.05 }}
-                        className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-(--bg-secondary) border border-(--border-color) text-(--text-primary) text-xs font-medium"
+                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-sm bg-(--bg-primary) border border-(--border-color) text-(--text-muted) text-[10px] font-bold uppercase tracking-widest"
                       >
                         <Award className="w-3.5 h-3.5 text-(--accent-blue)" />
                         {ach}
-                      </motion.div>
+                      </span>
                     ))}
                   </div>
                 )}
               </div>
-            </motion.div>
+            </FadeIn>
           ))}
         </div>
       </div>

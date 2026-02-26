@@ -14,6 +14,16 @@ const socialLinks = [
   },
 ];
 
+const navLinks = [
+  { name: "Home", href: "#" },
+  { name: "About", href: "#about" },
+  { name: "Pendidikan", href: "#pendidikan" },
+  { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Experience", href: "#experience" },
+  { name: "Contact", href: "#contact" },
+];
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -31,12 +41,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 lg:gap-24 mb-32">
           <div className="md:col-span-12 lg:col-span-6 space-y-12">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 glass-2 flex items-center justify-center rounded-sm">
-                <span className="text-(--text-primary) font-bold text-2xl font-outfit uppercase">
-                  A
-                </span>
-              </div>
-              <span className="text-xl font-bold font-outfit tracking-tighter text-(--text-primary) uppercase">
+              <span className="text-xl font-bold font-outfit tracking-tighter text-(--text-primary)">
                 Alpian Tabrani
               </span>
             </div>
@@ -62,43 +67,41 @@ const Footer = () => {
           </div>
 
           <div className="md:col-span-6 lg:col-span-3">
-            <h3 className="text-[10px] font-bold font-outfit uppercase tracking-[0.5em] text-(--text-muted) mb-10">
+            <h3 className="text-[10px] font-bold font-outfit tracking-[0.5em] text-(--text-muted) mb-10">
               System Map
             </h3>
             <ul className="space-y-4">
-              {["About", "Skills", "Projects", "Experience", "Contact"].map(
-                (item) => (
-                  <li key={item}>
-                    <a
-                      href={`#${item.toLowerCase()}`}
-                      className="text-(--text-muted) hover:text-(--accent-blue) transition-colors text-[10px] font-bold uppercase tracking-widest"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ),
-              )}
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className="text-(--text-muted) hover:text-(--accent-blue) transition-colors text-[10px] font-bold tracking-widest uppercase"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div className="md:col-span-6 lg:col-span-3">
-            <h3 className="text-[10px] font-bold font-outfit uppercase tracking-[0.5em] text-(--text-muted) mb-10">
+            <h3 className="text-[10px] font-bold font-outfit tracking-[0.5em] text-(--text-muted) mb-10">
               Connection
             </h3>
             <div className="space-y-6">
               <a href="mailto:atabrani3@gmail.com" className="group block">
-                <span className="text-(--text-muted) text-[10px] uppercase font-bold tracking-widest block mb-2 group-hover:text-(--accent-blue)">
+                <span className="text-(--text-muted) text-[10px] font-bold tracking-widest block mb-2 group-hover:text-(--accent-blue)">
                   Email
                 </span>
-                <span className="text-(--text-primary) font-bold tracking-tighter uppercase group-hover:text-(--accent-blue)">
+                <span className="text-(--text-primary) font-bold tracking-tighter group-hover:text-(--accent-blue)">
                   atabrani3@gmail.com
                 </span>
               </a>
               <div className="group block cursor-default">
-                <span className="text-(--text-muted) text-[10px] uppercase font-bold tracking-widest block mb-2">
+                <span className="text-(--text-muted) text-[10px] font-bold tracking-widest block mb-2">
                   Location
                 </span>
-                <span className="text-(--text-primary) font-bold tracking-tighter uppercase">
+                <span className="text-(--text-primary) font-bold tracking-tighter">
                   Lombok Timur, NTB — ID
                 </span>
               </div>
@@ -107,8 +110,8 @@ const Footer = () => {
         </div>
 
         <div className="pt-12 border-t border-(--border-color) flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="text-[10px] font-bold text-(--text-muted) opacity-50 uppercase tracking-[0.4em]">
-            &copy; {currentYear} Alpian Tabrani. Built with Precision.
+          <p className="text-[10px] font-bold text-(--text-muted) opacity-50 tracking-[0.4em]">
+            &copy; {currentYear} Alpian Tabrani.
           </p>
           <motion.a
             href="#"
@@ -116,7 +119,7 @@ const Footer = () => {
             whileHover={{ y: -5 }}
             className="flex items-center gap-4 text-(--text-muted) hover:text-(--text-primary) transition-colors group"
           >
-            <span className="text-[10px] font-bold uppercase tracking-widest">
+            <span className="text-[10px] font-bold tracking-widest">
               Shift to Top
             </span>
             <div className="w-8 h-8 glass-2 flex items-center justify-center rounded-sm">
