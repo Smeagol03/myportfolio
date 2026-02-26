@@ -52,7 +52,7 @@ const Navbar = () => {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        style={{ position: 'fixed' }}
+        style={{ position: "fixed" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled ? "py-4" : "py-6"
         }`}
@@ -61,7 +61,7 @@ const Navbar = () => {
           <div
             className={`flex justify-between items-center transition-all duration-500 px-6 rounded-2xl ${
               scrolled
-                ? "h-16 bg-[var(--glass-bg)] backdrop-blur-md border-[var(--border-color)] shadow-sm"
+                ? "h-16 bg-(--glass-bg) backdrop-blur-md border border-(--border-color) shadow-sm"
                 : "h-20 bg-transparent"
             }`}
           >
@@ -72,13 +72,13 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               className="flex items-center gap-2 group"
             >
-              <div className="w-10 h-10 rounded-xl bg-blue-600 dark:bg-zinc-900 border border-blue-500 dark:border-zinc-800 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors duration-300">
-                <span className="text-white group-hover:text-blue-600 dark:group-hover:text-black font-bold text-xl font-outfit">
+              <div className="w-10 h-10 rounded-xl bg-(--accent-blue) border border-(--accent-blue)/20 flex items-center justify-center group-hover:bg-(--text-primary) group-hover:text-(--bg-primary) transition-all duration-300">
+                <span className="text-white group-hover:text-(--bg-primary) font-bold text-xl font-outfit">
                   A
                 </span>
               </div>
               <div className="flex flex-col leading-none ml-2">
-                <span className="text-lg font-bold font-outfit tracking-wider text-[var(--text-primary)]">
+                <span className="text-lg font-bold font-outfit tracking-wider text-(--text-primary)">
                   ALPIAN
                 </span>
               </div>
@@ -86,7 +86,7 @@ const Navbar = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-2">
-              <div className="flex items-center space-x-1 mr-4 rounded-xl p-1 bg-gray-100/50 dark:bg-zinc-800/50 backdrop-blur-sm border border-gray-200/50 dark:border-zinc-700/50">
+              <div className="flex items-center space-x-1 mr-4 rounded-xl p-1 bg-(--bg-secondary) backdrop-blur-sm border border-(--border-color)">
                 {navLinks.map((link) => {
                   const isActive =
                     activeSection === link.href.replace("#", "") ||
@@ -98,18 +98,18 @@ const Navbar = () => {
                       className="relative px-4 py-2 text-sm font-medium transition-colors"
                     >
                       {isActive ? (
-                        <span className="text-blue-600 dark:text-white relative z-10 font-semibold">
+                        <span className="text-(--accent-blue) relative z-10 font-semibold">
                           {link.name}
                         </span>
                       ) : (
-                        <span className="text-[var(--text-secondary)] hover:text-blue-600 dark:hover:text-white transition-colors relative z-10">
+                        <span className="text-(--text-secondary) hover:text-(--accent-blue) transition-colors relative z-10">
                           {link.name}
                         </span>
                       )}
                       {isActive && (
                         <motion.div
                           layoutId="nav-active"
-                          className="absolute inset-0 bg-white dark:bg-zinc-700 rounded-lg shadow-sm"
+                          className="absolute inset-0 bg-(--bg-primary) rounded-lg shadow-sm"
                           transition={{
                             type: "spring",
                             bounce: 0.2,
@@ -125,7 +125,7 @@ const Navbar = () => {
               {/* Theme Toggle */}
               <button
                 onClick={toggleTheme}
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 dark:bg-zinc-800 text-[var(--text-secondary)] hover:bg-gray-200 dark:hover:bg-zinc-700 transition-all"
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-(--bg-secondary) text-(--text-secondary) hover:bg-(--bg-subtle) transition-all"
                 aria-label="Toggle theme"
               >
                 {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
@@ -136,7 +136,7 @@ const Navbar = () => {
                 href="#contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="ml-2 px-6 py-2.5 text-sm font-semibold text-white bg-blue-600 dark:bg-white dark:text-zinc-950 rounded-xl hover:bg-blue-700 dark:hover:bg-zinc-200 transition-colors shadow-lg shadow-blue-500/20 dark:shadow-white/10"
+                className="ml-2 px-6 py-2.5 text-sm font-semibold text-(--bg-primary) bg-(--text-primary) rounded-xl hover:opacity-90 transition-all shadow-lg shadow-blue-500/10"
               >
                 Hire Me
               </motion.a>
@@ -146,14 +146,14 @@ const Navbar = () => {
             <div className="flex items-center gap-4 md:hidden">
               <button
                 onClick={toggleTheme}
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 dark:bg-zinc-800 text-[var(--text-secondary)] hover:bg-gray-200 dark:hover:bg-zinc-700 transition-all"
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-(--bg-secondary) text-(--text-secondary) hover:bg-(--bg-subtle) transition-all"
               >
                 {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
               </button>
 
               <button
                 onClick={() => setIsOpen(true)}
-                className="w-11 h-11 flex items-center justify-center rounded-xl bg-[var(--bg-primary)] border-[var(--border-color)] text-[var(--text-secondary)] hover:text-blue-600 dark:hover:text-white hover:bg-[var(--bg-secondary)] transition-all shadow-sm"
+                className="w-11 h-11 flex items-center justify-center rounded-xl bg-(--bg-primary) border border-(--border-color) text-(--text-secondary) hover:text-(--accent-blue) hover:bg-(--bg-secondary) transition-all shadow-sm"
               >
                 <Menu size={22} />
               </button>

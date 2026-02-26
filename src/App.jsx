@@ -10,7 +10,8 @@ import Footer from "./komponen/Footer";
 
 const App = () => {
   return (
-    <div>
+    <div className="relative">
+      <div className="mesh-gradient" />
       <Navbar />
       <main>
         <Hero />

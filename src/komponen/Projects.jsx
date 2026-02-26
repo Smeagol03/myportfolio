@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
+import { useRef } from "react";
 
 const projectData = [
   {
@@ -9,44 +10,6 @@ const projectData = [
     tech: ["Firebase", "Tailwind CSS"],
     image: "https://lpkduaberkah.com/img/galeri/1.webp",
     link: "https://lpkduaberkah.com/",
-    category: "Web App",
-  },
-  {
-    title: "Aplikasi Pencatatan Keuangan",
-    description:
-      "Sistem pencatatan keuangan online yang memudahkan pengelolaan keuangan rumah tangga.",
-    tech: ["Supabase", "Tailwind CSS", "React"],
-    image: "https://laporan-keuangan-sand.vercel.app/logoBesar.png",
-    link: "https://laporan-keuangan-sand.vercel.app/login",
-    category: "Management System",
-  },
-  {
-    title: "Wedding Invitation Platinum",
-    description:
-      "Desain undangan pernikahan digital yang elegan, responsif, dan interaktif.",
-    tech: ["Firebase", "Tailwind CSS"],
-    image:
-      "https://wedding-of-wijaya-rara.netlify.app/asset/img/mempelai/bg_open_2.jpg",
-    link: "https://wedding-of-wijaya-rara.netlify.app/",
-    category: "Creative Site",
-  },
-  {
-    title: "Modern Wedding Invitation",
-    description:
-      "Undangan pernikahan digital dengan tampilan modern dan fitur interaktif premium.",
-    tech: ["Firebase", "Tailwind CSS"],
-    image: "https://pernikahan-zulfan-izza.netlify.app/asset/img/open2.jpeg",
-    link: "https://pernikahan-zulfan-izza.netlify.app/",
-    category: "Creative Site",
-  },
-  {
-    title: "Warung Makan Digital",
-    description:
-      "Platform pemesanan makanan online yang memudahkan pelanggan memesan makanan.",
-    tech: ["Firebase", "Tailwind CSS"],
-    image: "https://warungsaya.netlify.app/image/product/chicken-dish.jpg",
-    link: "https://warungsaya.netlify.app/",
-    category: "E-Commerce",
   },
   {
     title: "Sistem Absensi",
@@ -55,109 +18,139 @@ const projectData = [
     tech: ["Firebase", "Tailwind CSS", "React"],
     image: "/ss-absensi.png",
     link: "https://perkim-absensi.vercel.app/",
-    category: "Administrative Tool",
+  },
+  {
+    title: "Keuangan Digital",
+    description:
+      "Sistem pencatatan keuangan online yang memudahkan pengelolaan keuangan rumah tangga.",
+    tech: ["Supabase", "React"],
+    image: "https://laporan-keuangan-sand.vercel.app/logoBesar.png",
+    link: "https://laporan-keuangan-sand.vercel.app/login",
+  },
+  {
+    title: "Wedding Invite",
+    description:
+      "Desain undangan pernikahan digital yang elegan, responsif, dan interaktif.",
+    tech: ["Firebase", "Tailwind"],
+    image:
+      "https://wedding-of-wijaya-rara.netlify.app/asset/img/mempelai/bg_open_2.jpg",
+    link: "https://wedding-of-wijaya-rara.netlify.app/",
+  },
+  {
+    title: "Warung Makan Digital",
+    description: "Platform pemesanan makanan online yang memudahkan pelanggan.",
+    tech: ["Firebase", "Tailwind"],
+    image: "https://warungsaya.netlify.app/image/product/chicken-dish.jpg",
+    link: "https://warungsaya.netlify.app/",
   },
 ];
 
 const Projects = () => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
   return (
     <section
       id="projects"
-      className="py-24 bg-(--bg-primary) relative border-t border-(--border-color) overflow-hidden transition-colors duration-500"
+      ref={containerRef}
+      className="py-32 relative border-t border-white/5 bg-transparent overflow-hidden"
     >
-      <div className="container mx-auto px-6 max-w-6xl relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        {/* Header Section */}
+        <div className="flex flex-col mb-20">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="max-w-xl"
+            className="flex items-center gap-4 mb-6"
           >
-            <h2 className="text-4xl md:text-5xl font-outfit font-bold tracking-tight text-(--text-primary) mb-4">
-              Selected{" "}
-              <span className="text-blue-600 dark:text-zinc-500">Works.</span>
-            </h2>
-            <p className="text-(--text-secondary) text-lg">
-              A showcase of digital solutions I've built, emphasizing clean
-              code, intuitive user experiences, and measurable business impact.
-            </p>
+            <div className="h-px w-12 bg-blue-500/50" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-(--text-muted)">
+              Selected Works
+            </span>
           </motion.div>
-          <motion.a
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            href="https://github.com/Smeagol03"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group hidden md:flex items-center gap-2 text-(--text-muted) hover:text-blue-600 dark:hover:text-white transition-colors mt-6 md:mt-0 font-medium"
-          >
-            View all on GitHub
-            <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </motion.a>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projectData.map((project, index) => (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-col md:flex-row justify-between items-end gap-8"
+          >
+            <h2 className="text-6xl md:text-8xl font-outfit font-bold tracking-tighter text-(--text-primary) uppercase leading-[0.8]">
+              Portfolio<span className="text-(--text-muted)">.</span>
+            </h2>
+
             <motion.a
-              href={project.link}
+              href="https://github.com/Smeagol03"
               target="_blank"
               rel="noopener noreferrer"
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -10 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative p-3 rounded-2xl overflow-hidden flex flex-col h-full border-(--border-color) bg-(--bg-primary) hover:shadow-xl hover:border-blue-200 dark:hover:border-zinc-700 transition-all"
+              className="text-xs font-bold uppercase tracking-widest text-(--text-muted) hover:text-(--text-primary) flex items-center gap-2 transition-colors duration-500"
             >
-              <div className="relative h-48 w-full rounded-xl overflow-hidden bg-(--bg-secondary) border-(--border-color) mb-4">
+              GitHub / Explore <ArrowUpRight className="w-4 h-4" />
+            </motion.a>
+          </motion.div>
+        </div>
+
+        {/* Project Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {projectData.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{
+                duration: 0.8,
+                delay: index * 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="group glass-2 rounded-sm flex flex-col h-full hover:border-(--accent-blue)/50 transition-all duration-700 overflow-hidden"
+            >
+              {/* Image Container */}
+              <div className="relative aspect-video overflow-hidden border-b border-(--border-color)">
                 <img
                   src={project.image}
                   alt={project.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                <div className="absolute top-3 left-3">
-                  <span className="px-2.5 py-1 bg-white/90 dark:bg-zinc-900/80 backdrop-blur-md border border-slate-200 dark:border-zinc-700/50 rounded-md text-[10px] font-semibold tracking-wider uppercase text-slate-700 dark:text-zinc-300 shadow-sm">
-                    {project.category}
-                  </span>
-                </div>
               </div>
 
-              <div className="px-2 pb-2 grow flex flex-col">
-                <h3 className="text-xl font-bold font-outfit text-(--text-primary) mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              {/* Project Info */}
+              <div className="p-6 md:p-8 flex flex-col flex-1 bg-(--bg-primary)">
+                <h3 className="text-2xl font-bold font-outfit text-(--text-primary) mb-3 uppercase tracking-tighter group-hover:text-(--accent-blue) transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-(--text-secondary) text-sm mb-4 line-clamp-2 grow">
+                <p className="text-(--text-secondary) text-sm leading-relaxed mb-6 flex-1">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-1.5 mt-auto">
-                  {project.tech.map((tech, i) => (
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tech.map((t, i) => (
                     <span
                       key={i}
-                      className="text-[10px] font-semibold tracking-wider uppercase text-(--text-secondary) bg-(--bg-secondary) border-(--border-color) px-2 py-1 rounded group-hover:bg-blue-50 dark:group-hover:bg-zinc-800 group-hover:text-blue-700 dark:group-hover:text-zinc-300 transition-colors"
+                      className="px-3 py-1 bg-(--bg-secondary) border border-(--border-color) text-(--text-muted) text-[9px] font-bold uppercase tracking-widest rounded-sm"
                     >
-                      {tech}
+                      {t}
                     </span>
                   ))}
                 </div>
-              </div>
-            </motion.a>
-          ))}
-        </div>
 
-        <div className="mt-12 text-center md:hidden">
-          <a
-            href="https://github.com/Smeagol03"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-(--text-secondary) hover:text-blue-600 dark:hover:text-white transition-colors font-medium"
-          >
-            View all on GitHub
-            <ArrowUpRight className="w-5 h-5" />
-          </a>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-(--text-primary) hover:text-(--accent-blue) transition-colors mt-auto"
+                >
+                  View Project <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

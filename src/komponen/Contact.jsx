@@ -30,12 +30,6 @@ const contactInfo = [
     value: "github.com/Smeagol03",
     link: "https://github.com/Smeagol03",
   },
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "Lombok Timur, NTB",
-    link: "https://maps.app.goo.gl/pQuotFgBWLKhZzzv9",
-  },
 ];
 
 const Contact = () => {
@@ -62,31 +56,34 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-24 relative overflow-hidden bg-(--bg-primary) border-t border-(--border-color) transition-colors duration-500"
+      className="py-32 relative border-t border-white/5 bg-transparent overflow-hidden"
     >
-      <div className="container mx-auto px-6 max-w-6xl relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-outfit font-bold tracking-tight text-(--text-primary) mb-4">
-            Let's Start a{" "}
-            <span className="text-blue-600 dark:text-zinc-500">
-              Conversation.
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        <header className="mb-20 text-center lg:text-left">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center lg:justify-start gap-4 mb-6"
+          >
+            <div className="h-px w-12 bg-blue-500/50" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-(--text-muted)">
+              Contact
             </span>
-          </h2>
-          <p className="text-(--text-secondary) text-lg">
-            Terbuka untuk peluang baru, diskusi teknologi, atau proyek
-            kolaborasi.
-          </p>
-        </motion.div>
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-6xl md:text-8xl font-outfit font-bold tracking-tighter text-(--text-primary) uppercase leading-[0.8]"
+          >
+            Let's Talk<span className="text-(--text-muted)">.</span>
+          </motion.h2>
+        </header>
 
-        <div className="grid lg:grid-cols-12 gap-12 max-w-6xl mx-auto">
-          {/* Info Side */}
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
           <div className="lg:col-span-5 space-y-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+            <div className="grid grid-cols-1 gap-4">
               {contactInfo.map((item, idx) => (
                 <motion.a
                   key={idx}
@@ -95,20 +92,18 @@ const Contact = () => {
                   rel="noopener noreferrer"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  whileHover={{ x: 5, backgroundColor: "var(--bg-hover)" }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  style={{ "--bg-hover": "rgba(59, 130, 246, 0.05)" }}
-                  className="p-6 rounded-2xl border-(--border-color) bg-(--bg-primary) flex items-center gap-5 group transition-all hover:border-blue-200 dark:hover:border-zinc-700 hover:shadow-lg dark:hover:shadow-none"
+                  className="p-8 glass-2 flex items-center gap-6 group hover:border-(--accent-blue)/30 transition-all rounded-sm"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-zinc-900 border border-blue-100 dark:border-zinc-800 flex items-center justify-center group-hover:bg-blue-600 dark:group-hover:bg-zinc-800 transition-colors duration-300">
-                    <item.icon className="w-5 h-5 text-blue-600 dark:text-zinc-400 group-hover:text-white transition-colors" />
+                  <div className="w-12 h-12 glass-2 flex items-center justify-center rounded-sm group-hover:bg-(--accent-blue) group-hover:text-white transition-all duration-500">
+                    <item.icon className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-blue-600 dark:text-zinc-500 tracking-widest uppercase mb-1 group-hover:text-blue-700 dark:group-hover:text-zinc-400">
+                    <p className="text-[10px] font-bold text-(--text-muted) uppercase tracking-widest mb-1">
                       {item.label}
                     </p>
-                    <p className="text-(--text-primary) font-medium group-hover:text-blue-900 dark:group-hover:text-white transition-colors text-sm">
+                    <p className="text-(--text-primary) font-bold group-hover:text-(--accent-blue) transition-colors uppercase tracking-tighter">
                       {item.value}
                     </p>
                   </div>
@@ -120,161 +115,137 @@ const Contact = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              whileHover={{ y: -5 }}
-              className="p-8 rounded-2xl border border-blue-100 dark:border-zinc-800 bg-(--bg-secondary) dark:bg-dark-bg relative overflow-hidden"
+              className="p-10 glass-2 relative overflow-hidden rounded-sm"
             >
               <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-pulse" />
-                  <span className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest">
-                    Available for Hire
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                  <span className="text-[10px] font-bold text-blue-500 uppercase tracking-[0.3em]">
+                    Availability
                   </span>
                 </div>
-                <h4 className="text-xl font-bold font-outfit text-(--text-primary) mb-2">
-                  Membutuhkan Tenaga Profesional?
+                <h4 className="text-2xl font-bold font-outfit text-(--text-primary) mb-4 uppercase tracking-tighter">
+                  Open for new <br />
+                  Opportunities.
                 </h4>
-                <p className="text-(--text-secondary) text-sm font-light leading-relaxed">
-                  Saya selalu siap untuk berdiskusi peran purna waktu atau
-                  proyek web independen.
+                <p className="text-(--text-secondary) text-sm leading-relaxed mb-6">
+                  Available for full-time roles or high-impact freelance
+                  projects. Let's build something exceptional.
                 </p>
               </div>
             </motion.div>
           </div>
 
-          {/* Form Side */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="lg:col-span-7"
           >
-            <div className="p-8 md:p-12 rounded-2xl md:rounded-[2.5rem] border-(--border-color) bg-(--bg-primary) relative shadow-xl dark:shadow-none">
-              <div className="flex items-center gap-3 mb-10">
-                <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-zinc-900 border border-blue-100 dark:border-zinc-800 flex items-center justify-center">
-                  <MessageSquare className="w-6 h-6 text-blue-600 dark:text-zinc-300" />
+            <div className="p-10 glass-2 rounded-sm">
+              <div className="flex items-center gap-4 mb-12">
+                <div className="w-12 h-12 glass-2 flex items-center justify-center rounded-sm">
+                  <MessageSquare className="w-5 h-5 text-(--text-primary)" />
                 </div>
-                <h3 className="text-2xl font-bold font-outfit text-(--text-primary)">
-                  Direct Message
+                <h3 className="text-2xl font-bold font-outfit text-(--text-primary) uppercase tracking-tighter">
+                  Send Message
                 </h3>
               </div>
 
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid md:grid-cols-2 gap-8">
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-(--text-muted) uppercase tracking-widest ml-1">
-                      Nama
+                    <label className="text-[10px] font-bold text-(--text-muted) uppercase tracking-widest ml-1">
+                      Full Name
                     </label>
                     <input
                       type="text"
                       name="name"
                       required
-                      placeholder="Nama"
-                      className="w-full px-5 py-4 rounded-xl bg-(--bg-secondary) border-(--border-color) text-(--text-primary) placeholder:text-slate-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-blue-500 dark:focus:border-zinc-500 focus:ring-1 focus:ring-blue-500 dark:focus:ring-zinc-500 transition-all font-light"
+                      className="w-full bg-(--bg-secondary) border border-(--border-color) p-4 text-(--text-primary) focus:outline-none focus:border-blue-500 transition-all rounded-sm uppercase tracking-widest text-[10px] font-bold"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-(--text-muted) uppercase tracking-widest ml-1">
-                      Email
+                    <label className="text-[10px] font-bold text-(--text-muted) uppercase tracking-widest ml-1">
+                      Email address
                     </label>
                     <input
                       type="email"
                       name="email"
                       required
-                      placeholder="hello@mail.com"
-                      className="w-full px-5 py-4 rounded-xl bg-(--bg-secondary) border-(--border-color) text-(--text-primary) placeholder:text-slate-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-blue-500 dark:focus:border-zinc-500 focus:ring-1 focus:ring-blue-500 dark:focus:ring-zinc-500 transition-all font-light"
+                      className="w-full bg-(--bg-secondary) border border-(--border-color) p-4 text-(--text-primary) focus:outline-none focus:border-blue-500 transition-all rounded-sm uppercase tracking-widest text-[10px] font-bold"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-(--text-muted) uppercase tracking-widest ml-1">
+                  <label className="text-[10px] font-bold text-(--text-muted) uppercase tracking-widest ml-1">
                     Subject
                   </label>
-                  <div className="relative">
-                    <select
-                      name="subject"
-                      className="w-full px-5 py-4 rounded-xl bg-(--bg-secondary) border-(--border-color) text-(--text-primary) focus:outline-none focus:border-blue-500 dark:focus:border-zinc-500 focus:ring-1 focus:ring-blue-500 dark:focus:ring-zinc-500 transition-all font-light appearance-none cursor-pointer"
+                  <select
+                    name="subject"
+                    className="w-full bg-(--bg-secondary) border border-(--border-color) p-4 text-(--text-primary) focus:outline-none focus:border-blue-500 transition-all rounded-sm uppercase tracking-widest text-[10px] font-bold appearance-none cursor-pointer"
+                  >
+                    <option
+                      value="Project Proposal"
+                      className="bg-(--bg-primary)"
                     >
-                      <option value="Project Proposal">Project Proposal</option>
-                      <option value="Job Opportunity">Job Opportunity</option>
-                      <option value="General Inquiry">General Inquiry</option>
-                    </select>
-                    <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
-                      <svg
-                        className="w-4 h-4 text-slate-400"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M19 9l-7 7-7-7"
-                        ></path>
-                      </svg>
-                    </div>
-                  </div>
+                      Project Proposal
+                    </option>
+                    <option
+                      value="Job Opportunity"
+                      className="bg-(--bg-primary)"
+                    >
+                      Job Opportunity
+                    </option>
+                    <option
+                      value="General Inquiry"
+                      className="bg-(--bg-primary)"
+                    >
+                      General Inquiry
+                    </option>
+                  </select>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-(--text-muted) uppercase tracking-widest ml-1">
-                    Pesan
+                  <label className="text-[10px] font-bold text-(--text-muted) uppercase tracking-widest ml-1">
+                    Message
                   </label>
                   <textarea
                     name="message"
-                    rows="4"
+                    rows="6"
                     required
-                    placeholder="Sampaikan pesan Anda di sini..."
-                    className="w-full px-5 py-4 rounded-xl bg-(--bg-secondary) border-(--border-color) text-(--text-primary) placeholder:text-slate-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-blue-500 dark:focus:border-zinc-500 focus:ring-1 focus:ring-blue-500 dark:focus:ring-zinc-500 transition-all font-light resize-none"
+                    className="w-full bg-(--bg-secondary) border border-(--border-color) p-4 text-(--text-primary) focus:outline-none focus:border-blue-500 transition-all rounded-sm uppercase tracking-widest text-[10px] font-bold resize-none"
                   ></textarea>
                 </div>
 
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileHover={{ scale: 0.98 }}
+                  whileTap={{ scale: 0.95 }}
                   disabled={formStatus !== "idle"}
-                  className={`w-full py-4 rounded-xl font-bold flex items-center justify-center gap-3 transition-all shadow-lg ${
+                  className={`w-full py-5 rounded-sm font-bold text-[10px] uppercase tracking-[0.3em] transition-all flex items-center justify-center gap-4 ${
                     formStatus === "success"
-                      ? "bg-emerald-600 text-white shadow-emerald-500/20"
-                      : "bg-blue-600 dark:bg-white text-white dark:text-zinc-950 hover:bg-blue-700 dark:hover:bg-zinc-200 shadow-blue-500/20 dark:shadow-white/10"
+                      ? "bg-emerald-600 text-white"
+                      : "bg-(--text-primary) text-(--bg-primary) hover:bg-blue-600 hover:text-white"
                   }`}
                 >
                   <AnimatePresence mode="wait">
                     {formStatus === "submitting" ? (
-                      <motion.div
-                        key="submitting"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="flex items-center gap-2"
-                      >
-                        <Loader2 className="w-5 h-5 animate-spin" />
-                        <span>MENGIRIM...</span>
-                      </motion.div>
+                      <div className="flex items-center gap-2">
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Sending...</span>
+                      </div>
                     ) : formStatus === "success" ? (
-                      <motion.div
-                        key="success"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="flex items-center gap-2"
-                      >
-                        <CheckCircle2 className="w-5 h-5" />
-                        <span>BERHASIL TERKIRIM</span>
-                      </motion.div>
+                      <div className="flex items-center gap-2">
+                        <CheckCircle2 className="w-4 h-4" />
+                        <span>Message Sent</span>
+                      </div>
                     ) : (
-                      <motion.div
-                        key="idle"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="flex items-center gap-2"
-                      >
-                        <Send className="w-5 h-5" />
-                        <span>KIRIM PESAN</span>
-                      </motion.div>
+                      <div className="flex items-center gap-2">
+                        <Send className="w-4 h-4" />
+                        <span>Initialize Transmission</span>
+                      </div>
                     )}
                   </AnimatePresence>
                 </motion.button>

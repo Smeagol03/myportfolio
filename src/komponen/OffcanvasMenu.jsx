@@ -34,7 +34,7 @@ const OffcanvasMenu = ({ isOpen, setIsOpen, navLinks }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/60 dark:bg-black/80 backdrop-blur-sm z-40 md:hidden"
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden"
             onClick={() => setIsOpen(false)}
           />
 
@@ -44,22 +44,22 @@ const OffcanvasMenu = ({ isOpen, setIsOpen, navLinks }) => {
             animate="open"
             exit="closed"
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed top-0 right-0 h-full w-[80%] max-w-[320px] bg-[var(--bg-primary)] border-l border-gray-200 dark:border-zinc-800 shadow-2xl z-50 md:hidden flex flex-col"
+            className="fixed top-0 right-0 h-full w-[80%] max-w-[320px] bg-(--bg-primary) border-l border-(--border-color) shadow-2xl z-50 md:hidden flex flex-col"
           >
-            <div className="flex justify-between items-center p-6 border-b border-gray-100 dark:border-zinc-900">
+            <div className="flex justify-between items-center p-6 border-b border-(--border-color)">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-blue-600 dark:bg-white flex items-center justify-center">
-                  <span className="text-white dark:text-black font-bold text-sm font-outfit">
+                <div className="w-8 h-8 rounded-lg bg-(--accent-blue) flex items-center justify-center">
+                  <span className="text-white font-bold text-sm font-outfit">
                     A
                   </span>
                 </div>
-                <span className="text-lg font-bold font-outfit tracking-wider text-[var(--text-primary)]">
+                <span className="text-lg font-bold font-outfit tracking-wider text-(--text-primary)">
                   ALPIAN
                 </span>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="w-10 h-10 flex items-center justify-center rounded-xl text-[var(--text-muted)] hover:text-blue-600 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors"
+                className="w-10 h-10 flex items-center justify-center rounded-xl text-(--text-muted) hover:text-(--accent-blue) hover:bg-(--bg-secondary) transition-colors"
                 aria-label="Close menu"
               >
                 <X size={20} />
@@ -78,28 +78,28 @@ const OffcanvasMenu = ({ isOpen, setIsOpen, navLinks }) => {
                   >
                     <a
                       href={link.href}
-                      className="flex items-center justify-between px-5 py-4 rounded-xl text-[var(--text-secondary)] hover:text-blue-600 dark:hover:text-white hover:bg-blue-50 dark:hover:bg-zinc-900 transition-all duration-300 group"
+                      className="flex items-center justify-between px-5 py-4 rounded-xl text-(--text-secondary) hover:text-(--accent-blue) hover:bg-(--bg-secondary) transition-all duration-300 group"
                       onClick={() => setIsOpen(false)}
                     >
                       <span className="font-medium tracking-wide">
                         {link.name}
                       </span>
-                      <div className="w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-zinc-700 group-hover:bg-blue-600 dark:group-hover:bg-white transition-colors" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-(--border-color) group-hover:bg-(--accent-blue) transition-colors" />
                     </a>
                   </motion.li>
                 ))}
               </ul>
             </nav>
 
-            <div className="p-6 mt-auto border-t border-gray-100 dark:border-zinc-900">
+            <div className="p-6 mt-auto border-t border-(--border-color)">
               <a
                 href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center w-full px-4 py-4 text-base font-bold text-white dark:text-zinc-950 bg-blue-600 dark:bg-white hover:bg-blue-700 dark:hover:bg-zinc-200 rounded-xl transition-all mb-4 shadow-lg shadow-blue-600/20"
+                className="flex items-center justify-center w-full px-4 py-4 text-base font-bold text-(--bg-primary) bg-(--text-primary) hover:opacity-90 rounded-xl transition-all mb-4 shadow-lg shadow-blue-500/10"
               >
                 Hire Me
               </a>
-              <p className="text-center text-[var(--text-muted)] text-xs font-medium uppercase tracking-[0.2em]">
+              <p className="text-center text-(--text-muted) text-xs font-medium uppercase tracking-[0.2em]">
                 &copy; {new Date().getFullYear()} Alpian Tabrani
               </p>
             </div>

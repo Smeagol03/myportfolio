@@ -50,7 +50,7 @@ const DataDiri = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-blue-600 dark:text-white font-semibold tracking-wider text-sm uppercase mb-2 block">
+          <span className="text-(--accent-blue) font-semibold tracking-wider text-sm uppercase mb-2 block">
             Biodata
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-(--text-primary) mb-4">
@@ -69,13 +69,13 @@ const DataDiri = () => {
           {/* Informasi Pribadi */}
           <motion.div
             whileHover={{ y: -5 }}
-            className="bg-(--bg-primary) backdrop-blur-sm rounded-xl border-(--border-color) overflow-hidden shadow-lg dark:shadow-xl hover:shadow-2xl transition-all duration-500"
+            className="bg-(--bg-primary) backdrop-blur-sm rounded-xl border border-(--border-color) overflow-hidden shadow-lg dark:shadow-xl hover:shadow-2xl transition-all duration-500"
           >
             <div className="h-2 bg-linear-to-r from-blue-500 to-cyan-500" />
             <div className="p-6 md:p-8">
               <div className="flex items-center gap-4 mb-8">
-                <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-xl">
-                  <User className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                <div className="p-3 bg-(--bg-secondary) rounded-xl">
+                  <User className="w-8 h-8 text-(--accent-blue)" />
                 </div>
                 <div>
                   <h3 className="text-xl md:text-2xl font-bold text-(--text-primary)">
@@ -90,9 +90,7 @@ const DataDiri = () => {
               <div className="space-y-6 text-xs md:text-sm">
                 <InfoItem
                   variants={itemVariants}
-                  icon={
-                    <Calendar className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                  }
+                  icon={<Calendar className="w-5 h-5 text-(--accent-blue)" />}
                   label={<span className="text-(--text-muted)">Lahir</span>}
                   value={
                     <span className="text-(--text-primary) font-medium">{`${data.tempatLahir}, ${data.tanggalLahir}`}</span>
@@ -100,9 +98,7 @@ const DataDiri = () => {
                 />
                 <InfoItem
                   variants={itemVariants}
-                  icon={
-                    <Flag className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                  }
+                  icon={<Flag className="w-5 h-5 text-(--accent-blue)" />}
                   label={
                     <span className="text-(--text-muted)">Kewarganegaraan</span>
                   }
@@ -114,9 +110,7 @@ const DataDiri = () => {
                 />
                 <InfoItem
                   variants={itemVariants}
-                  icon={
-                    <BookOpen className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                  }
+                  icon={<BookOpen className="w-5 h-5 text-(--accent-blue)" />}
                   label={<span className="text-(--text-muted)">Agama</span>}
                   value={
                     <span className="text-(--text-primary) font-medium">
@@ -126,9 +120,7 @@ const DataDiri = () => {
                 />
                 <InfoItem
                   variants={itemVariants}
-                  icon={
-                    <Heart className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                  }
+                  icon={<Heart className="w-5 h-5 text-(--accent-blue)" />}
                   label={<span className="text-(--text-muted)">Status</span>}
                   value={
                     <span className="text-(--text-primary) font-medium">
@@ -138,9 +130,7 @@ const DataDiri = () => {
                 />
                 <InfoItem
                   variants={itemVariants}
-                  icon={
-                    <Droplet className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                  }
+                  icon={<Droplet className="w-5 h-5 text-(--accent-blue)" />}
                   label={
                     <span className="text-(--text-muted)">Gol. Darah</span>
                   }
@@ -157,13 +147,13 @@ const DataDiri = () => {
           {/* Informasi Kontak */}
           <motion.div
             whileHover={{ y: -5 }}
-            className="bg-(--bg-primary) backdrop-blur-sm rounded-2xl shadow-lg dark:shadow-xl border-(--border-color) overflow-hidden hover:shadow-2xl transition-all duration-500"
+            className="bg-(--bg-primary) backdrop-blur-sm rounded-2xl shadow-lg dark:shadow-xl border border-(--border-color) overflow-hidden hover:shadow-2xl transition-all duration-500"
           >
             <div className="h-2 bg-linear-to-r from-indigo-500 to-purple-500" />
             <div className="p-6 md:p-8">
               <div className="flex items-center gap-4 mb-8">
-                <div className="p-3 bg-indigo-50 dark:bg-indigo-900/30 rounded-xl">
-                  <Phone className="w-8 h-8 text-indigo-600 dark:text-indigo-400" />
+                <div className="p-3 bg-(--bg-secondary) rounded-xl">
+                  <Phone className="w-8 h-8 text-indigo-500" />
                 </div>
                 <div>
                   <h3 className="text-xl md:text-2xl font-bold text-(--text-primary)">
@@ -178,9 +168,7 @@ const DataDiri = () => {
               <div className="space-y-6 text-xs md:text-sm">
                 <InfoItem
                   variants={itemVariants}
-                  icon={
-                    <MapPin className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
-                  }
+                  icon={<MapPin className="w-5 h-5 text-indigo-500" />}
                   label={
                     <span className="text-(--text-muted)">Alamat Domisili</span>
                   }
@@ -193,9 +181,7 @@ const DataDiri = () => {
                 />
                 <InfoItem
                   variants={itemVariants}
-                  icon={
-                    <Phone className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
-                  }
+                  icon={<Phone className="w-5 h-5 text-indigo-500" />}
                   label={
                     <span className="text-(--text-muted)">
                       No. Ponsel / WhatsApp
@@ -209,9 +195,7 @@ const DataDiri = () => {
                 />
                 <InfoItem
                   variants={itemVariants}
-                  icon={
-                    <Mail className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
-                  }
+                  icon={<Mail className="w-5 h-5 text-indigo-500" />}
                   label={
                     <span className="text-(--text-muted)">Alamat Email</span>
                   }
@@ -226,7 +210,7 @@ const DataDiri = () => {
               </div>
 
               {/* Added Call to Action area for better interactivity */}
-              <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-700">
+              <div className="mt-8 pt-6 border-t border-(--border-color)">
                 <p className="text-sm text-(--text-secondary) mb-4 font-medium">
                   Ingin berkolaborasi?
                 </p>
