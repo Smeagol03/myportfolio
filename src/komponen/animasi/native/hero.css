@@ -1,0 +1,80 @@
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  background-color: var(--bg-primary);
+  pointer-events: none;
+}
+
+/* More Visible Grid Infrastructure */
+.hero-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border-color) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, var(--border-color) 1.5px, transparent 1.5px);
+  background-size: 60px 60px;
+  background-position: center;
+  opacity: 0.35;
+  mask-image: radial-gradient(circle at center, black 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    black 30%,
+    transparent 85%
+  );
+}
+
+/* Brighter & More Dynamic Glowing Orbs */
+.hero-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(
+      circle at 15% 25%,
+      rgba(59, 130, 246, 0.15) 0%,
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(139, 92, 246, 0.1) 0%,
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0.05) 0%,
+      transparent 55%
+    );
+  filter: blur(80px);
+  animation: bg-shift 25s ease-in-out infinite alternate;
+}
+
+/* Stronger Grainy Texture Layer */
+.hero-background-noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.1;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+@keyframes bg-shift {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.15) translate(40px, 20px);
+  }
+  100% {
+    transform: scale(1.05) translate(-20px, -35px);
+  }
+}

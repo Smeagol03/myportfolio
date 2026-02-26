@@ -6,6 +6,7 @@ import {
   Instagram,
 } from "lucide-react";
 import { FadeIn, StaggerText } from "./animasi";
+import "./animasi/native/hero.css";
 
 const Hero = ({
   nama = "Alpian Tabrani",
@@ -16,12 +17,44 @@ const Hero = ({
 }) => {
   return (
     <section className="relative min-h-[110vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
+      {/* Animated Background Integrated with Native CSS */}
+      <div className="hero-background">
+        <div className="hero-grid" />
+        <div className="hero-glow" />
+        
+        {/* Gradient Orbs */}
+        <div className="hero-orb hero-orb-1" />
+        <div className="hero-orb hero-orb-2" />
+        <div className="hero-orb hero-orb-3" />
+        
+        {/* Animated Circles */}
+        <div className="hero-circle hero-circle-1" />
+        <div className="hero-circle hero-circle-2" />
+        <div className="hero-circle hero-circle-3" />
+        
+        {/* Geometric Shapes */}
+        <div className="hero-shape hero-hexagon" />
+        <div className="hero-shape hero-triangle" />
+        <div className="hero-shape hero-diamond" />
+        
+        {/* Dots */}
+        <div className="hero-dot hero-dot-1" />
+        <div className="hero-dot hero-dot-2" />
+        <div className="hero-dot hero-dot-3" />
+        <div className="hero-dot hero-dot-4" />
+        <div className="hero-dot hero-dot-5" />
+        
+        {/* Wave Lines */}
+        <div className="hero-wave hero-wave-1" />
+        <div className="hero-wave hero-wave-2" />
+      </div>
+
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col items-center text-center">
           {/* Badge */}
           <FadeIn delay={0} direction="down" duration={0.5} className="mb-12">
-            <span className="px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[10px] font-bold uppercase tracking-[0.3em] text-(--accent-blue)">
-              Personal Portfolio {new Date().getFullYear()}
+            <span className="px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-xs md:text-sm font-bold uppercase text-(--accent-blue)">
+              Available for New Projects
             </span>
           </FadeIn>
 
@@ -49,7 +82,7 @@ const Hero = ({
               delay={0.5}
               direction="up"
               duration={1}
-              className="text-xl md:text-2xl text-(--text-secondary) font-inter mb-12 leading-relaxed tracking-tight"
+              className="text-sm md:text-xl text-(--text-secondary) font-inter mb-12 leading-relaxed tracking-tight"
             >
               Hi, I'm{" "}
               <span className="text-(--text-primary) font-semibold">
