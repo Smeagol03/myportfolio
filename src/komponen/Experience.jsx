@@ -75,12 +75,12 @@ const Experience = () => {
               direction="up"
               className="group glass-2 p-8 md:p-10 rounded-sm hover:border-(--accent-blue)/50 transition-all duration-500"
             >
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-                <div className="flex items-center gap-5">
+              <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+                <div className="flex items-center justify-center flex-col md:flex-row gap-5">
                   <div className="w-14 h-14 bg-(--bg-secondary) border border-(--border-color) flex items-center justify-center rounded-sm group-hover:bg-(--accent-blue) group-hover:border-(--accent-blue) transition-all duration-500 shrink-0">
                     <exp.icon className="w-6 h-6 text-(--text-secondary) group-hover:text-white transition-colors" />
                   </div>
-                  <div>
+                  <div className="flex flex-col text-center md:text-left gap-2">
                     <h3 className="text-2xl font-bold font-outfit text-(--text-primary) tracking-tight group-hover:text-(--accent-blue) transition-colors mb-1">
                       {exp.title}
                     </h3>

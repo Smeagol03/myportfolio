@@ -27,33 +27,35 @@ const PricingCard = ({
         </span>
       )}
 
-      <div className="mb-10">
-        <div
-          className={`inline-flex items-center justify-center p-4 rounded-sm mb-8 transition-colors duration-500 ${
-            isPopular
-              ? "bg-(--accent-blue) text-white"
-              : "bg-(--bg-secondary) border border-(--border-color) text-(--text-primary)"
-          } group-hover:scale-110 transition-transform`}
-        >
-          <Icon size={24} />
+      <div className="mb-8">
+        <div className="flex flex-col items-center">
+          <div
+            className={`inline-flex items-center justify-center p-4 rounded-sm mb-4 transition-colors duration-500 ${
+              isPopular
+                ? "bg-(--accent-blue) text-white"
+                : "bg-(--bg-secondary) border border-(--border-color) text-(--text-primary)"
+            } group-hover:scale-110 transition-transform`}
+          >
+            <Icon size={24} />
+          </div>
+
+          <h3 className="text-2xl font-bold text-(--text-primary) font-outfit mb-3 uppercase tracking-tighter">
+            {title}
+          </h3>
+
+          <div className="flex flex-col items-baseline gap-1 mb-2">
+            <span className="text-xs font-bold text-(--text-muted) uppercase tracking-widest">
+              Start from
+            </span>
+            <span className="text-3xl font-black text-(--text-primary) font-outfit uppercase tracking-tighter">
+              Rp {price}
+            </span>
+          </div>
+
+          <p className="text-(--text-secondary) text-sm leading-relaxed font-inter">
+            {description}
+          </p>
         </div>
-
-        <h3 className="text-2xl font-bold text-(--text-primary) font-outfit mb-3 uppercase tracking-tighter">
-          {title}
-        </h3>
-
-        <div className="flex items-baseline gap-1 mb-4">
-          <span className="text-xs font-bold text-(--text-muted) uppercase tracking-widest">
-            Start from
-          </span>
-          <span className="text-3xl font-black text-(--text-primary) font-outfit uppercase tracking-tighter">
-            Rp {price}
-          </span>
-        </div>
-
-        <p className="text-(--text-secondary) text-sm leading-relaxed font-inter">
-          {description}
-        </p>
       </div>
 
       <ul className="space-y-4 mb-10 flex-1">
@@ -90,59 +92,58 @@ const Layanan = () => {
       title: "Essential",
       price: "1 Jt",
       description:
-        "Presence built with precision. Perfect for personal branding or landing pages.",
+        "Solusi website profesional untuk personal branding, UMKM, atau landing page bisnis Anda.",
       icon: Zap,
       features: [
-        "Single-Page Digital Architecture",
-        "Responsive Swiss Proportions",
-        "Semantic SEO Foundation",
-        "Motion-First Interaction Layout",
-        "Production Deployment Readiness",
-        "Cloud-Static Hosting Setup",
+        "Landing Page / Company Profile",
+        "Desain Responsif",
+        "Struktur SEO Dasar",
+        "Optimasi Dasar",
+        "Integrasi WhatsApp / Form Kontak",
       ],
-      ctaText: "Start Essential",
+      ctaText: "Click Here",
     },
     {
       title: "Advanced",
       price: "1.5 Jt",
       description:
-        "High-performance web applications with dynamic capabilities and PWA features.",
+        "Website dinamis dengan fitur interaktif dan optimasi performa untuk bisnis yang ingin tampil lebih profesional.",
       icon: Rocket,
       isPopular: true,
       features: [
-        "Multi-Structure Scalable App",
-        "PWA Native-Like Experience",
-        "Integrated CMS Management",
-        "Open Graph Social Optimization",
-        "Domain & DNS Architecture",
-        "Performance Monitoring Analytics",
-        "30-Day Post-Launch Support",
+        "3–5 Halaman (Company Profile / UMKM / Organisasi)",
+        "Desain Responsif & Modern UI",
+        "Fitur Dinamis (Firebase / Supabase Integration)",
+        "PWA (Installable seperti aplikasi)",
+        "SEO On-Page + Open Graph",
+        "Integrasi Google Analytics",
       ],
-      ctaText: "Go Advanced",
+      ctaText: "Pick Me",
     },
     {
       title: "System",
-      price: "2.5 Jt",
+      price: "Rp 2.500.000",
       description:
-        "Complex business solutions with real-time data and full backend integration.",
+        "Solusi website berbasis sistem dengan dashboard admin, autentikasi pengguna, dan data real-time.",
       icon: ShieldCheck,
       features: [
-        "Enterprise Full-Stack Framework",
-        "Secure IAM Authentication",
-        "Custom Engineering Dashboards",
-        "Real-time Data Sync Architecture",
-        "Automated System Workflows",
-        "Encryption & Security Guard",
-        "Priority Developer Support",
+        "Website Dinamis dengan Dashboard Admin",
+        "Login & Manajemen Pengguna Dasar",
+        "Kelola Data (Tambah, Edit, Hapus)",
+        "Integrasi Database (Firebase / Supabase)",
+        "Tampilan Data Realtime",
+        "Export Data ke Excel / CSV",
+        "Setup Hosting & Domain",
+        "Support 30 Hari",
       ],
-      ctaText: "Consult System",
+      ctaText: "Choose Me",
     },
   ];
 
   return (
     <section
       id="layanan"
-      className="py-32 relative bg-transparent border-t border-(--border-color)"
+      className="py-32 relative bg-transparent border-t border-(--border-color) overflow-hidden"
     >
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <header className="mb-24">
@@ -160,7 +161,7 @@ const Layanan = () => {
           <FadeIn
             delay={0.2}
             direction="up"
-            className="flex flex-col md:flex-row justify-between items-end gap-10"
+            className="flex flex-col md:flex-row justify-between items-start gap-10"
           >
             <h2 className="text-4xl md:text-8xl font-outfit font-bold tracking-tighter text-(--text-primary) uppercase leading-[0.8]">
               Strategy<span className="text-(--text-muted)">&</span> <br />{" "}

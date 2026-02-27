@@ -63,7 +63,7 @@ const Pendidikan = () => {
               {/* Decorative Large Background Icon */}
               <item.icon className="absolute -right-8 -bottom-8 w-48 h-48 text-(--text-muted) opacity-[0.03] group-hover:opacity-10 group-hover:text-(--accent-blue) group-hover:scale-110 group-hover:-rotate-12 transition-all duration-700 pointer-events-none" />
 
-              <div className="flex items-start md:items-center gap-4 mb-6 z-10">
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mb-6 z-10">
                 <div className="w-12 h-12 rounded-sm bg-(--bg-secondary) border border-(--border-color) flex items-center justify-center group-hover:bg-(--accent-blue) group-hover:border-(--accent-blue) transition-all duration-500 shrink-0">
                   <item.icon className="w-5 h-5 text-(--text-secondary) group-hover:text-white transition-colors" />
                 </div>

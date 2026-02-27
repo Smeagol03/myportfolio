@@ -7,9 +7,7 @@ import { useTheme } from "../context/useTheme";
 const navLinks = [
   { name: "Home", href: "#" },
   { name: "About", href: "#about" },
-  { name: "Pendidikan", href: "#pendidikan" },
   { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
   { name: "Experience", href: "#experience" },
   { name: "Layanan", href: "#layanan" },
   { name: "Contact", href: "#contact" },
@@ -86,7 +84,7 @@ const Navbar = () => {
                 href="#"
                 layout
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center group shrink-0"
+                className="flex items-center group shrink-0 relative"
               >
                 <span className="text-sm font-bold text-(--text-primary) tracking-tighter">
                   ALPIAN
@@ -144,7 +142,10 @@ const Navbar = () => {
               </AnimatePresence>
 
               {/* Right Side Actions */}
-              <motion.div layout className="flex items-center gap-4 shrink-0">
+              <motion.div
+                layout
+                className="flex items-center gap-4 shrink-0 relative"
+              >
                 <motion.button
                   onClick={toggleTheme}
                   className="text-(--text-muted) hover:text-(--text-primary) transition-colors"

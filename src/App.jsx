@@ -16,11 +16,11 @@ const App = () => {
       <main>
         <Hero />
         <About />
+        <Layanan />
         <Pendidikan />
         <Skills />
         <Projects />
         <Experience />
-        <Layanan />
         <Contact />
       </main>
       <Footer />
