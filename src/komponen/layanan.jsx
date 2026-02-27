@@ -22,7 +22,7 @@ const PricingCard = ({
         isPopular
           ? "border-(--accent-blue)/60 bg-(--accent-blue)/5"
           : "border-(--border-color-strong, rgba(0,0,0,0.15)) bg-(--bg-secondary)/10"
-      } glass-2 overflow-visible! transition-all duration-700 hover:border-(--accent-blue)/60`}
+      } glass-2 overflow-visible! transition-colors duration-700 hover:border-(--accent-blue)/60`}
     >
       {isPopular && (
         <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-(--accent-blue) text-white px-5 py-1.5 rounded-full text-[10px] font-black tracking-[0.2em] uppercase z-30 shadow-lg shadow-blue-500/20">
