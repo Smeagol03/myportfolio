@@ -1,5 +1,6 @@
 import { Check, Zap, Rocket, ShieldCheck, ArrowRight } from "lucide-react";
 import { FadeIn } from "./animasi";
+import { useNavigate } from "react-router-dom";
 
 const PricingCard = ({
   title,
@@ -11,6 +12,8 @@ const PricingCard = ({
   ctaText,
   delay = 0,
 }) => {
+  const navigate = useNavigate();
+
   return (
     <FadeIn
       delay={delay}
@@ -70,6 +73,9 @@ const PricingCard = ({
       </ul>
 
       <button
+        onClick={() =>
+          navigate(`/checkout/${title.toLowerCase().replace(/\s+/g, "-")}`)
+        }
         className={`group-btn w-full py-4 px-6 rounded-sm font-bold text-[10px] uppercase tracking-[0.3em] transition-all duration-300 flex items-center justify-center gap-2 ${
           isPopular
             ? "bg-(--text-primary) text-(--bg-primary) hover:invert"

@@ -7,9 +7,9 @@ import { useTheme } from "../context/useTheme";
 const navLinks = [
   { name: "Home", href: "#" },
   { name: "About", href: "#about" },
+  { name: "Layanan", href: "#layanan" },
   { name: "Skills", href: "#skills" },
   { name: "Experience", href: "#experience" },
-  { name: "Layanan", href: "#layanan" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -27,18 +27,43 @@ const Navbar = () => {
         .map((link) => link.href.replace("#", ""))
         .filter(Boolean);
 
+      const elements = sections
+        .map((id) => {
+          const el = document.getElementById(id);
+          return el ? { id, top: el.getBoundingClientRect().top } : null;
+        })
+        .filter(Boolean);
+
+      // Urutkan elemen berdasarkan posisinya di halaman saat ini
+      elements.sort((a, b) => a.top - b.top);
+
       let currentSection = "";
-      for (const section of [...sections].reverse()) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 150) {
-            currentSection = section;
-            break;
-          }
+
+      // Ambil titik trigger dinamis: 40% dari tinggi layar
+      // Ini lebih akurat dan responsif dibanding angka statis (seperti 150px)
+      const triggerPoint = window.innerHeight * 0.4;
+
+      for (const el of [...elements].reverse()) {
+        if (el.top <= triggerPoint) {
+          currentSection = el.id;
+          break;
         }
       }
-      setActiveSection(window.scrollY < 100 ? "" : currentSection);
+
+      // Deteksi jika pengguna sudah melakukan scroll sampai ke paling bawah halaman
+      if (
+        window.innerHeight + Math.round(window.scrollY) >=
+        document.documentElement.scrollHeight - 50
+      ) {
+        if (elements.length > 0) {
+          currentSection = elements[elements.length - 1].id;
+        }
+      }
+
+      // Jika masih ada di Hero section (Paling Atas)
+      setActiveSection(
+        window.scrollY < window.innerHeight * 0.2 ? "" : currentSection,
+      );
     };
 
     window.addEventListener("scroll", handleScroll);

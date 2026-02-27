@@ -17,11 +17,9 @@ const socialLinks = [
 const navLinks = [
   { name: "Home", href: "#" },
   { name: "About", href: "#about" },
-  { name: "Pendidikan", href: "#pendidikan" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
   { name: "Layanan", href: "#layanan" },
+  { name: "Skills", href: "#skills" },
+  { name: "Experience", href: "#experience" },
   { name: "Contact", href: "#contact" },
 ];
 
