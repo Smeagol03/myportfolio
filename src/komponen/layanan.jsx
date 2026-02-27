@@ -18,7 +18,7 @@ const PricingCard = ({
     <FadeIn
       delay={delay}
       direction="up"
-      className={`relative group flex flex-col p-8 lg:p-10 rounded-sm border contain-layout contain-paint ${
+      className={`relative group flex flex-col p-8 lg:p-10 rounded-sm border ${
         isPopular
           ? "border-(--accent-blue)/60 bg-(--accent-blue)/5"
           : "border-(--border-color-strong, rgba(0,0,0,0.15)) bg-(--bg-secondary)/10"
@@ -26,7 +26,7 @@ const PricingCard = ({
       viewport={{ once: true, amount: 0.2 }}
     >
       {isPopular && (
-        <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-(--accent-blue) text-white px-5 py-1.5 rounded-full text-[10px] font-black tracking-[0.2em] uppercase z-30 shadow-lg shadow-blue-500/20">
+        <span className="absolute top-0 right-0 bg-(--accent-blue) text-white px-4 py-2 rounded-bl-xl rounded-tr-sm text-[9px] font-black tracking-[0.15em] uppercase z-30 shadow-lg shadow-blue-500/30">
           Recommended
         </span>
       )}
@@ -129,7 +129,7 @@ const Layanan = () => {
     },
     {
       title: "System",
-      price: "Rp 2.500.000",
+      price: "2.5 Jt",
       description:
         "Solusi website berbasis sistem dengan dashboard admin, autentikasi pengguna, dan data real-time.",
       icon: ShieldCheck,
@@ -150,7 +150,7 @@ const Layanan = () => {
   return (
     <section
       id="layanan"
-      className="py-32 relative bg-transparent border-t border-(--border-color) overflow-hidden"
+      className="py-32 relative bg-transparent border-t border-(--border-color)"
     >
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <header className="mb-24">
