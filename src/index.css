@@ -77,12 +77,18 @@ h6 {
   border: 1px solid var(--border-color);
   border-top: 1px solid rgba(255, 255, 255, 0.15); /* Light reflection on top */
   overflow: hidden;
+  contain: layout paint;
 }
 
 @media (max-width: 640px) {
   .glass-2 {
-    backdrop-filter: blur(12px) saturate(150%);
-    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+  }
+  
+  /* Mobile-optimized: disable noise overlay for better performance */
+  .glass-2::before {
+    display: none;
   }
 }
 

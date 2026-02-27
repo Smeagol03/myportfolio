@@ -18,11 +18,12 @@ const PricingCard = ({
     <FadeIn
       delay={delay}
       direction="up"
-      className={`relative group flex flex-col p-8 lg:p-10 rounded-sm border ${
+      className={`relative group flex flex-col p-8 lg:p-10 rounded-sm border contain-layout contain-paint ${
         isPopular
           ? "border-(--accent-blue)/60 bg-(--accent-blue)/5"
           : "border-(--border-color-strong, rgba(0,0,0,0.15)) bg-(--bg-secondary)/10"
-      } glass-2 overflow-visible! transition-colors duration-700 hover:border-(--accent-blue)/60`}
+      } glass-2 overflow-visible! transition-colors duration-300 md:duration-700 hover:border-(--accent-blue)/60`}
+      viewport={{ once: true, amount: 0.2 }}
     >
       {isPopular && (
         <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-(--accent-blue) text-white px-5 py-1.5 rounded-full text-[10px] font-black tracking-[0.2em] uppercase z-30 shadow-lg shadow-blue-500/20">
@@ -33,7 +34,7 @@ const PricingCard = ({
       <div className="mb-8">
         <div className="flex flex-col items-center">
           <div
-            className={`inline-flex items-center justify-center p-4 rounded-sm mb-4 transition-colors duration-500 ${
+            className={`inline-flex items-center justify-center p-4 rounded-sm mb-4 transition-colors duration-300 md:duration-500 ${
               isPopular
                 ? "bg-(--accent-blue) text-white"
                 : "bg-(--bg-secondary) border border-(--border-color) text-(--text-primary)"
