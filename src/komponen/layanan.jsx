@@ -150,7 +150,7 @@ const Layanan = () => {
   return (
     <section
       id="layanan"
-      className="py-32 relative bg-transparent border-t border-(--border-color)"
+      className="py-32 relative bg-transparent border-t border-(--border-color) overflow-hidden"
     >
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <header className="mb-24">
