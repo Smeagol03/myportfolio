@@ -102,7 +102,7 @@ const Contact = () => {
                       <p className="text-[10px] font-bold text-(--text-muted) uppercase tracking-widest mb-1">
                         {item.label}
                       </p>
-                      <p className="text-(--text-primary) font-bold group-hover:text-(--accent-blue) transition-colors uppercase tracking-tighter">
+                      <p className="text-(--text-primary) font-bold group-hover:text-(--accent-blue) transition-colors tracking-tighter">
                         {item.value}
                       </p>
                     </div>
