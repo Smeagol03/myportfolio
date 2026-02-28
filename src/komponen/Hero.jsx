@@ -107,7 +107,7 @@ const Hero = ({
               </a>
 
               <a
-                href="/resume.pdf"
+                href="/AlpianTabrani.pdf"
                 className="group px-10 py-5 border border-(--border-color) hover:border-(--text-secondary) text-(--text-primary) font-bold uppercase text-xs tracking-widest transition-all rounded-sm backdrop-blur-sm"
               >
                 <span className="flex items-center gap-2">
