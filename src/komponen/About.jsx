@@ -1,19 +1,13 @@
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { CheckCircle2, FileText, Database, Shield } from "lucide-react";
-import Bg from "/pasAlpianTabrani.jpg";
-import { FadeIn } from "./animasi";
+import Bg from "/image.png";
+import GambarHover from "/pasAlpianTabrani.jpg";
+import { FadeIn, SwipeCard } from "./animasi";
 
 const About = () => {
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, amount: 0.2 });
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  useInView(containerRef, { once: true, amount: 0.2 });
 
   const features = [
     { icon: Database, text: "Database Management" },
@@ -37,23 +31,18 @@ const About = () => {
             duration={0.8}
             className="relative group lg:max-w-md"
           >
-            <motion.div
-              style={{ y }}
-              className="relative z-10 aspect-4/5 rounded-sm overflow-hidden border border-white/10 shadow-2xl"
-            >
-              <img
-                src={Bg}
-                alt="Alpian Tabrani"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-1000" />
-            </motion.div>
+            <SwipeCard
+              defaultImage={Bg}
+              hoverImage={GambarHover}
+              alt="Alpian Tabrani"
+            />
+            {/* <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-1000" /> */}
 
             {/* Quick Stat Overlay - Swiss / Glass 2.0 */}
             <FadeIn
               delay={0.3}
               direction="up"
-              className="absolute bottom-20 -right-10 glass-2 p-8 rounded-sm shadow-2xl z-20 hidden md:block max-w-[200px]"
+              className="absolute bottom-20 -right-10 glass-2 p-8 rounded-sm shadow-2xl z-20 hidden md:block max-w-50"
             >
               <div className="text-5xl font-outfit font-bold text-(--text-primary) mb-2 leading-none uppercase tracking-tighter">
                 3+
