@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Menu, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import OffcanvasMenu from "./OffcanvasMenu";
@@ -11,6 +12,7 @@ const navLinks = [
   { name: "Skills", href: "#skills" },
   { name: "Experience", href: "#experience" },
   { name: "Contact", href: "#contact" },
+  { name: "Blog", href: "/blog" },
 ];
 
 const Navbar = () => {
@@ -62,7 +64,7 @@ const Navbar = () => {
 
       // Jika masih ada di Hero section (Paling Atas)
       setActiveSection(
-        window.scrollY < window.innerHeight * 0.2 ? "" : currentSection,
+        currentSection || (window.scrollY < window.innerHeight * 0.2 ? "" : ""),
       );
     };
 
@@ -134,31 +136,38 @@ const Navbar = () => {
                         const isActive =
                           activeSection === link.href.replace("#", "") ||
                           (link.href === "#" && activeSection === "");
+
+                        const isExternal = link.href.startsWith("/");
+
                         return (
-                          <motion.a
+                          <motion.div
                             key={link.name}
-                            href={link.href}
-                            className="relative px-3 py-1 text-[9px] font-bold uppercase tracking-widest"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
+                            className="relative px-3 py-1 text-[9px] font-bold uppercase tracking-widest cursor-pointer"
                           >
-                            {isActive ? (
-                              <>
-                                <span className="absolute inset-x-0 bottom-0 h-0.5 bg-(--text-primary)" />
-                                <span className="text-(--text-primary)">
-                                  {link.name}
-                                </span>
-                              </>
-                            ) : (
-                              <motion.span
-                                className="text-(--text-muted)"
-                                whileHover={{ color: "var(--text-primary)" }}
-                                transition={{ duration: 0.2 }}
+                            {isExternal ? (
+                              <Link
+                                to={link.href}
+                                className={isActive ? "text-(--text-primary)" : "text-(--text-muted) hover:text-(--text-primary)"}
                               >
+                                {isActive && (
+                                  <span className="absolute inset-x-0 bottom-0 h-0.5 bg-(--text-primary)" />
+                                )}
                                 {link.name}
-                              </motion.span>
+                              </Link>
+                            ) : (
+                              <a
+                                href={link.href}
+                                className={isActive ? "text-(--text-primary)" : "text-(--text-muted) hover:text-(--text-primary)"}
+                              >
+                                {isActive && (
+                                  <span className="absolute inset-x-0 bottom-0 h-0.5 bg-(--text-primary)" />
+                                )}
+                                {link.name}
+                              </a>
                             )}
-                          </motion.a>
+                          </motion.div>
                         );
                       })}
                     </nav>

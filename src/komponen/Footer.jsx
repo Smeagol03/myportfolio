@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Github, Instagram, ArrowUp, Mail, MapPin } from "lucide-react";
 
 const socialLinks = [
@@ -21,6 +22,7 @@ const navLinks = [
   { name: "Skills", href: "#skills" },
   { name: "Experience", href: "#experience" },
   { name: "Contact", href: "#contact" },
+  { name: "Blog", href: "/blog" },
 ];
 
 const Footer = () => {
@@ -70,16 +72,28 @@ const Footer = () => {
               System Map
             </h3>
             <ul className="space-y-4">
-              {navLinks.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-(--text-muted) hover:text-(--accent-blue) transition-colors text-[10px] font-bold tracking-widest uppercase"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
+              {navLinks.map((link) => {
+                const isExternal = link.href.startsWith("/");
+                return (
+                  <li key={link.name}>
+                    {isExternal ? (
+                      <Link
+                        to={link.href}
+                        className="text-(--text-muted) hover:text-(--accent-blue) transition-colors text-[10px] font-bold tracking-widest uppercase"
+                      >
+                        {link.name}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        className="text-(--text-muted) hover:text-(--accent-blue) transition-colors text-[10px] font-bold tracking-widest uppercase"
+                      >
+                        {link.name}
+                      </a>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
