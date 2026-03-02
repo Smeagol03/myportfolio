@@ -5,7 +5,8 @@ import {
   Linkedin,
   Instagram,
 } from "lucide-react";
-import { FadeIn, StaggerText } from "./animasi";
+import { motion } from "framer-motion";
+import { FadeIn, HeroText, TypewriterText } from "./animasi";
 import "./animasi/native/hero.css";
 
 const Hero = ({
@@ -61,16 +62,14 @@ const Hero = ({
           {/* Typography-Led Title */}
           <div className="relative mb-16 flex flex-col items-center">
             <div className="pb-4">
-              <StaggerText
+              <HeroText
                 text="Creative"
-                delay={0.1}
                 className="bg-linear-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent text-hero font-outfit uppercase opacity-40"
               />
             </div>
             <div className="-mt-4 md:-mt-8 lg:-mt-12 pb-4 tracking-tighter">
-              <StaggerText
+              <HeroText
                 text="Builder."
-                delay={0.1}
                 className="text-(--text-primary) text-hero font-outfit uppercase"
               />
             </div>
@@ -78,18 +77,28 @@ const Hero = ({
 
           {/* Description & CTA */}
           <div className="max-w-3xl mx-auto">
-            <FadeIn
-              delay={0.5}
-              direction="up"
-              duration={1}
+            <motion.div
               className="text-sm md:text-xl text-(--text-secondary) font-inter mb-12 leading-relaxed tracking-tight"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
             >
               Hi, I'm{" "}
-              <span className="text-(--text-primary) font-semibold">
+              <motion.span
+                className="text-(--text-primary) font-semibold"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.8, type: "spring" }}
+              >
                 {nama}
-              </span>
-              .{deskripsi}
-            </FadeIn>
+              </motion.span>
+              .{" "}
+              <TypewriterText
+                text={deskripsi}
+                delay={1000}
+                className="text-(--text-secondary)"
+              />
+            </motion.div>
 
             <FadeIn
               delay={0.8}
@@ -97,23 +106,33 @@ const Hero = ({
               duration={0.5}
               className="flex flex-col sm:flex-row items-center justify-center gap-6"
             >
-              <a
+              <motion.a
                 href="#projects"
                 className="group relative px-10 py-5 bg-(--text-primary) text-(--bg-primary) font-bold uppercase text-xs tracking-widest overflow-hidden hover:opacity-90 transition-all rounded-sm"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.5 }}
               >
                 <span className="relative z-10 flex items-center gap-2">
                   View Projects <ArrowRight className="w-4 h-4" />
                 </span>
-              </a>
+              </motion.a>
 
-              <a
+              <motion.a
                 href="/AlpianTabrani.pdf"
                 className="group px-10 py-5 border border-(--border-color) hover:border-(--text-secondary) text-(--text-primary) font-bold uppercase text-xs tracking-widest transition-all rounded-sm backdrop-blur-sm"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.1, duration: 0.5 }}
               >
                 <span className="flex items-center gap-2">
                   <Download className="w-4 h-4" /> Resume
                 </span>
-              </a>
+              </motion.a>
             </FadeIn>
           </div>
 
@@ -129,15 +148,20 @@ const Hero = ({
               { icon: Linkedin, link: LinkedInLink },
               { icon: Instagram, link: InstagramLink },
             ].map((social, i) => (
-              <a
+              <motion.a
                 key={i}
                 href={social.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-(--text-muted) hover:text-(--text-primary) transition-colors duration-500"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.5 + i * 0.1, duration: 0.5 }}
+                whileHover={{ scale: 1.2, y: -5 }}
+                whileTap={{ scale: 0.9 }}
               >
                 <social.icon className="w-5 h-5" />
-              </a>
+              </motion.a>
             ))}
           </FadeIn>
         </div>
