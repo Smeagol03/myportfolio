@@ -137,7 +137,7 @@ const BlogEditor = () => {
 
   useEffect(() => {
     const subscription = watch((value, { name }) => {
-      if (name === "title" && !isEditing) {
+      if (name === "title") {
         const slug = value.title
           ?.toLowerCase()
           .replace(/[^a-z0-9]+/g, "-")
@@ -146,7 +146,7 @@ const BlogEditor = () => {
       }
     });
     return () => subscription.unsubscribe();
-  }, [watch, isEditing]);
+  }, [watch]);
 
   const fetchPost = async () => {
     try {

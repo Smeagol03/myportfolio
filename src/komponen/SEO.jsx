@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 const SEO = ({
   title = "Alpian - Frontend Developer",
   description = "Portofolio Alpian, seorang Frontend Developer yang membuat website modern dan responsif.",
-  image = "/og-default.jpg",
+  image = "/og-default.png",
   url = "https://alpiant.my.id",
   type = "website",
 }) => {

@@ -5,8 +5,6 @@ import { ArrowLeft, Calendar, Clock, Eye, Share2, Tag } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import DOMPurify from "dompurify";
 import { supabase } from "../../lib/supabase";
-import Navbar from "../Navbar";
-import Footer from "../Footer";
 import SEO from "../SEO";
 
 const BlogDetail = () => {
@@ -84,7 +82,6 @@ const BlogDetail = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-(--bg-primary)">
-        <Navbar />
         <div className="flex items-center justify-center h-screen text-(--text-muted)">
           Loading...
         </div>
@@ -99,7 +96,7 @@ const BlogDetail = () => {
       <SEO 
         title={`${post.title} - Alpian's Blog`}
         description={post.excerpt}
-        image={post.cover_image || "/og-default.jpg"}
+        image={post.cover_image || "/og-default.png"}
         url={window.location.href}
         type="article"
       />
@@ -110,7 +107,7 @@ const BlogDetail = () => {
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             headline: post.title,
-            image: post.cover_image ? [post.cover_image] : ["https://alpiant.my.id/og-default.jpg"],
+            image: post.cover_image ? [post.cover_image] : ["https://alpiant.my.id/og-default.png"],
             datePublished: post.created_at,
             dateModified: post.updated_at || post.created_at,
             author: [{
@@ -122,7 +119,6 @@ const BlogDetail = () => {
           })}
         </script>
       </Helmet>
-      <Navbar />
 
       {/* Hero */}
       <section className="relative pt-32 pb-16 px-6">
@@ -256,7 +252,6 @@ const BlogDetail = () => {
         </section>
       )}
 
-      <Footer />
     </div>
   );
 };
