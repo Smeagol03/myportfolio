@@ -26,8 +26,15 @@ import ProtectedRoute from "./komponen/admin/ProtectedRoute";
 import BlogList from "./komponen/blog/BlogList";
 import BlogDetail from "./komponen/blog/BlogDetail";
 
+import SEO from "./komponen/SEO";
+
 const Home = () => (
   <>
+    <SEO 
+      title="Alpian - Web Developer & Designer" 
+      description="Portofolio Alpian, seorang web developer dan designer yang berfokus pada pembuatan website modern, responsif, dan interaktif." 
+      url={window.location.href}
+    />
     <Navbar />
     <main>
       <Hero />

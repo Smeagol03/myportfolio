@@ -5,6 +5,7 @@ import { ArrowLeft, Calendar, Clock, Eye, Share2, Tag } from "lucide-react";
 import { supabase } from "../../lib/supabase";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
+import SEO from "../SEO";
 
 const BlogDetail = () => {
   const { slug } = useParams();
@@ -96,6 +97,13 @@ const BlogDetail = () => {
 
   return (
     <div className="min-h-screen bg-(--bg-primary)">
+      <SEO 
+        title={`${post.title} - Alpian's Blog`}
+        description={post.excerpt}
+        image={post.cover_image || "/og-default.jpg"}
+        url={window.location.href}
+        type="article"
+      />
       <Navbar />
 
       {/* Hero */}
@@ -209,7 +217,7 @@ const BlogDetail = () => {
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                           />
                         ) : (
-                          <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
+                          <div className="w-full h-full bg-linear-to-br from-blue-500/20 to-purple-500/20" />
                         )}
                       </div>
                       <div className="p-4">

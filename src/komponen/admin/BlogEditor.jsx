@@ -29,11 +29,27 @@ const MenuBar = ({ editor }) => {
     }, active: editor.isActive("link") },
   ];
 
+  const handleImageUpload = async (file) => {
+    if (!file) return;
+    try {
+      // Create a temporary ID, or use blog ID if editing
+      const blogId = window.location.pathname.split("/").pop() || Date.now().toString();
+      const url = await uploadBlogImage(file, blogId);
+      if (url) {
+        editor.chain().focus().setImage({ src: url }).run();
+      }
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      alert("Gagal mengupload gambar.");
+    }
+  };
+
   return (
-    <div className="flex flex-wrap gap-1 p-2 bg-(--bg-secondary) border-b border-(--border-color) rounded-t-lg">
+    <div className="flex z-10 flex-wrap items-center gap-1 p-2 bg-(--bg-secondary) border-b border-(--border-color) rounded-t-lg">
       {buttons.map((btn, i) => (
         <button
           key={i}
+          type="button"
           onClick={btn.onClick}
           className={`px-3 py-1.5 text-sm font-bold rounded transition-all ${
             btn.active
@@ -44,6 +60,23 @@ const MenuBar = ({ editor }) => {
           {btn.label}
         </button>
       ))}
+
+      <div className="w-px h-6 bg-(--border-color) mx-1"></div>
+
+      <button
+        type="button"
+        onClick={() => {
+          const fileInput = document.createElement("input");
+          fileInput.type = "file";
+          fileInput.accept = "image/*";
+          fileInput.onchange = (e) => handleImageUpload(e.target.files[0]);
+          fileInput.click();
+        }}
+        className="px-3 py-1.5 text-sm font-bold rounded transition-all flex items-center gap-1 text-(--text-muted) hover:text-(--text-primary) hover:bg-(--bg-primary)"
+        title="Upload Gambar"
+      >
+        <ImageIcon className="w-4 h-4" />
+      </button>
     </div>
   );
 };
@@ -192,12 +225,6 @@ const BlogEditor = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <button
-            onClick={() => navigate("/admin/blog")}
-            className="text-(--text-muted) hover:text-(--text-primary) transition-colors"
-          >
-            <ArrowLeft className="w-6 h-6" />
-          </button>
           <div>
             <h1 className="text-3xl font-outfit font-bold text-(--text-primary) uppercase tracking-tighter">
               {isEditing ? "Edit Blog" : "Tulis Blog Baru"}

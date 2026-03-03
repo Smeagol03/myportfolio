@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import { supabase } from "../../lib/supabase";
 import BlogCard from "./BlogCard";
+import SEO from "../SEO";
 
 const BlogList = () => {
   const [posts, setPosts] = useState([]);
@@ -43,6 +44,11 @@ const BlogList = () => {
 
   return (
     <div className="min-h-screen bg-(--bg-primary)">
+      <SEO 
+        title="Blog & Articles - Alpian"
+        description="Artikel tentang web development, tips teknologi, dan insights dari pengalaman membangun aplikasi modern oleh Alpian."
+        url={window.location.href}
+      />
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-6 relative overflow-hidden">
