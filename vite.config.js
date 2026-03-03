@@ -1,13 +1,13 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import Sitemap from "vite-plugin-sitemap";
 import { createClient } from "@supabase/supabase-js";
 
 // Fetch dynamic blog routes for the sitemap
-const getDynamicRoutes = async () => {
-  const supabaseUrl = "https://axneiijxeuuddmkwzuml.supabase.co";
-  const supabaseAnonKey = "sb_publishable_i-Ps5ZKOpxidg0FFvTZA8w_B8g--a7M";
+const getDynamicRoutes = async (env) => {
+  const supabaseUrl = env.VITE_SUPABASE_URL;
+  const supabaseAnonKey = env.VITE_SUPABASE_ANON_KEY;
   const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
   try {
@@ -27,8 +27,11 @@ const getDynamicRoutes = async () => {
 };
 
 // https://vite.dev/config/
-export default defineConfig(async () => {
-  const dynamicRoutes = await getDynamicRoutes();
+export default defineConfig(async ({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+  // Prioritaskan process.env untuk CI/CD environments (seperti di Netlify)
+  const mergedEnv = { ...env, ...process.env };
+  const dynamicRoutes = await getDynamicRoutes(mergedEnv);
 
   return {
     plugins: [
