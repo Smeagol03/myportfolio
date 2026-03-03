@@ -124,7 +124,7 @@ const BlogList = () => {
             <div className="flex items-center justify-center h-64 text-(--text-muted)">
               Loading...
             </div>
-          ) : regularPosts.length === 0 && !searchTerm ? (
+          ) : posts.length === 0 && !searchTerm ? (
             <div className="text-center py-20 text-(--text-muted)">
               <p>Belum ada artikel yang dipublikasikan.</p>
             </div>

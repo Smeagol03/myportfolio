@@ -39,10 +39,10 @@ export default defineConfig(async ({ mode }) => {
       tailwindcss(),
       Sitemap({
         hostname: "https://alpiant.my.id",
-        dynamicRoutes: [
-          "/blog",
-          ...dynamicRoutes
-        ],
+        dynamicRoutes: ["/blog", ...dynamicRoutes],
+        changefreq: "weekly",
+        priority: 0.8,
+        robots: [{ userAgent: "*", allow: "/", disallow: "/admin/" }],
       }),
     ],
   };

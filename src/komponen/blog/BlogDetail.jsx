@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Calendar, Clock, Eye, Share2, Tag } from "lucide-react";
+import { Helmet } from "react-helmet-async";
+import DOMPurify from "dompurify";
 import { supabase } from "../../lib/supabase";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
@@ -36,11 +38,8 @@ const BlogDetail = () => {
 
       setPost(postData);
 
-      // Increment view count
-      await supabase
-        .from("posts")
-        .update({ view_count: (postData.view_count || 0) + 1 })
-        .eq("id", postData.id);
+      // Increment view count via server-side function (aman dari manipulasi)
+      await supabase.rpc("increment_view_count", { post_id: postData.id });
 
       // Fetch related posts
       const { data: related } = await supabase
@@ -104,6 +103,25 @@ const BlogDetail = () => {
         url={window.location.href}
         type="article"
       />
+      {/* JSON-LD Structured Data for Article */}
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: post.title,
+            image: post.cover_image ? [post.cover_image] : ["https://alpiant.my.id/og-default.jpg"],
+            datePublished: post.created_at,
+            dateModified: post.updated_at || post.created_at,
+            author: [{
+                "@type": "Person",
+                name: "Alpian Tabrani",
+                url: "https://alpiant.my.id"
+            }],
+            description: post.excerpt
+          })}
+        </script>
+      </Helmet>
       <Navbar />
 
       {/* Hero */}
@@ -174,6 +192,7 @@ const BlogDetail = () => {
               transition={{ delay: 0.2, duration: 0.5 }}
               src={post.cover_image}
               alt={post.title}
+              loading="lazy"
               className="w-full aspect-video object-cover rounded-lg glass-2"
             />
           </div>
@@ -188,7 +207,7 @@ const BlogDetail = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
             className="prose prose-invert prose-lg max-w-none"
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }}
           />
         </div>
       </section>

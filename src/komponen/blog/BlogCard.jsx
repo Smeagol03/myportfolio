@@ -29,6 +29,7 @@ const BlogCard = ({ post, featured = false }) => {
               <img
                 src={cover_image}
                 alt={title}
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             ) : (

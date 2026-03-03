@@ -6,7 +6,7 @@ import OffcanvasMenu from "./OffcanvasMenu";
 import { useTheme } from "../context/useTheme";
 
 const navLinks = [
-  { name: "Home", href: "#" },
+  { name: "Home", href: "/" },
   { name: "About", href: "#about" },
   { name: "Layanan", href: "#layanan" },
   { name: "Skills", href: "#skills" },
