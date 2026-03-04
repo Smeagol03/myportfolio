@@ -21,8 +21,8 @@ const contactInfo = [
   {
     icon: Phone,
     label: "WhatsApp",
-    value: "+6287894721726",
-    link: "https://wa.me/6287894721726",
+    value: "+6281547190395",
+    link: "https://wa.me/6281547190395",
   },
   {
     icon: Github,
@@ -43,7 +43,7 @@ const Contact = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     const whatsappMessage = `Halo Alpian, saya ${data.name}.\n\nSubjek: ${data.subject}\nEmail: ${data.email}\n\nPesan:\n${data.message}`;
-    const waUrl = `https://wa.me/6287894721726?text=${encodeURIComponent(whatsappMessage)}`;
+    const waUrl = `https://wa.me/6281547190395?text=${encodeURIComponent(whatsappMessage)}`;
 
     setTimeout(() => {
       window.open(waUrl, "_blank");

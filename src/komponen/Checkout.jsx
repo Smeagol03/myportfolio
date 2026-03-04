@@ -33,7 +33,7 @@ const Checkout = () => {
       return;
     }
     const message = generateMessageBody();
-    const waUrl = `https://wa.me/6287894721726?text=${encodeURIComponent(message)}`;
+    const waUrl = `https://wa.me/6281547190395?text=${encodeURIComponent(message)}`;
     window.open(waUrl, "_blank");
   };
 
