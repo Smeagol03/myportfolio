@@ -104,7 +104,7 @@ const Checkout = () => {
                     <div className="flex items-center gap-4 text-(--text-muted)">
                       <Phone size={14} />
                       <span className="text-[10px] font-bold uppercase tracking-widest">
-                        +62 878-9472-1726
+                        +62 815-4719-0395
                       </span>
                     </div>
                     <div className="flex items-center gap-4 text-(--text-muted)">
