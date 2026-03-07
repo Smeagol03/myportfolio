@@ -13,20 +13,28 @@ const projectData = [
     link: "https://lpkduaberkah.com/",
   },
   {
-    title: "Sistem Absensi",
-    description:
-      "Sistem absensi karyawan berbasis web untuk pengelolaan kehadiran yang akurat.",
-    tech: ["Firebase", "Tailwind CSS", "React"],
-    image: "/ss-absensi.png",
-    link: "https://perkim-absensi.vercel.app/",
-  },
-  {
     title: "Keuangan Digital",
     description:
       "Sistem pencatatan keuangan online yang memudahkan pengelolaan keuangan rumah tangga.",
     tech: ["Supabase", "React"],
     image: "https://laporan-keuangan-sand.vercel.app/logoBesar.png",
     link: "https://laporan-keuangan-sand.vercel.app/login",
+  },
+  {
+    title: "Konsultan Arsitektur & Perancang",
+    description:
+      "Merancang ruang yang tidak hanya fungsional, tapi bersifat abadi melalui pendekatan minimalisme.",
+    tech: ["Next Js", "Tailwind CSS", "React"],
+    image: "https://konsultan-web-alpiant.vercel.app/swiss_architecture_hero_1772712304283.png",
+    link: "https://konsultan-web-alpiant.vercel.app/",
+  },
+  {
+    title: "Pet Shop",
+    description:
+      "Perawatan Terbaik untuk Sahabat Berbulu Anda.",
+    tech: ["Next Js", "Tailwind CSS", "React"],
+    image: "https://pet-shop-alpiant.vercel.app/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1543466835-00a7907e9de1%3Fixlib%3Drb-4.0.3%26auto%3Dformat%26fit%3Dcrop%26w%3D800%26q%3D80&w=3840&q=75",
+    link: "https://pet-shop-alpiant.vercel.app/",
   },
   {
     title: "Wedding Invite",
