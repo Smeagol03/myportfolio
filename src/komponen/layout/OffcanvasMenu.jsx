@@ -1,5 +1,6 @@
 import { X } from "lucide-react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 const OffcanvasMenu = ({ isOpen, setIsOpen, navLinks }) => {
@@ -63,38 +64,56 @@ const OffcanvasMenu = ({ isOpen, setIsOpen, navLinks }) => {
 
             <nav className="flex-1 px-4 py-8 overflow-y-auto">
               <ul className="space-y-2">
-                {navLinks.map((link, idx) => (
-                  <motion.li
-                    key={link.name}
-                    variants={itemVariants}
-                    initial="closed"
-                    animate="open"
-                    transition={{ delay: idx * 0.05 + 0.1 }}
-                  >
-                    <a
-                      href={link.href}
-                      className="flex items-center justify-between px-2 py-4 border-b border-(--border-color) text-(--text-secondary) hover:text-(--accent-blue) transition-all duration-300 group"
-                      onClick={() => setIsOpen(false)}
+                {navLinks
+                  .filter((link) => !["Layanan", "Blog"].includes(link.name))
+                  .map((link, idx) => (
+                    <motion.li
+                      key={link.name}
+                      variants={itemVariants}
+                      initial="closed"
+                      animate="open"
+                      transition={{ delay: idx * 0.05 + 0.1 }}
                     >
-                      <span className="text-sm font-bold uppercase tracking-widest">
-                        {link.name}
-                      </span>
-                      <div className="w-1.5 h-1.5 rounded-full bg-transparent group-hover:bg-(--accent-blue) transition-colors" />
-                    </a>
-                  </motion.li>
-                ))}
+                      <a
+                        href={link.href}
+                        className="flex items-center justify-between px-2 py-4 border-b border-(--border-color) text-(--text-secondary) hover:text-(--accent-blue) transition-all duration-300 group"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <span className="text-sm font-bold uppercase tracking-widest">
+                          {link.name}
+                        </span>
+                        <div className="w-1.5 h-1.5 rounded-full bg-transparent group-hover:bg-(--accent-blue) transition-colors" />
+                      </a>
+                    </motion.li>
+                  ))}
               </ul>
             </nav>
 
-            <div className="p-6 mt-auto border-t border-(--border-color)">
+            <div className="p-6 mt-auto border-t border-(--border-color) flex flex-col gap-3">
+              <div className="grid grid-cols-2 gap-3 mb-2">
+                <Link
+                  to="/layanan"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-center px-4 py-3 text-[10px] font-bold uppercase tracking-wider border border-(--border-color) text-(--text-primary) rounded-xl hover:bg-(--text-primary) hover:text-(--bg-primary) transition-all"
+                >
+                  Layanan
+                </Link>
+                <Link
+                  to="/blog"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-center px-4 py-3 text-[10px] font-bold uppercase tracking-wider bg-(--text-primary) text-(--bg-primary) rounded-xl hover:opacity-90 transition-all"
+                >
+                  Blog
+                </Link>
+              </div>
               <a
                 href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center w-full px-4 py-4 text-xs font-bold uppercase tracking-widest text-(--bg-primary) bg-(--text-primary) hover:opacity-90 rounded-sm transition-all mb-6"
+                className="flex items-center justify-center w-full px-4 py-4 text-xs font-bold uppercase tracking-widest text-(--bg-primary) bg-(--accent-blue) hover:opacity-90 rounded-sm transition-all mb-4"
               >
                 Hire Me
               </a>
-              <p className="text-center text-(--text-muted) text-xs font-medium uppercase tracking-[0.2em]">
+              <p className="text-center text-(--text-muted) text-[10px] font-medium uppercase tracking-[0.2em]">
                 &copy; {new Date().getFullYear()} Alpian Tabrani
               </p>
             </div>

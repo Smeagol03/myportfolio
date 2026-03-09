@@ -59,6 +59,10 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const mainNavLinks = navLinks.filter(
+    (link) => !["Layanan", "Blog"].includes(link.name),
+  );
+
   return (
     <>
       <motion.nav
@@ -70,7 +74,7 @@ const Navbar = () => {
           damping: 25,
         }}
         className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 ${
-          scrolled ? "w-[90%] md:w-[75%] max-w-4xl" : "w-auto min-w-[120px]"
+          scrolled ? "w-[95%] md:w-[85%] max-w-5xl" : "w-auto min-w-[120px]"
         }`}
       >
         {/* Floating Island Container */}
@@ -90,8 +94,8 @@ const Navbar = () => {
           shadow-lg
         `}
         >
-          <div className="relative px-6">
-            <div className="flex justify-between items-center h-12 md:h-14 gap-8">
+          <div className="relative px-4 md:px-6">
+            <div className="flex justify-between items-center h-12 md:h-14 gap-4 md:gap-8">
               {/* Logo - Ultra Minimal */}
               <motion.a
                 href="#"
@@ -115,10 +119,10 @@ const Navbar = () => {
                       duration: 0.35,
                       ease: [0.16, 1, 0.3, 1],
                     }}
-                    className="hidden md:flex items-center overflow-hidden"
+                    className="hidden lg:flex items-center overflow-hidden"
                   >
                     <nav className="flex items-center gap-1">
-                      {navLinks.map((link) => {
+                      {mainNavLinks.map((link) => {
                         const isActive =
                           activeSection === link.href.replace("#", "") ||
                           (link.href === "#" && activeSection === "");
@@ -135,20 +139,34 @@ const Navbar = () => {
                             {isExternal ? (
                               <Link
                                 to={link.href}
-                                className={isActive ? "text-(--text-primary)" : "text-(--text-muted) hover:text-(--text-primary)"}
+                                className={
+                                  isActive
+                                    ? "text-(--text-primary)"
+                                    : "text-(--text-muted) hover:text-(--text-primary)"
+                                }
                               >
                                 {isActive && (
-                                  <span className="absolute inset-x-0 bottom-0 h-0.5 bg-(--text-primary)" />
+                                  <motion.span
+                                    layoutId="nav-underline"
+                                    className="absolute inset-x-0 bottom-0 h-0.5 bg-(--text-primary)"
+                                  />
                                 )}
                                 {link.name}
                               </Link>
                             ) : (
                               <a
                                 href={link.href}
-                                className={isActive ? "text-(--text-primary)" : "text-(--text-muted) hover:text-(--text-primary)"}
+                                className={
+                                  isActive
+                                    ? "text-(--text-primary)"
+                                    : "text-(--text-muted) hover:text-(--text-primary)"
+                                }
                               >
                                 {isActive && (
-                                  <span className="absolute inset-x-0 bottom-0 h-0.5 bg-(--text-primary)" />
+                                  <motion.span
+                                    layoutId="nav-underline"
+                                    className="absolute inset-x-0 bottom-0 h-0.5 bg-(--text-primary)"
+                                  />
                                 )}
                                 {link.name}
                               </a>
@@ -164,8 +182,23 @@ const Navbar = () => {
               {/* Right Side Actions */}
               <motion.div
                 layout
-                className="flex items-center gap-4 shrink-0 relative"
+                className="flex items-center gap-2 md:gap-4 shrink-0 relative"
               >
+                <div className="hidden md:flex items-center gap-2 mr-2">
+                  <Link
+                    to="/layanan"
+                    className="px-4 py-1.5 rounded-full border border-(--border-color) text-[10px] font-bold uppercase tracking-wider text-(--text-secondary) hover:text-(--text-primary) hover:border-(--text-primary) transition-all"
+                  >
+                    Layanan
+                  </Link>
+                  <Link
+                    to="/blog"
+                    className="px-4 py-1.5 rounded-full bg-(--text-primary) text-(--bg-primary) text-[10px] font-black uppercase tracking-wider hover:opacity-90 transition-all shadow-md shadow-black/10"
+                  >
+                    Blog
+                  </Link>
+                </div>
+
                 <motion.button
                   onClick={toggleTheme}
                   className="text-(--text-muted) hover:text-(--text-primary) transition-colors"
@@ -187,7 +220,7 @@ const Navbar = () => {
 
                 <motion.button
                   onClick={() => setIsOpen(true)}
-                  className="text-(--text-primary) md:hidden"
+                  className="text-(--text-primary) lg:hidden"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9, rotate: 90 }}
                 >
