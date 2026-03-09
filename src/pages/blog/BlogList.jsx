@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import { supabase } from "../../lib/supabase";
-import BlogCard from "./BlogCard";
-import SEO from "../SEO";
+import BlogCard from "../../komponen/ui/BlogCard";
+import SEO from "../../komponen/ui/SEO";
 
 const BlogList = () => {
   const [posts, setPosts] = useState([]);

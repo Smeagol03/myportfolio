@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FadeIn } from "./animasi";
+import { FadeIn } from "../animasi";
 import {
   Mail,
   Phone,

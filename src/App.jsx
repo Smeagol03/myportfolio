@@ -1,93 +1,52 @@
-import Navbar from "./komponen/Navbar";
-import Hero from "./komponen/Hero";
-import About from "./komponen/About";
-import Pendidikan from "./komponen/Pendidikan";
-import Skills from "./komponen/Skills";
-import Projects from "./komponen/Projects";
-import Experience from "./komponen/Experience";
-import Layanan from "./komponen/layanan";
-import Contact from "./komponen/Contact";
-import Footer from "./komponen/Footer";
-import BlogSection from "./komponen/blog/BlogSection";
+import { Routes, Route } from "react-router-dom";
 
-import { Routes, Route, useLocation } from "react-router-dom";
-import Checkout from "./komponen/Checkout";
-import ScrollToTop from "./komponen/ScrollToTop";
-
-// Admin imports
-import AdminLogin from "./komponen/admin/AdminLogin";
+// Layout
+import PublicLayout from "./komponen/layout/PublicLayout";
 import AdminLayout from "./komponen/admin/AdminLayout";
-import Dashboard from "./komponen/admin/Dashboard";
-import BlogManager from "./komponen/admin/BlogManager";
-import BlogEditor from "./komponen/admin/BlogEditor";
 import ProtectedRoute from "./komponen/admin/ProtectedRoute";
 
-// Blog imports
-import BlogList from "./komponen/blog/BlogList";
-import BlogDetail from "./komponen/blog/BlogDetail";
+// Pages
+import Home from "./pages/Home";
+import Layanan from "./pages/Layanan";
+import Checkout from "./pages/Checkout";
+import BlogList from "./pages/blog/BlogList";
+import BlogDetail from "./pages/blog/BlogDetail";
 
-import SEO from "./komponen/SEO";
+// Admin Pages
+import AdminLogin from "./pages/admin/Login";
+import Dashboard from "./pages/admin/Dashboard";
+import BlogManager from "./pages/admin/BlogManager";
+import BlogEditor from "./pages/admin/BlogEditor";
 
-const Home = () => (
-  <>
-    <SEO 
-      title="Alpian - Web Developer & Designer" 
-      description="Portofolio Alpian, seorang web developer dan designer yang berfokus pada pembuatan website modern, responsif, dan interaktif." 
-      url={window.location.href}
-    />
-    <Navbar />
-    <main>
-      <Hero />
-      <About />
-      <Layanan />
-      <Pendidikan />
-      <Skills />
-      <Projects />
-      <Experience />
-      <BlogSection />
-      <Contact />
-    </main>
-  </>
-);
-
-const AppContent = () => {
-  const location = useLocation();
-  const isAdminPage = location.pathname.startsWith("/admin");
-
+const App = () => {
   return (
-    <div className="relative">
-      <ScrollToTop />
-      <Routes>
-        {/* Public Routes with Footer */}
+    <Routes>
+      {/* Public Routes — Navbar & Footer otomatis dari PublicLayout */}
+      <Route element={<PublicLayout />}>
         <Route path="/" element={<Home />} />
+        <Route path="/layanan" element={<Layanan />} />
         <Route path="/checkout/:paket" element={<Checkout />} />
         <Route path="/blog" element={<BlogList />} />
         <Route path="/blog/:slug" element={<BlogDetail />} />
+      </Route>
 
-        {/* Admin Routes (no Footer) */}
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route
-          path="/admin"
-          element={
-            <ProtectedRoute>
-              <AdminLayout />
-            </ProtectedRoute>
-          }
-        >
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="blog" element={<BlogManager />} />
-          <Route path="blog/new" element={<BlogEditor />} />
-          <Route path="blog/edit/:id" element={<BlogEditor />} />
-        </Route>
-      </Routes>
-      {/* Footer only on non-admin pages */}
-      {!isAdminPage && <Footer />}
-    </div>
+      {/* Admin Routes (tanpa Navbar/Footer) */}
+      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute>
+            <AdminLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="blog" element={<BlogManager />} />
+        <Route path="blog/new" element={<BlogEditor />} />
+        <Route path="blog/edit/:id" element={<BlogEditor />} />
+      </Route>
+    </Routes>
   );
-};
-
-const App = () => {
-  return <AppContent />;
 };
 
 export default App;

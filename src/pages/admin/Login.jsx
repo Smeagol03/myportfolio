@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Lock, Mail, AlertCircle, Loader2 } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 
-const AdminLogin = () => {
+const Login = () => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
@@ -164,4 +164,4 @@ const AdminLogin = () => {
   );
 };
 
-export default AdminLogin;
+export default Login;

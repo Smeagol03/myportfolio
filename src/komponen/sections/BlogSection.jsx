@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { supabase } from "../../lib/supabase";
-import BlogCard from "./BlogCard";
+import BlogCard from "../ui/BlogCard";
 
 const BlogSection = () => {
   const [posts, setPosts] = useState([]);

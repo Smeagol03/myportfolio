@@ -1,5 +1,5 @@
 import { Monitor, Briefcase, Palette, Layout } from "lucide-react";
-import { FadeIn } from "./animasi";
+import { FadeIn } from "../animasi";
 
 const skillsData = [
   {

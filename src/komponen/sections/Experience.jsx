@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Briefcase, Code, PenTool, ExternalLink } from "lucide-react";
-import { FadeIn } from "./animasi";
+import { FadeIn } from "../animasi";
 
 const experienceData = [
   {

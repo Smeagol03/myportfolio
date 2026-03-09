@@ -6,8 +6,8 @@ import {
   Instagram,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { FadeIn, HeroText, TypewriterText } from "./animasi";
-import "./animasi/native/hero.css";
+import { FadeIn, HeroText, TypewriterText } from "../animasi";
+import "../animasi/native/hero.css";
 
 const Hero = ({
   nama = "Alpian Tabrani",

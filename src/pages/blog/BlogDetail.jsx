@@ -5,7 +5,7 @@ import { ArrowLeft, Calendar, Clock, Eye, Share2, Tag } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import DOMPurify from "dompurify";
 import { supabase } from "../../lib/supabase";
-import SEO from "../SEO";
+import SEO from "../../komponen/ui/SEO";
 
 const BlogDetail = () => {
   const { slug } = useParams();

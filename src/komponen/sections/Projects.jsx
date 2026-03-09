@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
 import { useRef } from "react";
-import { FadeIn } from "./animasi";
+import { FadeIn } from "../animasi";
 
 const projectData = [
   {

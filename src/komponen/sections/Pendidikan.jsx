@@ -1,5 +1,5 @@
 import { GraduationCap, School, BookOpen, Library, Award } from "lucide-react";
-import { FadeIn } from "./animasi";
+import { FadeIn } from "../animasi";
 
 const educationData = [
   {

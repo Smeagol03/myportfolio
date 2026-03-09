@@ -1,6 +1,7 @@
 import { Check, Zap, Rocket, ShieldCheck, ArrowRight } from "lucide-react";
-import { FadeIn } from "./animasi";
+import { FadeIn } from "../komponen/animasi";
 import { useNavigate } from "react-router-dom";
+import SEO from "../komponen/ui/SEO";
 
 const PricingCard = ({
   title,
@@ -148,59 +149,62 @@ const Layanan = () => {
   ];
 
   return (
-    <section
-      id="layanan"
-      className="py-32 relative bg-transparent border-t border-(--border-color) overflow-hidden"
-    >
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        <header className="mb-24">
-          <FadeIn
-            delay={0}
-            direction="left"
-            className="flex items-center gap-4 mb-6"
-          >
-            <div className="h-px w-12 bg-(--accent-blue)" />
-            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-(--text-primary) opacity-70">
-              Services
-            </span>
-          </FadeIn>
-
-          <FadeIn
-            delay={0.2}
-            direction="up"
-            className="flex flex-col md:flex-row justify-between items-start gap-10"
-          >
-            <h2 className="text-4xl md:text-8xl font-outfit font-bold tracking-tighter text-(--text-primary) uppercase leading-[0.8]">
-              Strategy<span className="text-(--text-muted)">&</span> <br />{" "}
-              Solutions<span className="text-(--text-muted)">.</span>
-            </h2>
-            <p className="text-(--text-secondary) max-w-md text-sm md:text-base leading-relaxed font-inter pb-2">
-              Building next-generation digital assets with a focus on
-              <span className="text-(--text-primary)">
-                {" "}
-                technical excellence
+    <>
+      <SEO title="Layanan - Alpian Tabrani" description="Solusi website profesional untuk personal branding, UMKM, atau bisnis Anda." url={window.location.href} />
+      <section
+        id="layanan"
+        className="py-32 relative bg-transparent overflow-hidden"
+      >
+        <div className="container mx-auto px-6 max-w-7xl relative z-10">
+          <header className="mb-24">
+            <FadeIn
+              delay={0}
+              direction="left"
+              className="flex items-center gap-4 mb-6"
+            >
+              <div className="h-px w-12 bg-(--accent-blue)" />
+              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-(--text-primary) opacity-70">
+                Services
               </span>
-              , minimalist aesthetics, and seamless user experiences.
+            </FadeIn>
+
+            <FadeIn
+              delay={0.2}
+              direction="up"
+              className="flex flex-col md:flex-row justify-between items-start gap-10"
+            >
+              <h2 className="text-4xl md:text-8xl font-outfit font-bold tracking-tighter text-(--text-primary) uppercase leading-[0.8]">
+                Strategy<span className="text-(--text-muted)">&</span> <br />{" "}
+                Solutions<span className="text-(--text-muted)">.</span>
+              </h2>
+              <p className="text-(--text-secondary) max-w-md text-sm md:text-base leading-relaxed font-inter pb-2">
+                Building next-generation digital assets with a focus on
+                <span className="text-(--text-primary)">
+                  {" "}
+                  technical excellence
+                </span>
+                , minimalist aesthetics, and seamless user experiences.
+              </p>
+            </FadeIn>
+          </header>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+            {packages.map((pkg, index) => (
+              <PricingCard key={index} {...pkg} delay={0.3 + index * 0.1} />
+            ))}
+          </div>
+
+          <FadeIn delay={0.6} direction="up" className="mt-20 text-center">
+            <p className="text-[10px] font-bold text-(--text-muted) uppercase tracking-widest">
+              Require a custom architectural scope?{" "}
+              <a href="#contact" className="text-(--accent-blue) hover:underline">
+                Initialize Consultation
+              </a>
             </p>
           </FadeIn>
-        </header>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
-          {packages.map((pkg, index) => (
-            <PricingCard key={index} {...pkg} delay={0.3 + index * 0.1} />
-          ))}
         </div>
-
-        <FadeIn delay={0.6} direction="up" className="mt-20 text-center">
-          <p className="text-[10px] font-bold text-(--text-muted) uppercase tracking-widest">
-            Require a custom architectural scope?{" "}
-            <a href="#contact" className="text-(--accent-blue) hover:underline">
-              Initialize Consultation
-            </a>
-          </p>
-        </FadeIn>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

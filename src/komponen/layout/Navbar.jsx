@@ -3,17 +3,8 @@ import { Link } from "react-router-dom";
 import { Menu, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import OffcanvasMenu from "./OffcanvasMenu";
-import { useTheme } from "../context/useTheme";
-
-const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "#about" },
-  { name: "Layanan", href: "#layanan" },
-  { name: "Skills", href: "#skills" },
-  { name: "Experience", href: "#experience" },
-  { name: "Contact", href: "#contact" },
-  { name: "Blog", href: "/blog" },
-];
+import { useTheme } from "../../context/useTheme";
+import { navLinks } from "../../data/navigation";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,13 +27,10 @@ const Navbar = () => {
         })
         .filter(Boolean);
 
-      // Urutkan elemen berdasarkan posisinya di halaman saat ini
       elements.sort((a, b) => a.top - b.top);
 
       let currentSection = "";
 
-      // Ambil titik trigger dinamis: 40% dari tinggi layar
-      // Ini lebih akurat dan responsif dibanding angka statis (seperti 150px)
       const triggerPoint = window.innerHeight * 0.4;
 
       for (const el of [...elements].reverse()) {
@@ -52,7 +40,6 @@ const Navbar = () => {
         }
       }
 
-      // Deteksi jika pengguna sudah melakukan scroll sampai ke paling bawah halaman
       if (
         window.innerHeight + Math.round(window.scrollY) >=
         document.documentElement.scrollHeight - 50
@@ -62,7 +49,6 @@ const Navbar = () => {
         }
       }
 
-      // Jika masih ada di Hero section (Paling Atas)
       setActiveSection(
         currentSection || (window.scrollY < window.innerHeight * 0.2 ? "" : ""),
       );

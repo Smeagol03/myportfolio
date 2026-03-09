@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Github, Instagram, ArrowUp, Mail, MapPin } from "lucide-react";
+import { navLinks } from "../../data/navigation";
 
 const socialLinks = [
   {
@@ -13,16 +14,6 @@ const socialLinks = [
     href: "https://www.instagram.com/npc_alpiant?igsh=ZjZrNjV5dHU3bzh6",
     icon: Instagram,
   },
-];
-
-const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "#about" },
-  { name: "Layanan", href: "#layanan" },
-  { name: "Skills", href: "#skills" },
-  { name: "Experience", href: "#experience" },
-  { name: "Contact", href: "#contact" },
-  { name: "Blog", href: "/blog" },
 ];
 
 const Footer = () => {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, Send, Mail, Phone, Code2 } from "lucide-react";
 import { motion } from "framer-motion";
-import { FadeIn } from "./animasi";
+import { FadeIn } from "../komponen/animasi";
 
 const Checkout = () => {
   const { paket } = useParams();

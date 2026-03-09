@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { CheckCircle2, FileText, Database, Shield } from "lucide-react";
 import Bg from "/image.png";
 import GambarHover from "/pasAlpianTabrani.jpg";
-import { FadeIn, SwipeCard } from "./animasi";
+import { FadeIn, SwipeCard } from "../animasi";
 
 const About = () => {
   const containerRef = useRef(null);
