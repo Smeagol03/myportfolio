@@ -1,13 +1,14 @@
 import { Helmet } from "react-helmet-async";
 
 const SEO = ({
-  title = "Alpian - Frontend Developer",
-  description = "Portofolio Alpian, seorang Frontend Developer yang membuat website modern dan responsif.",
+  title = "Alpian Tabrani - Jasa Pembuatan Website Profesional & Cepat",
+  description = "Solusi pembuatan website modern, responsif, dan SEO-friendly untuk UMKM dan Personal Branding. Hubungi Alpian untuk konsultasi gratis.",
   image = "/og-default.png",
-  url = "https://alpiant.my.id",
+  url = window.location.href,
   type = "website",
+  schema = null,
 }) => {
-  const siteName = "Alpian Portfolio";
+  const siteName = "Alpian Portfolio & Services";
 
   return (
     <Helmet>
@@ -29,6 +30,13 @@ const SEO = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+
+      {/* Structured Data (Schema.org) */}
+      {schema && (
+        <script type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      )}
     </Helmet>
   );
 };

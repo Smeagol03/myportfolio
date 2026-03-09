@@ -9,23 +9,64 @@ import BlogSection from "../komponen/sections/BlogSection";
 import LayananPreview from "../komponen/sections/LayananPreview";
 import SEO from "../komponen/ui/SEO";
 
-const Home = () => (
-  <>
-    <SEO 
-      title="Alpian - Web Developer & Designer" 
-      description="Solusi website profesional untuk personal branding, UMKM, atau bisnis Anda. Spesialis React dan sistem manajemen data." 
-      url={window.location.href}
-    />
-    <Hero />
-    <LayananPreview />
-    <Projects />
-    <About />
-    <Skills />
-    <Experience />
-    <Pendidikan />
-    <BlogSection />
-    <Contact />
-  </>
-);
+const Home = () => {
+  const homeSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Alpian Tabrani - Web Developer & Designer",
+    "image": "https://alpiant.my.id/og-default.png",
+    "@id": "https://alpiant.my.id",
+    "url": "https://alpiant.my.id",
+    "telephone": "+6281547190395",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Lombok Timur",
+      "addressLocality": "Lombok Timur",
+      "addressRegion": "NTB",
+      "postalCode": "83611",
+      "addressCountry": "ID"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -8.65,
+      "longitude": 116.5
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+      ],
+      "opens": "08:00",
+      "closes": "21:00"
+    },
+    "sameAs": [
+      "https://github.com/Smeagol03",
+      "https://www.linkedin.com/in/alpian-tabrani-b83455275/",
+      "https://www.instagram.com/npc_alpiant"
+    ],
+    "priceRange": "Rp 1.000.000 - Rp 2.500.000",
+    "description": "Jasa pembuatan website profesional, landing page, dan sistem manajemen data di Lombok Timur. Fokus pada performa tinggi dan desain minimalis."
+  };
+
+  return (
+    <>
+      <SEO 
+        title="Alpian Tabrani - Jasa Pembuatan Website Profesional & Terjangkau" 
+        description="Solusi website modern untuk UMKM, Personal Branding, dan Sistem Manajemen Data. Website cepat, responsif, dan SEO-friendly. Mulai dari 1 Juta Rupiah." 
+        url={window.location.href}
+        schema={homeSchema}
+      />
+      <Hero />
+      <LayananPreview />
+      <Projects />
+      <About />
+      <Skills />
+      <Experience />
+      <Pendidikan />
+      <BlogSection />
+      <Contact />
+    </>
+  );
+};
 
 export default Home;

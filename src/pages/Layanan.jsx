@@ -99,6 +99,7 @@ const Layanan = () => {
     {
       title: "Essential",
       price: "1 Jt",
+      numericPrice: 1000000,
       description:
         "Solusi website profesional untuk personal branding, UMKM, atau landing page bisnis Anda.",
       icon: Zap,
@@ -114,6 +115,7 @@ const Layanan = () => {
     {
       title: "Advanced",
       price: "1.5 Jt",
+      numericPrice: 1500000,
       description:
         "Website dinamis dengan fitur interaktif dan optimasi performa untuk bisnis yang ingin tampil lebih profesional.",
       icon: Rocket,
@@ -131,6 +133,7 @@ const Layanan = () => {
     {
       title: "System",
       price: "2.5 Jt",
+      numericPrice: 2500000,
       description:
         "Solusi website berbasis sistem dengan dashboard admin, autentikasi pengguna, dan data real-time.",
       icon: ShieldCheck,
@@ -148,9 +151,61 @@ const Layanan = () => {
     },
   ];
 
+  const layananSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": packages.map((pkg, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "Product",
+        "name": pkg.title,
+        "description": pkg.description,
+        "offers": {
+          "@type": "Offer",
+          "price": pkg.numericPrice,
+          "priceCurrency": "IDR",
+          "availability": "https://schema.org/InStock",
+          "seller": {
+            "@type": "Person",
+            "name": "Alpian Tabrani"
+          }
+        }
+      }
+    }))
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Berapa lama proses pembuatan website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Proses pembuatan bervariasi antara 3-7 hari kerja tergantung kompleksitas paket yang dipilih."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Apakah website sudah termasuk hosting dan domain?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Paket System sudah termasuk biaya setup hosting dan domain untuk tahun pertama. Untuk paket lainnya dapat dikonsultasikan lebih lanjut."
+        }
+      }
+    ]
+  };
+
   return (
     <>
-      <SEO title="Layanan - Alpian Tabrani" description="Solusi website profesional untuk personal branding, UMKM, atau bisnis Anda." url={window.location.href} />
+      <SEO 
+        title="Daftar Harga Jasa Pembuatan Website - Alpian Tabrani" 
+        description="Pilihan paket pembuatan website profesional mulai dari 1 Juta Rupiah. Landing page, UMKM, hingga Dashboard Admin di Lombok." 
+        url={window.location.href}
+        schema={[layananSchema, faqSchema]}
+      />
       <section
         id="layanan"
         className="py-32 relative bg-transparent overflow-hidden"
