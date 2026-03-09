@@ -60,7 +60,7 @@ const Navbar = () => {
   }, []);
 
   const mainNavLinks = navLinks.filter(
-    (link) => !["Layanan", "Blog"].includes(link.name),
+    (link) => !["Blog"].includes(link.name) && link.href.startsWith("#"),
   );
 
   return (
@@ -97,16 +97,15 @@ const Navbar = () => {
           <div className="relative px-4 md:px-6">
             <div className="flex justify-between items-center h-12 md:h-14 gap-4 md:gap-8">
               {/* Logo - Ultra Minimal */}
-              <motion.a
-                href="#"
-                layout
-                whileHover={{ scale: 1.05 }}
+              <Link
+                to="/"
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 className="flex items-center group shrink-0 relative"
               >
                 <span className="text-sm font-bold text-(--text-primary) tracking-tighter">
                   ALPIAN
                 </span>
-              </motion.a>
+              </Link>
 
               {/* Desktop Navigation - Adaptive Pill Dock */}
               <AnimatePresence mode="wait">
@@ -123,11 +122,12 @@ const Navbar = () => {
                   >
                     <nav className="flex items-center gap-1">
                       {mainNavLinks.map((link) => {
-                        const isActive =
-                          activeSection === link.href.replace("#", "") ||
-                          (link.href === "#" && activeSection === "");
+                        const isHome = link.href === "#";
+                        const isActive = isHome
+                          ? activeSection === "" || activeSection === "home"
+                          : activeSection === link.href.replace("#", "");
 
-                        const isExternal = link.href.startsWith("/");
+                        const isExternal = link.href.startsWith("/") && !link.href.startsWith("/#");
 
                         return (
                           <motion.div

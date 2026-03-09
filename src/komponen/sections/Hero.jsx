@@ -11,7 +11,7 @@ import "../animasi/native/hero.css";
 
 const Hero = ({
   nama = "Alpian Tabrani",
-  deskripsi = "I bridge the gap between technical web development and efficient administrative workflows. Specializing in building robust React applications and managing complex operational data.",
+  deskripsi = "Web Builder yang fokus membangun website fungsional dan solusi digital yang memenuhi kebutuhan Anda.",
   GitHubLink = "https://github.com/Smeagol03",
   LinkedInLink = "https://www.linkedin.com/in/alpian-tabrani-b83455275/",
   InstagramLink = "https://www.instagram.com/npc_alpiant?igsh=ZjZrNjV5dHU3bzh6",
@@ -107,7 +107,7 @@ const Hero = ({
               className="flex flex-col sm:flex-row items-center justify-center gap-6"
             >
               <motion.a
-                href="#projects"
+                href="#layanan"
                 className="group relative px-10 py-5 bg-(--text-primary) text-(--bg-primary) font-bold uppercase text-xs tracking-widest overflow-hidden hover:opacity-90 transition-all rounded-sm"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -116,12 +116,13 @@ const Hero = ({
                 transition={{ delay: 1, duration: 0.5 }}
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  View Projects <ArrowRight className="w-4 h-4" />
+                  Start a Project <ArrowRight className="w-4 h-4" />
                 </span>
               </motion.a>
 
               <motion.a
                 href="/AlpianTabrani.pdf"
+                download="AlpianTabrani_CV.pdf"
                 className="group px-10 py-5 border border-(--border-color) hover:border-(--text-secondary) text-(--text-primary) font-bold uppercase text-xs tracking-widest transition-all rounded-sm backdrop-blur-sm"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -130,7 +131,7 @@ const Hero = ({
                 transition={{ delay: 1.1, duration: 0.5 }}
               >
                 <span className="flex items-center gap-2">
-                  <Download className="w-4 h-4" /> Resume
+                  <Download className="w-4 h-4" /> CV
                 </span>
               </motion.a>
             </FadeIn>

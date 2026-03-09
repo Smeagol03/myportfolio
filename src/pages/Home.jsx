@@ -6,21 +6,23 @@ import Projects from "../komponen/sections/Projects";
 import Experience from "../komponen/sections/Experience";
 import Contact from "../komponen/sections/Contact";
 import BlogSection from "../komponen/sections/BlogSection";
+import LayananPreview from "../komponen/sections/LayananPreview";
 import SEO from "../komponen/ui/SEO";
 
 const Home = () => (
   <>
     <SEO 
       title="Alpian - Web Developer & Designer" 
-      description="Portofolio Alpian, seorang web developer dan designer yang berfokus pada pembuatan website modern, responsif, dan interaktif." 
+      description="Solusi website profesional untuk personal branding, UMKM, atau bisnis Anda. Spesialis React dan sistem manajemen data." 
       url={window.location.href}
     />
     <Hero />
-    <About />
-    <Pendidikan />
-    <Skills />
+    <LayananPreview />
     <Projects />
+    <About />
+    <Skills />
     <Experience />
+    <Pendidikan />
     <BlogSection />
     <Contact />
   </>
