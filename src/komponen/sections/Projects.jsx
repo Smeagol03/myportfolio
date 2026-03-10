@@ -5,6 +5,14 @@ import { FadeIn } from "../animasi";
 
 const projectData = [
   {
+    title: "Wedding Invitation",
+    description:
+      "Web undangan pernikahan digital dengan desain modern dan performa optimal.",
+    tech: ["Next JS", "Firebase", "Tailwind CSS"],
+    image: "https://wedding04.vercel.app/assets/3-D3JJ2uVT.webp",
+    link: "https://wedding04.vercel.app",
+  },
+  {
     title: "Daftar Pelatihan Jahit",
     description:
       "Pendaftaran pelatihan menjahit secara online yang memudahkan peserta untuk mendaftar.",
