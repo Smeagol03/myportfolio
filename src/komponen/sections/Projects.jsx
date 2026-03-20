@@ -1,9 +1,16 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
-import { useRef } from "react";
+import { motion } from "framer-motion";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { FadeIn } from "../animasi";
 
 const projectData = [
+  {
+    title: "Company profile",
+    description:
+      "Company Profile untuk meningkatkan visibilitas bisnis di Internet.",
+    tech: ["Next JS", "React", "Tailwind CSS"],
+    image: "https://picsum.photos/seed/construction-hero/1920/1080",
+    link: "https://tabrani-company-profile.vercel.app/",
+  },
   {
     title: "Wedding Invitation",
     description:
@@ -33,15 +40,16 @@ const projectData = [
     description:
       "Merancang ruang yang tidak hanya fungsional, tapi bersifat abadi melalui pendekatan minimalisme.",
     tech: ["Next Js", "Tailwind CSS", "React"],
-    image: "https://konsultan-web-alpiant.vercel.app/swiss_architecture_hero_1772712304283.png",
+    image:
+      "https://konsultan-web-alpiant.vercel.app/swiss_architecture_hero_1772712304283.png",
     link: "https://konsultan-web-alpiant.vercel.app/",
   },
   {
     title: "Pet Shop",
-    description:
-      "Perawatan Terbaik untuk Sahabat Berbulu Anda.",
+    description: "Perawatan Terbaik untuk Sahabat Berbulu Anda.",
     tech: ["Next Js", "Tailwind CSS", "React"],
-    image: "https://pet-shop-alpiant.vercel.app/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1543466835-00a7907e9de1%3Fixlib%3Drb-4.0.3%26auto%3Dformat%26fit%3Dcrop%26w%3D800%26q%3D80&w=3840&q=75",
+    image:
+      "https://pet-shop-alpiant.vercel.app/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1543466835-00a7907e9de1%3Fixlib%3Drb-4.0.3%26auto%3Dformat%26fit%3Dcrop%26w%3D800%26q%3D80&w=3840&q=75",
     link: "https://pet-shop-alpiant.vercel.app/",
   },
   {
@@ -71,18 +79,9 @@ const projectData = [
 ];
 
 const Projects = () => {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
-
   return (
     <section
       id="projects"
-      ref={containerRef}
       className="py-32 relative border-t border-white/5 bg-transparent overflow-hidden"
     >
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
