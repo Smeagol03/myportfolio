@@ -107,7 +107,7 @@ const Hero = ({
               className="flex flex-col sm:flex-row items-center justify-center gap-6"
             >
               <motion.a
-                href="#layanan"
+                href="/layanan"
                 className="group relative px-10 py-5 bg-(--text-primary) text-(--bg-primary) font-bold uppercase text-xs tracking-widest overflow-hidden hover:opacity-90 transition-all rounded-sm"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
