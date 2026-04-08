@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/donat",
+      "destination": "https://donat-seven.vercel.app/"
+    },
+    {
+      "source": "/donat/:path*",
+      "destination": "https://donat-seven.vercel.app/:path*"
+    }
+  ]
+}
