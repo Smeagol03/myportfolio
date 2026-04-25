@@ -56,10 +56,10 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-32 relative border-t border-white/5 bg-transparent overflow-hidden"
+      className="section-padding relative border-t border-white/5 bg-transparent overflow-hidden"
     >
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        <header className="mb-20">
+        <header className="mb-12 md:mb-20">
           <FadeIn
             delay={0}
             direction="left"
@@ -73,7 +73,7 @@ const Contact = () => {
           <FadeIn
             delay={0.2}
             direction="up"
-            className="text-4xl md:text-8xl font-outfit font-bold tracking-tighter text-(--text-primary) uppercase leading-[0.8]"
+            className="text-5xl md:text-8xl font-outfit font-bold tracking-tighter text-(--text-primary) uppercase leading-[0.8]"
           >
             Let's Talk<span className="text-(--text-muted)">.</span>
           </FadeIn>
