@@ -12,7 +12,7 @@ const SEO = ({
   const siteName = "Alpian Portfolio & Services";
   const fullUrl = url.startsWith("http") ? url : `https://alpiant.my.id${url}`;
   
-  const defaultKeywords = "Jasa Pembuatan Website Lombok, Web Developer Lombok, Freelancer Website Lombok, Jasa Website UMKM, Pembuatan Landing Page, Jasa Admin Freelancer, Web Developer Freelancer Lombok NTB, Jasa Desain Web Profesional";
+  const defaultKeywords = "Jasa Pembuatan Website Lombok Timur, Web Developer Lombok Timur, Freelancer Website Lombok Timur, Jasa Website UMKM Lombok Timur, Pembuatan Landing Page Lombok Timur, Jasa Admin Freelancer Lombok Timur, Web Developer Freelancer Lombok NTB, Jasa Desain Web Profesional Lombok Timur, Jasa Pembuatan Website Murah Lombok Timur, Jasa Website Terjangkau Lombok Timur, Freelancer IT Lombok Timur, Jasa System Administration Lombok Timur, Admin Freelancer Lombok Timur";
 
   return (
     <Helmet>

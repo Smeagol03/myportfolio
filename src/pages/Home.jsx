@@ -51,11 +51,11 @@ const Home = () => {
   return (
     <>
 <SEO 
-        title="Alpian Tabrani - Jasa Pembuatan Website Profesional & Terjangkau" 
-        description="Solusi website modern untuk UMKM, Personal Branding, dan Sistem Manajemen Data. Website cepat, responsif, dan SEO-friendly. Mulai dari 1 Juta Rupiah."
+        title="Alpian Tabrani - Jasa Pembuatan Website Profesional & Terjangkau di Lombok Timur" 
+        description="Solusi website modern untuk UMKM, Personal Branding, dan Sistem Manajemen Data di Lombok Timur. Website cepat, responsif, dan SEO-friendly. Mulai dari 1 Juta Rupiah."
         url={window.location.href}
         schema={homeSchema}
-        keywords="Jasa Pembuatan Website Lombok, Web Developer Lombok, Freelancer Website Lombok, Jasa Website UMKM Lombok, Jasa Pembuatan Website Murah Lombok, Web Developer Freelancer Lombok"
+        keywords="Jasa Pembuatan Website Lombok Timur, Web Developer Lombok Timur, Freelancer Website Lombok Timur, Jasa Website UMKM Lombok Timur, Jasa Pembuatan Website Murah Lombok Timur"
       />
       <Hero />
       <LayananPreview />
