@@ -205,6 +205,7 @@ const Layanan = () => {
         description="Pilihan paket pembuatan website profesional mulai dari 1 Juta Rupiah. Landing page, UMKM, hingga Dashboard Admin di Lombok." 
         url={window.location.href}
         schema={[layananSchema, faqSchema]}
+        keywords="Harga Jasa Pembuatan Website Lombok, Paket Website Lombok Murah, Biaya Buat Website Lombok, Jasa Website UMKM Lombok, Harga Website Landing Page Lombok, Jasa Admin Freelancer Lombok, Freelancer IT Lombok"
       />
       <section
         id="layanan"

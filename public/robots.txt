@@ -1,4 +1,7 @@
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /api/
+
 Sitemap: https://alpiant.my.id/sitemap.xml

@@ -99,6 +99,7 @@ const BlogDetail = () => {
         image={post.cover_image || "/og-default.png"}
         url={window.location.href}
         type="article"
+        keywords={post.tags?.join(", ") || "Web Development, Programming, Teknologi"}
       />
       {/* JSON-LD Structured Data for Article */}
       <Helmet>
@@ -106,16 +107,27 @@ const BlogDetail = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
-            headline: post.title,
-            image: post.cover_image ? [post.cover_image] : ["https://alpiant.my.id/og-default.png"],
-            datePublished: post.created_at,
-            dateModified: post.updated_at || post.created_at,
-            author: [{
-                "@type": "Person",
-                name: "Alpian Tabrani",
-                url: "https://alpiant.my.id"
-            }],
-            description: post.excerpt
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": window.location.href
+            },
+            "headline": post.title,
+            "image": post.cover_image || "https://alpiant.my.id/og-default.png",
+            "datePublished": post.created_at,
+            "dateModified": post.updated_at || post.created_at,
+            "author": {
+              "@type": "Person",
+              "name": "Alpian Tabrani",
+              "url": "https://alpiant.my.id",
+              "image": "https://alpiant.my.id/og-default.png"
+            },
+            "publisher": {
+              "@type": "Person",
+              "name": "Alpian Tabrani",
+              "url": "https://alpiant.my.id"
+            },
+            "description": post.excerpt,
+            "wordCount": post.content?.split(/\s+/).length || 0
           })}
         </script>
       </Helmet>

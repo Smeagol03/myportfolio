@@ -48,6 +48,7 @@ const BlogList = () => {
         title="Blog & Articles - Alpian"
         description="Artikel tentang web development, tips teknologi, dan insights dari pengalaman membangun aplikasi modern oleh Alpian."
         url={window.location.href}
+        keywords="Blog Web Development Lombok, Tutorial React Indonesia, Tips Programming Lombok, Blog Teknologi Lombok, Artikel Coding Indonesia"
       />
 
       {/* Hero Section */}
