@@ -242,7 +242,7 @@ const Skills = () => {
 
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <header className="mb-20 md:mb-32">
-          <div className="flex flex-col md:flex-row justify-between items-end gap-12">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
             <div className="max-w-2xl">
               <FadeIn
                 delay={0}
@@ -295,7 +295,7 @@ const Skills = () => {
           direction="up"
           className="mt-32 flex justify-center"
         >
-          <div className="flex items-center gap-8 px-8 py-4 glass-2 rounded-full border border-white/10">
+          <div className="flex items-center gap-4 px-8 py-4 glass-2 rounded-full border border-white/10">
             <div className="flex items-center gap-3">
               <ShieldCheck className="w-4 h-4 text-green-500" />
               <span className="text-[9px] font-black text-(--text-primary) uppercase tracking-[0.3em]">

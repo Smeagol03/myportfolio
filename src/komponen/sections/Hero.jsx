@@ -75,13 +75,18 @@ const Hero = ({
               <span className="text-[10px] font-bold uppercase tracking-widest text-(--text-primary)">
                 Data Archive
               </span>
-              <span className="text-[8px] text-(--text-muted) uppercase">Auto-sync active</span>
+              <span className="text-[8px] text-(--text-muted) uppercase">
+                Auto-sync active
+              </span>
             </div>
           </div>
           <div className="space-y-3">
             {[85, 60, 40].map((w, i) => (
-              <div key={i} className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                <motion.div 
+              <div
+                key={i}
+                className="h-1 w-full bg-white/5 rounded-full overflow-hidden"
+              >
+                <motion.div
                   className="h-full bg-blue-500/40"
                   initial={{ width: 0 }}
                   animate={{ width: `${w}%` }}
@@ -91,7 +96,9 @@ const Hero = ({
             ))}
           </div>
           <div className="mt-5 flex items-center justify-between pt-4 border-t border-white/5">
-            <span className="text-[8px] text-(--text-muted) uppercase font-bold tracking-tighter">Integrity Check</span>
+            <span className="text-[8px] text-(--text-muted) uppercase font-bold tracking-tighter">
+              Integrity Check
+            </span>
             <Activity className="w-3 h-3 text-green-500 animate-pulse" />
           </div>
         </motion.div>
@@ -109,11 +116,15 @@ const Hero = ({
               <span className="text-[10px] font-bold uppercase tracking-widest text-(--text-primary)">
                 Build Engine
               </span>
-              <span className="text-[8px] text-(--text-muted) uppercase font-mono">v4.0.2-stable</span>
+              <span className="text-[8px] text-(--text-muted) uppercase font-mono">
+                v4.0.2-stable
+              </span>
             </div>
           </div>
           <div className="font-mono text-[10px] space-y-1.5 p-3 bg-black/40 rounded-lg border border-white/5">
-            <p className="text-purple-400">class <span className="text-yellow-400">Solution</span> &#123;</p>
+            <p className="text-purple-400">
+              class <span className="text-yellow-400">Solution</span> &#123;
+            </p>
             <p className="pl-3 text-blue-300">optimize(data) &#123;</p>
             <p className="pl-6 text-green-400">return build(data);</p>
             <p className="pl-3 text-blue-300">&#125;</p>
@@ -122,25 +133,29 @@ const Hero = ({
         </motion.div>
 
         {/* Small Decorative Badges */}
-        <motion.div 
+        <motion.div
           style={{ y: smoothY3, opacity }}
           className="absolute bottom-[30%] left-[20%] p-4 glass-2 rounded-2xl hidden md:flex items-center gap-3"
         >
           <Layers className="w-5 h-5 text-blue-400" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-(--text-muted)">Multilayer</span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-(--text-muted)">
+            Multilayer
+          </span>
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           style={{ y: smoothY1, opacity }}
           className="absolute top-[50%] right-[25%] p-4 glass-2 rounded-2xl hidden md:flex items-center gap-3"
         >
           <Zap className="w-5 h-5 text-yellow-400" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-(--text-muted)">High Perf</span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-(--text-muted)">
+            High Perf
+          </span>
         </motion.div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div 
+        <motion.div
           style={{ opacity, scale, y: yContent }}
           className="flex flex-col items-center text-center"
         >
@@ -151,7 +166,7 @@ const Hero = ({
                 <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
                 <div className="w-2 h-2 rounded-full bg-purple-500 animate-pulse delay-75" />
               </div>
-              <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-blue-500/80">
+              <span className="text-[6px] md:text-xs font-bold uppercase tracking-[0.3em] text-blue-500/80">
                 Administrative Modern & Web Builder
               </span>
             </div>
@@ -160,7 +175,7 @@ const Hero = ({
           {/* Core Tagline */}
           <div className="mb-16 relative">
             <h1 className="flex flex-col items-center leading-none">
-              <motion.span 
+              <motion.span
                 className="text-hero text-gradient-swiss"
                 initial={{ y: 80, opacity: 0, filter: "blur(20px)" }}
                 animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
@@ -168,18 +183,22 @@ const Hero = ({
               >
                 Structure.
               </motion.span>
-              <motion.span 
+              <motion.span
                 className="text-hero text-(--text-primary) -mt-4 md:-mt-8 lg:-mt-12"
                 initial={{ y: 80, opacity: 0, filter: "blur(20px)" }}
                 animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-                transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                transition={{
+                  duration: 1.2,
+                  delay: 0.2,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
               >
                 Precision.
               </motion.span>
             </h1>
-            
+
             {/* Visual Underline/Line */}
-            <motion.div 
+            <motion.div
               className="absolute -bottom-4 left-1/2 -translate-x-1/2 h-[1px] bg-linear-to-r from-transparent via-blue-500 to-transparent"
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
@@ -195,9 +214,19 @@ const Hero = ({
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 1 }}
             >
-              Hi, I'm <span className="text-(--text-primary) font-semibold">{nama}</span>. 
-              I design <span className="text-blue-500 italic">administrative workflows</span> that make sense, 
-              and build <span className="text-purple-500 font-medium">digital interfaces</span> that work flawlessly.
+              Hi, I'm{" "}
+              <span className="text-(--text-primary) font-semibold">
+                {nama}
+              </span>
+              . I design{" "}
+              <span className="text-blue-500 italic">
+                administrative workflows
+              </span>{" "}
+              that make sense, and build{" "}
+              <span className="text-purple-500 font-medium">
+                digital interfaces
+              </span>{" "}
+              that work flawlessly.
             </motion.p>
           </div>
 
@@ -213,7 +242,8 @@ const Hero = ({
               whileTap={{ scale: 0.95 }}
             >
               <span className="relative z-10 flex items-center gap-3">
-                Collaborate <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                Collaborate{" "}
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>
             </motion.a>
 
@@ -237,8 +267,16 @@ const Hero = ({
           <div className="flex items-center gap-12 mt-24">
             {[
               { icon: Github, link: GitHubLink, color: "hover:text-white" },
-              { icon: Linkedin, link: LinkedInLink, color: "hover:text-blue-500" },
-              { icon: Instagram, link: InstagramLink, color: "hover:text-pink-500" },
+              {
+                icon: Linkedin,
+                link: LinkedInLink,
+                color: "hover:text-blue-500",
+              },
+              {
+                icon: Instagram,
+                link: InstagramLink,
+                color: "hover:text-pink-500",
+              },
             ].map((social, i) => (
               <motion.a
                 key={i}
@@ -257,9 +295,9 @@ const Hero = ({
           </div>
         </motion.div>
       </div>
-      
+
       {/* Scroll Indicator */}
-      <motion.div 
+      <motion.div
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -267,13 +305,15 @@ const Hero = ({
         style={{ opacity }}
       >
         <div className="w-[1px] h-16 bg-linear-to-b from-blue-500 to-transparent relative overflow-hidden">
-          <motion.div 
+          <motion.div
             className="absolute top-0 left-0 w-full h-1/2 bg-white"
             animate={{ y: ["0%", "200%"] }}
             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
           />
         </div>
-        <span className="mt-4 text-[8px] font-bold uppercase tracking-[0.5em] text-blue-500/50">Explore System</span>
+        <span className="mt-4 text-[8px] font-bold uppercase tracking-[0.5em] text-blue-500/50">
+          Explore System
+        </span>
       </motion.div>
     </section>
   );

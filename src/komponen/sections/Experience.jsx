@@ -82,7 +82,7 @@ const ExperienceCard = ({ exp, index, isLast }) => {
                 </span>
                 <div className="h-px w-8 bg-blue-500/30" />
               </div>
-              <h3 className="text-3xl md:text-5xl font-black font-outfit text-(--text-primary) uppercase tracking-tighter mb-2 group-hover:text-blue-500 transition-colors">
+              <h3 className="text-2xl md:text-5xl font-black font-outfit text-(--text-primary) uppercase tracking-tighter mb-2 group-hover:text-blue-500 transition-colors">
                 {exp.title}
               </h3>
               <div className="flex flex-wrap items-center gap-4 text-(--text-secondary)">
@@ -189,7 +189,7 @@ const Experience = () => {
               </FadeIn>
 
               <FadeIn delay={0.2} direction="up">
-                <h2 className="text-5xl md:text-9xl font-outfit font-bold tracking-tighter text-(--text-primary) uppercase leading-[0.85]">
+                <h2 className="text-4xl md:text-9xl font-outfit font-bold tracking-tighter text-(--text-primary) uppercase leading-[0.85]">
                   Professional <br />
                   <span className="text-(--text-muted)">Timeline.</span>
                 </h2>

@@ -284,11 +284,14 @@ const Projects = () => {
             </FadeIn>
           </div>
 
-          <div className="flex justify-between items-center mt-12 pt-12 border-t border-white/5">
-            <motion.div className="flex items-center gap-6" style={{ y }}>
+          <div className="flex flex-col md:flex-row md:justify-between items-start md:items-center pt-24 border-t border-white/5">
+            <motion.div
+              className="flex items-center gap-2 md:gap-0"
+              style={{ y }}
+            >
               <Activity className="w-5 h-5 text-blue-500 animate-pulse" />
               <div className="h-px w-24 bg-white/10 hidden md:block" />
-              <span className="text-[10px] font-bold text-(--text-muted) uppercase tracking-[0.3em]">
+              <span className="text-[10px] md:text-sm font-bold text-(--text-muted) uppercase tracking-[0.3em]">
                 Scroll to inspect records
               </span>
             </motion.div>
@@ -297,7 +300,7 @@ const Projects = () => {
               href="https://github.com/Smeagol03"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.4em] text-(--text-primary) hover:text-blue-500 transition-all"
+              className="group flex items-center gap-4 text-[8px] md:text-xs font-black uppercase tracking-[0.4em] text-(--text-primary) hover:text-blue-500 transition-all"
               whileHover={{ x: 5 }}
             >
               Github Index{" "}

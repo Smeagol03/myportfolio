@@ -95,7 +95,7 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     className="p-8 glass-2 flex items-center gap-6 hover:border-(--accent-blue)/30 transition-all rounded-sm h-full"
                   >
-                    <div className="w-12 h-12 glass-2 flex items-center justify-center rounded-sm group-hover:bg-(--accent-blue) group-hover:text-white transition-all duration-500">
+                    <div className="w-12 h-12 glass-2 flex items-center justify-center rounded-sm flex-shrink-0 group-hover:bg-(--accent-blue) group-hover:text-white transition-all duration-500">
                       <item.icon className="w-5 h-5" />
                     </div>
                     <div>

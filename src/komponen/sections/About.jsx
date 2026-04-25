@@ -245,17 +245,17 @@ const About = () => {
             <FadeIn
               delay={1}
               direction="up"
-              className="mt-20 pt-10 border-t border-white/5 flex items-center justify-between"
+              className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0"
             >
-              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2">
                 <ShieldCheck className="w-8 h-8 text-blue-500/50" />
                 <div className="flex flex-col">
-                  <span className="text-[8px] font-black text-(--text-muted) uppercase tracking-[0.3em] mb-1">
+                  <span className="text-[10px] md:text-lg font-black text-(--text-muted) uppercase tracking-[0.3em] mb-1">
                     Verification Status
                   </span>
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-green-500" />
-                    <span className="text-[10px] font-mono text-green-500 font-bold">
+                    <span className="text-[10px] md:text-sm font-mono text-green-500 font-bold">
                       CERTIFIED OPERATOR
                     </span>
                   </div>
@@ -263,11 +263,11 @@ const About = () => {
               </div>
 
               {/* Symbolic Signature */}
-              <div className="text-right flex flex-col items-end">
-                <span className="text-[10px] font-mono italic text-(--text-muted) mb-2">
+              <div className="text-center md:text-right flex flex-col items-center md:items-end">
+                <span className="text-xs font-mono italic text-(--text-muted)">
                   Authenticated By:
                 </span>
-                <span className="text-3xl font-outfit font-black text-(--text-primary) tracking-tighter uppercase border-b-2 border-blue-500">
+                <span className="text-lg md:text-3xl font-outfit font-black text-(--text-primary) tracking-tighter uppercase border-b-2 border-blue-500">
                   ALPIAN T.
                 </span>
               </div>
