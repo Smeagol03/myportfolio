@@ -230,7 +230,7 @@ const Projects = () => {
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         {/* Header Section */}
         <div className="flex flex-col mb-16 md:mb-24">
-          <div className="flex flex-col md:flex-row justify-between items-end gap-12">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
             <div className="max-w-2xl">
               <FadeIn
                 delay={0}

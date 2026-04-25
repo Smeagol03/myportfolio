@@ -62,10 +62,10 @@ const educationData = [
 
 const TimelineNode = ({ item, index, isLast }) => {
   return (
-    <div className="relative pl-12 md:pl-32 pb-24 group">
+    <div className="relative pl-12 md:pl-32 pb-12 md:pb-16 group">
       {/* Connector Line */}
       {!isLast && (
-        <div className="absolute left-[19px] md:left-[39px] top-10 bottom-0 w-[1px] bg-white/10 group-hover:bg-blue-500/30 transition-colors duration-700" />
+        <div className="absolute left-4.75 md:left-9.75 top-10 bottom-0 w-px bg-white/10 group-hover:bg-blue-500/30 transition-colors duration-700" />
       )}
 
       {/* Node Icon */}
@@ -84,7 +84,7 @@ const TimelineNode = ({ item, index, isLast }) => {
       <FadeIn delay={index * 0.1} direction="up" duration={0.8}>
         <div className="glass-2 p-8 md:p-12 rounded-2xl bg-white/5 border-t border-white/10 hover:border-blue-500/30 transition-all duration-700 relative overflow-hidden">
           {/* Administrative ID Stamp */}
-          <div className="absolute top-4 right-8 text-[4rem] md:text-[6rem] font-black text-white/[0.02] pointer-events-none select-none">
+          <div className="absolute top-4 right-8 text-[4rem] md:text-[6rem] font-black text-white/2 pointer-events-none select-none">
             {item.id}
           </div>
 
@@ -162,7 +162,8 @@ const Pendidikan = () => {
     <section
       id="pendidikan"
       ref={containerRef}
-      className="py-40 relative border-t border-white/5 bg-(--bg-primary) overflow-hidden"
+      style={{ position: "relative" }}
+      className="section-padding relative border-t border-white/5 bg-(--bg-primary) overflow-hidden"
     >
       {/* Background Dossier Aesthetics */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02] select-none flex flex-col justify-center items-center">
@@ -175,7 +176,7 @@ const Pendidikan = () => {
       </div>
 
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
-        <header className="mb-32 text-left">
+        <header className="mb-20 md:mb-32 text-left">
           <div className="flex flex-col md:flex-row justify-start md:justify-between items-start md:items-end gap-12">
             <div className="max-w-2xl">
               <FadeIn
@@ -183,7 +184,7 @@ const Pendidikan = () => {
                 direction="left"
                 className="flex items-center gap-4 mb-8"
               >
-                <div className="h-[1px] w-12 bg-blue-500" />
+                <div className="h-px w-12 bg-blue-500" />
                 <span className="text-[10px] font-black uppercase tracking-[0.6em] text-blue-500">
                   Institutional History
                 </span>
@@ -217,10 +218,10 @@ const Pendidikan = () => {
 
         <div className="relative">
           {/* The Scroll-Following Line */}
-          <div className="absolute left-[19px] md:left-[39px] top-10 bottom-10 w-[2px] bg-white/5" />
+          <div className="absolute left-4.75 md:left-9.75 top-10 bottom-10 w-0.5 bg-white/5" />
           <motion.div
             style={{ height: lineHeight }}
-            className="absolute left-[19px] md:left-[39px] top-10 w-[2px] bg-linear-to-b from-blue-500 to-purple-500 z-10 origin-top"
+            className="absolute left-4.75 md:left-9.75 top-10 w-0.5 bg-linear-to-b from-blue-500 to-purple-500 z-10 origin-top"
           />
 
           {educationData.map((item, index) => (

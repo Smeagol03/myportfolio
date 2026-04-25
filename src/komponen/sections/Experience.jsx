@@ -48,7 +48,7 @@ const experienceData = [
 
 const ExperienceCard = ({ exp, index, isLast }) => {
   return (
-    <div className="relative pl-12 md:pl-20 pb-20">
+    <div className="relative pl-12 md:pl-20 pb-12 md:pb-16 group">
       {/* Vertical Timeline Thread */}
       {!isLast && (
         <div className="absolute left-4.75 md:left-6.75 top-10 bottom-0 w-0.5 bg-linear-to-b from-blue-500/50 via-purple-500/20 to-transparent" />
@@ -168,13 +168,14 @@ const Experience = () => {
     <section
       id="experience"
       ref={containerRef}
+      style={{ position: "relative" }}
       className="section-padding relative border-t border-white/5 bg-(--bg-primary) overflow-hidden"
     >
       {/* Background Decorative Element */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-blue-500/2 to-transparent pointer-events-none" />
 
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        <header className="mb-20 md:mb-32">
+        <header className="mb-12 md:mb-16">
           <div className="flex flex-col md:flex-row justify-between items-end gap-12">
             <div className="max-w-2xl">
               <FadeIn
@@ -228,28 +229,6 @@ const Experience = () => {
             />
           ))}
         </div>
-
-        {/* Technical Footer */}
-        <FadeIn
-          delay={0.8}
-          direction="up"
-          className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8"
-        >
-          <div className="flex items-center gap-4">
-            <ShieldCheck className="w-6 h-6 text-blue-500/50" />
-            <span className="text-[10px] font-black text-(--text-muted) uppercase tracking-[0.4em]">
-              Career Record: Authenticated & Stable
-            </span>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-            <span className="text-[10px] font-mono text-blue-500 font-bold uppercase tracking-widest">
-              Awaiting Next Deployment
-            </span>
-            <ArrowRight className="w-4 h-4 text-blue-500" />
-          </div>
-        </FadeIn>
       </div>
     </section>
   );

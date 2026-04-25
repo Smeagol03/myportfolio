@@ -95,14 +95,14 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     className="p-8 glass-2 flex items-center gap-6 hover:border-(--accent-blue)/30 transition-all rounded-sm h-full"
                   >
-                    <div className="w-12 h-12 glass-2 flex items-center justify-center rounded-sm flex-shrink-0 group-hover:bg-(--accent-blue) group-hover:text-white transition-all duration-500">
+                    <div className="w-12 h-12 glass-2 flex items-center justify-center rounded-sm shrink-0 group-hover:bg-(--accent-blue) group-hover:text-white transition-all duration-500">
                       <item.icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-[10px] font-bold text-(--text-muted) uppercase tracking-widest mb-1">
+                      <p className="text-[10px] font-bold text-(--text-muted) tracking-widest mb-1">
                         {item.label}
                       </p>
-                      <p className="text-(--text-primary) font-bold group-hover:text-(--accent-blue) transition-colors tracking-tighter">
+                      <p className="text-(--text-primary) text-xs md:text-lg font-bold group-hover:text-(--accent-blue) transition-colors tracking-tighter">
                         {item.value}
                       </p>
                     </div>

@@ -65,6 +65,7 @@ const About = () => {
     <section
       id="about"
       ref={containerRef}
+      style={{ position: "relative" }}
       className="section-padding relative border-t border-white/5 bg-(--bg-primary) overflow-hidden"
     >
       {/* Background Dossier Elements */}

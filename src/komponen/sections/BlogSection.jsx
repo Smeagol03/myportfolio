@@ -36,7 +36,7 @@ const BlogSection = () => {
   return (
     <section
       id="blog"
-      className="py-32 relative border-t border-white/5 bg-transparent"
+      className="py-16 relative border-t border-white/5 bg-transparent"
     >
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         {/* Header */}

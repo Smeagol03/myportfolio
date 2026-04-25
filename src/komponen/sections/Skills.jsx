@@ -222,6 +222,7 @@ const Skills = () => {
     <section
       id="skills"
       ref={containerRef}
+      style={{ position: "relative" }}
       className="section-padding relative border-t border-white/5 bg-(--bg-primary) overflow-hidden"
     >
       {/* Decorative Matrix Background */}

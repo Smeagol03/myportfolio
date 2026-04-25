@@ -35,7 +35,7 @@ const WebsiteBuildAnimation = () => {
   );
 
   return (
-    <div ref={containerRef} className="relative w-full max-w-2xl mx-auto h-[400px] md:h-[500px] flex items-center justify-center perspective-[1000px]">
+    <div ref={containerRef} style={{ position: "relative" }} className="relative w-full max-w-2xl mx-auto h-[400px] md:h-[500px] flex items-center justify-center perspective-[1000px]">
       {/* Background Status Info */}
       <div className="absolute top-0 left-0 right-0 flex justify-between items-center px-4 z-50">
         <motion.div className="flex items-center gap-2">

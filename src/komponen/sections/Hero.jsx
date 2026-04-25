@@ -45,6 +45,7 @@ const Hero = ({
   return (
     <section
       ref={containerRef}
+      style={{ position: "relative" }}
       className="relative min-h-screen md:min-h-[120vh] flex items-center justify-center pt-28 md:pt-32 pb-24 md:pb-40 overflow-hidden bg-(--bg-primary)"
     >
       {/* Background with Grid & Parallax Orbs */}
