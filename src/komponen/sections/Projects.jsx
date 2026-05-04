@@ -21,28 +21,6 @@ import { FadeIn } from "../animasi";
 const projectData = [
   {
     id: "01",
-    title: "Company profile",
-    description:
-      "Enterprise-grade company profile with optimized performance and structured data management.",
-    tech: ["Next JS", "React", "Tailwind CSS"],
-    image: "https://picsum.photos/seed/construction-hero/1920/1080",
-    link: "https://tabrani-company-profile.vercel.app/",
-    status: "Stable",
-    version: "v2.1.0",
-  },
-  {
-    id: "02",
-    title: "Wedding Invitation",
-    description:
-      "Modern digital invitation system featuring real-time RSVP and administrative guest management.",
-    tech: ["Next JS", "Firebase", "Tailwind CSS"],
-    image: "https://wedding04.vercel.app/assets/3-D3JJ2uVT.webp",
-    link: "https://wedding04.vercel.app",
-    status: "Production",
-    version: "v4.2.3",
-  },
-  {
-    id: "03",
     title: "LPK Dua Berkah",
     description:
       "Online registration and administrative portal for vocational training programs.",
@@ -53,7 +31,40 @@ const projectData = [
     version: "v1.0.5",
   },
   {
+    id: "02",
+    title: "Company profile",
+    description:
+      "Enterprise-grade company profile with optimized performance and structured data management.",
+    tech: ["Next JS", "React", "Tailwind CSS"],
+    image: "https://picsum.photos/seed/construction-hero/1920/1080",
+    link: "https://tabrani-company-profile.vercel.app/",
+    status: "Stable",
+    version: "v2.1.0",
+  },
+  {
+    id: "03",
+    title: "Wedding Invitation",
+    description:
+      "Modern digital invitation system featuring real-time RSVP and administrative guest management.",
+    tech: ["Next JS", "Firebase", "Tailwind CSS"],
+    image: "https://wedding04.vercel.app/assets/3-D3JJ2uVT.webp",
+    link: "https://wedding04.vercel.app",
+    status: "Production",
+    version: "v4.2.3",
+  },
+  {
     id: "04",
+    title: "Wedding Invitation",
+    description:
+      "Modern digital invitation system featuring real-time RSVP and administrative guest management.",
+    tech: ["Vite", "Firebase", "Tailwind CSS"],
+    image: "https://picsum.photos/seed/wedding1/800/1200",
+    link: "https://template-06-indol.vercel.app",
+    status: "Production",
+    version: "v4.2.4",
+  },
+  {
+    id: "05",
     title: "Digital Finance",
     description:
       "Secure financial tracking system with data visualization and transaction auditing.",
@@ -64,7 +75,7 @@ const projectData = [
     version: "v3.0.0",
   },
   {
-    id: "05",
+    id: "06",
     title: "Swiss Architecture",
     description:
       "Architectural portfolio site emphasizing minimalist design principles and structural clarity.",
@@ -76,7 +87,7 @@ const projectData = [
     version: "v1.2.0",
   },
   {
-    id: "06",
+    id: "07",
     title: "Pet Shop Admin",
     description:
       "Comprehensive pet service management platform with booking and inventory tracking.",
